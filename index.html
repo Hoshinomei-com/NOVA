@@ -385,14 +385,141 @@ body.ignis #logoT{animation:logoG 3s steps(1) infinite}
 body.ignis .gr .L{position:relative;opacity:.6}
 body.ignis .gr .L::after{content:"";position:absolute;left:10px;right:10px;top:48%;height:3px;background:#ff2d3d;box-shadow:0 0 8px #ff2d3d;transform:rotate(-22deg)}
 body.ignis #gradeList::before,body.ignis #clanCards::before,body.ignis #hqClans::before{display:block;grid-column:1/-1;padding:12px 14px;border:1px solid rgba(255,40,50,.45);background:rgba(30,0,4,.8);color:#ff8f96;font-size:14px;letter-spacing:.02em}
-body.ignis #gradeList::before{content:"“등급 따위… 사람을 줄 세우는 숫자일 뿐이다.”  — 검은 태양"}
-body.ignis #clanCards::before{content:"“클랜도, 명령도 필요 없어. 아무도 통제받지 않는 세계면 충분하다.”  — 검은 태양"}
-body.ignis #hqClans::before{content:"“영웅을 자처하는 곳이군. 기록을 지운 손으로.”  — 검은 태양"}
+body.ignis #gradeList::before{content:var(--q-grade)}
+body.ignis #clanCards::before{content:var(--q-clan)}
+body.ignis #hqClans::before{content:var(--q-hq)}
 body.ignis .clan{filter:saturate(.3) brightness(.85)}
 body.ignis .clan::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 47%,rgba(255,40,50,.7) 47.4%,transparent 48%),linear-gradient(70deg,transparent 62%,rgba(255,40,50,.45) 62.3%,transparent 62.8%)}
 body.ignis .hqtop h3{text-decoration:line-through;text-decoration-color:#ff2d3d}
 body.ignis .cta:not(.ghost){background:linear-gradient(90deg,#7a0010,#ff2d3d);color:#fff}
 
+/* ===== IGNIS takeover : destruction ===== */
+#ivoice{position:fixed;left:50%;bottom:58px;z-index:97;width:min(460px,calc(100% - 24px));transform:translate(-50%,16px);opacity:0;pointer-events:none;transition:.35s;padding:12px 16px 13px;background:linear-gradient(90deg,rgba(40,0,6,.96),rgba(8,0,2,.96));border:1px solid rgba(255,45,61,.55);border-left:3px solid #ff2d3d;box-shadow:0 10px 40px rgba(0,0,0,.7),0 0 30px rgba(255,30,45,.25)}
+#ivoice.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#ivoice small{display:flex;align-items:center;gap:7px;font-family:var(--tech);font-size:10px;letter-spacing:.3em;color:#ff5a63}
+#ivoice small::before{content:"";width:9px;height:9px;border-radius:50%;background:#000;box-shadow:0 0 0 1.5px #ff2d3d,0 0 8px #ff2d3d}
+#ivoice p{font-size:15.5px;line-height:1.55;color:#f6eaeb;margin-top:3px;min-height:1.5em}
+#ivoice p.typing::after{content:"▍";color:#ff2d3d;animation:blink .8s steps(1) infinite}
+/* dead portraits */
+.ph>img{transition:filter 1s ease}
+body.ignis .ph.dead>img{filter:grayscale(1) brightness(.48) contrast(1.35)}
+body.ignis .ph.dead::after{background:var(--crk) center/100% 100% no-repeat,linear-gradient(180deg,rgba(60,0,6,.0) 40%,rgba(60,0,6,.55))}
+body.ignis .ph.dead{--crk:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 133' preserveAspectRatio='none'%3E%3Cg fill='none' vector-effect='non-scaling-stroke'%3E%3Cpath d='M57 0 L52 20 L60 31 L44 47 L55 63 L41 86 L50 104 L38 133 M44 47 L22 51 L9 44 L0 49 M55 63 L74 66 L88 58 L100 63 M41 86 L24 95 L16 112 M60 31 L80 22 L100 27 M50 104 L67 113 L76 133' stroke='rgba(255,255,255,.55)' stroke-width='1.2' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M57 0 L52 20 L60 31 L44 47 L55 63 L41 86 L50 104 L38 133 M44 47 L22 51 M55 63 L74 66' stroke='rgb(255,45,61)' stroke-width='.5' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3Cpath d='M44 47 L55 63 L41 86 L30 70Z M60 31 L80 22 L72 40Z' fill='rgba(0,0,0,.45)'/%3E%3C/svg%3E")}
+body.ignis .ph.dead:nth-of-type(2n),body.ignis .card:nth-child(2n) .ph.dead{--crk:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 133' preserveAspectRatio='none'%3E%3Cg fill='none'%3E%3Cpath d='M0 38 L18 44 L33 36 L47 52 L66 45 L78 60 L100 54 M47 52 L51 74 L40 92 L46 133 M66 45 L71 24 L64 0 M51 74 L70 84 L83 108 L100 112 M40 92 L18 101 L0 97' stroke='rgba(255,255,255,.55)' stroke-width='1.2' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M0 38 L18 44 L33 36 L47 52 L66 45 L78 60 M47 52 L51 74 L40 92' stroke='rgb(255,45,61)' stroke-width='.5' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3Cpath d='M33 36 L47 52 L51 74 L36 60Z M66 45 L78 60 L70 66Z' fill='rgba(0,0,0,.45)'/%3E%3C/svg%3E")}
+body.ignis .ph.snap{animation:snap .55s steps(4)}
+@keyframes snap{0%{filter:brightness(3) saturate(0)}25%{transform:translate(-3px,1px)}50%{transform:translate(3px,-1px);filter:brightness(.4)}75%{transform:translate(-1px,0)}100%{transform:none}}
+body.ignis .ph.gl>img{animation:gl .36s steps(3)}
+@keyframes gl{0%{clip-path:inset(12% 0 60% 0);transform:translate(-6px,0)}33%{clip-path:inset(58% 0 18% 0);transform:translate(7px,0)}66%{clip-path:inset(30% 0 42% 0);transform:translate(-4px,0)}100%{clip-path:inset(0);transform:none}}
+body.ignis .card.dead::after{content:var(--deadlbl);position:absolute;left:-4px;right:-4px;top:40%;z-index:6;text-align:center;font-family:var(--tech);font-weight:700;font-size:11px;letter-spacing:.26em;color:#ff3b47;background:rgba(0,0,0,.78);border-top:1px solid #ff2d3d;border-bottom:1px solid #ff2d3d;padding:5px 0;transform:rotate(-7deg);animation:fadeIn .4s both}
+body.ignis .card.dead .nm{text-decoration:line-through;text-decoration-color:#ff2d3d;color:#9b9197}
+body.ignis .card.dead .hn,body.ignis .card.dead .ab{color:#6d6670!important}
+body.ignis .card .cl{background:#444;box-shadow:none}
+body.ignis .card .gb{border-color:#555;color:#777;text-decoration:line-through}
+body.ignis .card{border-color:rgba(255,45,61,.18)}
+body.ignis .clan .mem em{text-decoration:line-through;text-decoration-color:#ff2d3d}
+body.ignis .gr .who i{filter:grayscale(1) brightness(.6)}
+/* broken interface */
+body.ignis .mod{filter:grayscale(1);opacity:.45;position:relative}
+body.ignis .mod::after{content:"OFFLINE";position:absolute;right:8px;top:8px;font-family:var(--tech);font-size:9.5px;letter-spacing:.2em;color:#ff3b47}
+body.ignis .rule,body.ignis .tl .it{border-color:rgba(255,45,61,.18)}
+body.ignis .tl .it:nth-child(odd){transform:rotate(-.8deg)}
+body.ignis .tl .it:nth-child(even){transform:rotate(.6deg) translateX(4px)}
+body.ignis .rule:nth-child(2){transform:rotate(1.2deg) translateY(4px)}
+body.ignis .rule:nth-child(3){transform:rotate(-1deg)}
+body.ignis .steps .step{opacity:.6}
+body.ignis .steps .step.you{opacity:1;border-color:#ff2d3d}
+body.ignis .steps .step.you b::after{content:var(--suntag);color:#ff3b47;font-size:13px}
+body.ignis .hero h1{position:relative}
+body.ignis .hero h1::after{content:"";position:absolute;inset:-6% -2%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 L60 55 L95 70 L140 48 L170 60 L210 40 L250 52 L300 45 M140 48 L150 20 L144 0 M170 60 L176 82 L168 100 M95 70 L88 100' fill='none' stroke='rgb(6,6,8)' stroke-width='3'/%3E%3Cpath d='M0 62 L60 55 L95 70 L140 48 L170 60 L210 40 L250 52 L300 45' fill='none' stroke='rgb(255,45,61)' stroke-width='1'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
+body.ignis .hero h2{color:#ff3b47;text-shadow:0 0 18px rgba(255,30,45,.6)}
+body.ignis .hero .tags span{text-decoration:line-through;text-decoration-color:rgba(255,45,61,.7);opacity:.6}
+body.ignis .sh .no{color:#ff3b47}
+body.ignis #prog{background:linear-gradient(90deg,#5a0010,#ff2d3d);box-shadow:0 0 10px #ff2d3d}
+body.ignis .gal .ph::before{color:#ff3b47}
+body.ignis #md .ph>img,body.ignis #lb .ph>img{filter:grayscale(1) brightness(.55) contrast(1.3)}
+body.ignis #md .abil{border-color:#555}
+body.ignis #md .hn{color:#8d858b;text-decoration:line-through;text-decoration-color:#ff2d3d}
+body.ignis #md h3::after{content:"  ✕ SIGNAL LOST";font-family:var(--tech);font-size:12px;letter-spacing:.2em;color:#ff3b47;vertical-align:middle}
+body.ignis #lic{filter:saturate(.5) hue-rotate(-12deg)}
+body.ignis footer{color:#7a2a30}
+
+/* ===== re-seal cinematic ===== */
+#sealFx{position:fixed;inset:0;z-index:98;display:none;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+#sealFx.on{display:flex;pointer-events:auto}
+#sealFx .sf-dim{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(40,0,6,.82),rgba(0,0,0,.95) 70%);animation:fadeIn .5s both}
+#sealFx .sf-sun{position:absolute;left:50%;top:40%;width:52vmin;height:52vmin;margin:-26vmin 0 0 -26vmin;transition:transform 1.1s cubic-bezier(.6,0,.4,1),opacity 1.1s}
+#sealFx .sf-sun .sun{--s:100%;width:100%;height:100%}
+#sealFx .sf-sun .corona{background:radial-gradient(circle,transparent 52%,rgba(255,140,140,.95) 55%,rgba(220,20,40,.7) 58%,rgba(120,0,10,.3) 66%,transparent 74%)}
+#sealFx .sf-sun .rays{background:repeating-conic-gradient(rgba(255,40,50,.3) 0 2deg,transparent 2deg 9deg)}
+#sealFx .sf-sun .disc{box-shadow:0 0 70px rgba(255,20,40,.6),0 0 140px rgba(150,0,10,.4)}
+#sealFx.resist .sf-sun{animation:resist .18s linear infinite}
+@keyframes resist{0%{transform:translate(-3px,2px) scale(1.06)}50%{transform:translate(3px,-2px) scale(1.1)}100%{transform:translate(-2px,0) scale(1.04)}}
+#sealFx.collapse .sf-sun{transform:scale(0) rotate(160deg);opacity:0}
+#sealFx .sf-ring{position:absolute;left:50%;top:40%;width:86vmin;height:86vmin;margin:-43vmin 0 0 -43vmin;opacity:0;transition:opacity .6s,transform 1.1s cubic-bezier(.6,0,.4,1)}
+#sealFx .sf-ring circle,#sealFx .sf-ring .hx{fill:none;stroke:rgba(160,240,255,.85);stroke-width:1.2;stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 1.4s ease}
+#sealFx .sf-ring .r2{stroke-dasharray:4 6}
+#sealFx .sf-ring .r3{stroke:rgba(255,255,255,.5)}
+#sealFx .sf-ring text{font-family:var(--tech);font-size:11px;letter-spacing:3px;fill:rgba(160,240,255,.85)}
+#sealFx.ring .sf-ring{opacity:1;animation:spin 18s linear infinite}
+#sealFx.ring .sf-ring circle,#sealFx.ring .sf-ring .hx{stroke-dashoffset:0}
+#sealFx.ring .sf-ring .r2{stroke-dashoffset:0}
+#sealFx.resist .sf-ring{opacity:.45}
+#sealFx.collapse .sf-ring{transform:scale(.25);opacity:0;transition-delay:.2s}
+#sealFx .sf-chains i{position:absolute;left:-20%;right:-20%;top:40%;height:12px;margin-top:-6px;background:repeating-linear-gradient(90deg,transparent 0 3px,rgba(170,245,255,.95) 3px 19px,transparent 19px 23px);border-radius:6px;box-shadow:0 0 14px rgba(67,210,230,.8);transform:rotate(var(--a)) scaleX(0);transition:transform .35s cubic-bezier(.2,.9,.3,1.2)}
+#sealFx .sf-chains i:nth-child(1){--a:28deg}#sealFx .sf-chains i:nth-child(2){--a:-28deg}#sealFx .sf-chains i:nth-child(3){--a:72deg}#sealFx .sf-chains i:nth-child(4){--a:-72deg}
+#sealFx.c1 .sf-chains i:nth-child(1),#sealFx.c2 .sf-chains i:nth-child(2),#sealFx.c3 .sf-chains i:nth-child(3),#sealFx.c4 .sf-chains i:nth-child(4){transform:rotate(var(--a)) scaleX(1)}
+#sealFx.resist .sf-chains i{animation:chainShake .12s linear infinite;background:repeating-linear-gradient(90deg,transparent 0 3px,rgba(255,120,130,.95) 3px 19px,transparent 19px 23px);box-shadow:0 0 14px rgba(255,40,50,.8)}
+@keyframes chainShake{50%{margin-top:-3px}}
+#sealFx.collapse .sf-chains i{transform:rotate(var(--a)) scaleX(.02);transition-duration:.9s}
+#sealFx .sf-log{position:absolute;left:50%;bottom:calc(16% + 34px);width:min(460px,calc(100% - 32px));transform:translateX(-50%);padding:12px 16px;background:rgba(5,5,8,.85);border:1px solid rgba(255,255,255,.12);min-height:84px}
+#sealFx .sf-who{font-family:var(--tech);font-size:10.5px;letter-spacing:.28em;margin-bottom:4px}
+#sealFx .sf-who.ig{color:#ff5a63}#sealFx .sf-who.zl{color:var(--teal)}#sealFx .sf-who.hq{color:#ffd28a}
+#sealFx .sf-log p{font-size:15.5px;line-height:1.55;color:#f2eff3}
+#sealFx .sf-log p.ig{color:#ffd9dc}
+#sealFx .sf-bar{position:absolute;left:50%;bottom:16%;width:min(460px,calc(100% - 32px));transform:translateX(-50%);display:flex;align-items:center;gap:10px;font-family:var(--tech);font-size:11px;letter-spacing:.2em;color:var(--teal)}
+#sealFx .sf-bar b{flex:1;height:6px;background:rgba(67,210,230,.15);position:relative;overflow:hidden}
+#sealFx .sf-bar i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#1b8fa0,#bff6ff);box-shadow:0 0 10px var(--teal)}
+#sealFx.resist .sf-bar i{background:linear-gradient(90deg,#7a0010,#ff2d3d);box-shadow:0 0 10px #ff2d3d}
+#sealFx .sf-bar em{font-style:normal;width:40px;text-align:right}
+#sealFx .sf-flash{position:absolute;inset:0;background:#e9fbff;opacity:0;pointer-events:none}
+#sealFx.flash .sf-flash{animation:sflash 1.4s ease forwards}
+@keyframes sflash{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+#sealFx.flash .sf-dim{background:rgba(0,0,0,.55);transition:background .6s}
+#sealFx .sf-stamp{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-10deg) scale(2.2);opacity:0;font-family:var(--tech);font-weight:700;font-size:clamp(40px,13vw,74px);letter-spacing:.14em;color:var(--teal);border:4px double var(--teal);padding:4px 18px 8px;text-align:center;line-height:1;text-shadow:0 0 18px rgba(67,210,230,.7)}
+#sealFx .sf-stamp small{display:block;font-family:var(--body);font-size:13px;letter-spacing:.3em;margin-top:6px;font-weight:600}
+#sealFx.stamp .sf-stamp{animation:sstamp .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes sstamp{to{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
+#sealFx.stamp .sf-log,#sealFx.stamp .sf-bar{opacity:0;transition:opacity .4s}
+#sealFx.out{animation:sout .8s ease forwards}
+@keyframes sout{to{opacity:0}}
+
+/* ===== language ===== */
+html[lang=ja]{--disp:'Dela Gothic One','Noto Sans JP','Black Han Sans',sans-serif;--body:'Noto Sans JP','Pretendard Variable',-apple-system,sans-serif}
+html[lang=ja] body,html[lang=en] body{word-break:normal;overflow-wrap:anywhere}
+html[lang=ja] body{line-break:strict}
+.atk button{overflow-wrap:normal;word-break:keep-all}
+html[lang=en] .atk button{font-size:12px;letter-spacing:-.01em}
+html[lang=en] .atk button small{font-size:9.5px}
+html[lang=ja] .hero h2,html[lang=en] .hero h2{letter-spacing:.18em}
+html[lang=ja] .sh h2{font-size:clamp(26px,6.6vw,40px)}
+html[lang=en] .sh h2{letter-spacing:.01em}
+#gate{position:fixed;inset:0;z-index:130;background:radial-gradient(80% 60% at 50% 30%,rgba(255,110,40,.10),transparent 70%),#040405;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto}
+#gate.out{animation:introOut .7s ease forwards}
+#gate .gbox{width:min(380px,100%);text-align:center;animation:paperIn 1s cubic-bezier(.2,.8,.2,1) both}
+#gate .gk{font-family:var(--tech);font-size:10.5px;letter-spacing:.4em;color:var(--sun)}
+#gate h2{font-family:var(--disp);font-weight:400;font-size:30px;margin:6px 0 26px;letter-spacing:.04em}
+#gate .glbl{font-family:var(--tech);font-size:11px;letter-spacing:.32em;color:var(--mute);margin:16px 0 8px;display:flex;align-items:center;gap:10px}
+#gate .glbl::before,#gate .glbl::after{content:"";flex:1;height:1px;background:var(--line)}
+#gate .gopts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#gate .gopts.two{grid-template-columns:1fr 1fr}
+#gate .gopts button{padding:13px 6px;border:1px solid var(--line);font-size:15px;color:var(--mute);background:rgba(255,255,255,.02);transition:.2s}
+#gate .gopts button.on{border-color:var(--sun);color:#140a02;background:linear-gradient(90deg,var(--sun2),var(--sun));font-weight:700}
+#gateGo{margin-top:28px;width:100%;justify-content:center;font-size:16px}
+#gateHint{margin-top:14px;font-size:12px;color:var(--dim)}
+.mlang{display:flex;align-items:center;gap:8px;margin-top:22px;flex-wrap:wrap}
+.mlang span{font-family:var(--tech);font-size:11px;letter-spacing:.24em;color:var(--sun);margin-right:6px}
+.mlang button{padding:8px 12px;border:1px solid var(--line);font-size:13px;color:var(--mute)}
+.mlang button.on{border-color:var(--sun);color:var(--sun)}
 /* test + license */
 .test{padding:20px}
 .test .meta{display:flex;justify-content:space-between;font-family:var(--tech);font-size:11px;letter-spacing:.25em;color:var(--sun)}
@@ -474,6 +601,19 @@ footer p+p{margin-top:4px}
 </style>
 </head>
 <body class="lock">
+<div id="gate">
+  <div class="gbox">
+    <div class="sun" style="--s:104px;margin:0 auto 22px"><i class="rays"></i><i class="corona"></i><i class="disc"></i></div>
+    <div class="gk">NOVA HERO HEADQUARTERS</div>
+    <h2 id="gateTitle">NOVA : 검은태양</h2>
+    <div class="glbl">LANGUAGE</div>
+    <div class="gopts"><button data-glang="ko">한국어</button><button data-glang="ja">日本語</button><button data-glang="en">English</button></div>
+    <div class="glbl">BGM</div>
+    <div class="gopts two"><button data-gbgm="1">♪ ON</button><button data-gbgm="0">OFF</button></div>
+    <button class="cta" id="gateGo">본부로 입장</button>
+    <p id="gateHint">소리는 오른쪽 위 버튼으로 언제든 켜고 끌 수 있어요.</p>
+  </div>
+</div>
 <canvas id="embers"></canvas>
 <div id="prog"></div>
 
@@ -516,6 +656,7 @@ footer p+p{margin-top:4px}
   <a href="#classified"><small>06</small>비공개 파일</a>
   <a href="#test"><small>07</small>클랜 적성 검사</a>
   <a href="#archive"><small>08</small>자료실</a>
+  <div class="mlang"><span id="menuLang">언어</span><button data-setlang="ko">한국어</button><button data-setlang="ja">日本語</button><button data-setlang="en">English</button></div>
 </nav>
 
 <main id="top">
@@ -544,7 +685,7 @@ footer p+p{margin-top:4px}
       <div class="it panel reveal"><small>PHASE 03 — 제도</small><h3>히어로 제도</h3><p>정부는 혼란을 수습하기 위해 <b>히어로 제도</b>를 만들었다. 그 중심에 선 기관이 바로 <b>노바 히어로 본부</b>다.</p></div>
       <div class="it panel reveal"><small>PHASE 04 — 지금</small><h3>예외 각성자, 당신</h3><p>능력이 뒤늦게 깨어난 예외적인 능력자. 정부의 출석 통지서를 받은 당신은 이제 본부의 정밀 검사대 위에 선다.</p></div>
     </div>
-    <div class="reveal"><div class="ph nat figure corner" id="figCover" style="--c:#ffb347"><span>NOVA : 검은태양</span></div></div>
+    <div class="reveal"><div class="ph nat figure corner" id="figCover" style="--c:#ffb347"><span>NOVA</span></div></div>
   </div>
 </div></section>
 
@@ -564,7 +705,7 @@ footer p+p{margin-top:4px}
     <div class="rule panel reveal"><div class="n">03</div><div><b>등급에 따른 권한</b><p>S급은 독자적 판단과 작전 지휘권을, D급은 단독 임무가 금지된다. 권한은 등급을 따라간다.</p></div></div>
     <div class="rule panel reveal"><div class="n">04</div><div><b>클랜 지원 체계</b><p>클랜은 본부로부터 장비 · 정보 · 훈련 · 임무 지원을 받는다.</p></div></div>
   </div>
-  <div class="sh reveal" style="margin:34px 0 14px"><div class="no">YOUR FILE · 예외 각성자</div></div>
+  <div class="sh reveal" id="yourfile" style="margin:34px 0 14px"><div class="no">YOUR FILE · 예외 각성자</div></div>
   <div class="steps reveal">
     <div class="step"><small>STEP 01</small><b>늦은 각성</b><p>뒤늦게 깨어난 예외적인 능력</p></div>
     <div class="step"><small>STEP 02</small><b>출석 통지서</b><p>정부로부터 본부 출석 통지</p></div>
@@ -646,9 +787,9 @@ footer p+p{margin-top:4px}
       <div class="res-clan" id="resClan"></div>
       <div class="sh" style="margin:6px 0 0"><div class="no">HERO LICENSE · 등록증 발급</div></div>
       <div class="form">
-        <label>이름<input id="fName" maxlength="10" placeholder="예) 김노바" autocomplete="off"></label>
-        <label>히어로명 (영문 추천)<input id="fHero" maxlength="14" placeholder="예) ECLIPSE" autocomplete="off"></label>
-        <label>능력 계열<select id="fType"></select></label>
+        <label><span id="lName">이름</span><input id="fName" maxlength="10" placeholder="예) 김노바" autocomplete="off"></label>
+        <label><span id="lHero">히어로명 (영문 추천)</span><input id="fHero" maxlength="14" placeholder="예) ECLIPSE" autocomplete="off"></label>
+        <label><span id="lType">능력 계열</span><select id="fType"></select></label>
       </div>
       <canvas id="lic" width="1000" height="620"></canvas>
       <div class="licbtns"><button class="cta" id="licSave">등록증 저장</button><button class="cta ghost" id="tAgain">다시 검사</button></div>
@@ -681,6 +822,20 @@ footer p+p{margin-top:4px}
 <div class="toast" id="toast"></div>
 <button id="ignChip">⚠ 특급 재난 · 검은 태양 출현 <u>봉인 복구</u></button>
 <div id="boom"></div>
+<div id="sealFx">
+  <div class="sf-dim"></div>
+  <div class="sf-sun"><div class="sun"><i class="rays"></i><i class="rays r2"></i><i class="corona"></i><i class="disc"></i></div></div>
+  <svg class="sf-ring" viewBox="0 0 400 400"><defs><path id="sfp" d="M200,200 m-168,0 a168,168 0 1,1 336,0 a168,168 0 1,1 -336,0"/></defs>
+    <circle cx="200" cy="200" r="186" class="r1"/><circle cx="200" cy="200" r="150" class="r2"/><circle cx="200" cy="200" r="122" class="r3"/>
+    <path d="M200 50 L330 275 L70 275 Z M200 350 L70 125 L330 125 Z" class="hx"/>
+    <text><textPath href="#sfp">NOVA HQ · EMERGENCY SEAL PROTOCOL · 긴급 봉인 · NOVA HQ · EMERGENCY SEAL PROTOCOL · 긴급 봉인 ·</textPath></text></svg>
+  <div class="sf-chains"><i></i><i></i><i></i><i></i></div>
+  <div class="sf-log"><div class="sf-who"></div><p></p></div>
+  <div class="sf-bar"><span>SEAL</span><b><i></i></b><em>0%</em></div>
+  <div class="sf-stamp">SEALED<small>검은 태양 · 재봉인</small></div>
+  <div class="sf-flash"></div>
+</div>
+<div id="ivoice"><small>IGNIS CROW</small><p></p></div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -696,60 +851,165 @@ const IMG={
 };
 const P=(dir,files)=>files.map(f=>Z+'profile-image/'+PID+'/'+dir+'/'+f+'.png');
 
+/* ================= LANGUAGE ================= */
+let LANG='ko';try{const s=localStorage.getItem('nova-lang');if(['ko','ja','en'].includes(s))LANG=s}catch(e){}
+const L=o=>o==null?'':(typeof o==='object'&&!Array.isArray(o)&&'ko' in o)?(o[LANG]!=null?o[LANG]:o.ko):o;
+const t3=(ko,ja,en)=>({ko,ja,en});
+const RK=g=>L(t3(g+'급',g+'級',g+'-Rank'));
+
 /* ---------- data ---------- */
+const VALK={agg:t3('공격성','攻撃性','Aggression'),prot:t3('시민 보호','市民保護','Protection'),eff:t3('효율','効率','Efficiency'),flex:t3('유연성','柔軟性','Flexibility')};
 const CLANS={
-  r:{k:'r',name:'레드 베인',en:'RED VEIN',side:'과격파',c:'#e2343f',emoji:'🔴',
-     slogan:'위협은 자라기 전에 제거.',
-     desc:'빌런과 위험 능력자에 대한 강경 대응을 주장하는 전투 중심 클랜.',
-     vals:{공격성:95,'시민 보호':45,효율:70,유연성:35}},
-  a:{k:'a',name:'아스트라 가드',en:'ASTRA GUARD',side:'온건파',c:'#3f7cff',emoji:'🔵',
-     slogan:'한 사람이라도 더 구하는 것이 히어로의 승리.',
-     desc:'시민 보호와 인명 구조를 가장 중시하는 본부 최대 규모의 클랜.',
-     vals:{공격성:35,'시민 보호':98,효율:55,유연성:60}},
-  z:{k:'z',name:'제로라인',en:'ZEROLINE',side:'중립파',c:'#43d2e6',emoji:'🟦',
-     slogan:'정의보다 필요한 것은 정확한 판단.',
-     desc:'감정과 이념보다 상황과 효율을 우선하는 클랜.',
-     vals:{공격성:60,'시민 보호':60,효율:97,유연성:85}}
+  r:{k:'r',name:t3('레드 베인','レッドベイン','Red Vein'),en:'RED VEIN',side:t3('과격파','強硬派','Hardliners'),c:'#e2343f',emoji:'🔴',
+     slogan:t3('위협은 자라기 전에 제거.','脅威は育つ前に排除する。','Eliminate the threat before it grows.'),
+     desc:t3('빌런과 위험 능력자에 대한 강경 대응을 주장하는 전투 중심 클랜.','ヴィランや危険な能力者への強硬な対応を主張する、戦闘中心のクラン。','A combat-focused clan that demands a hard line against villains and dangerous ability users.'),
+     vals:{agg:95,prot:45,eff:70,flex:35}},
+  a:{k:'a',name:t3('아스트라 가드','アストラガード','Astra Guard'),en:'ASTRA GUARD',side:t3('온건파','穏健派','Moderates'),c:'#3f7cff',emoji:'🔵',
+     slogan:t3('한 사람이라도 더 구하는 것이 히어로의 승리.','一人でも多く救うことこそ、ヒーローの勝利。','Saving one more life is a hero’s true victory.'),
+     desc:t3('시민 보호와 인명 구조를 가장 중시하는 본부 최대 규모의 클랜.','市民の保護と人命救助を何より重んじる、本部最大規模のクラン。','HQ’s largest clan, putting the protection and rescue of citizens above all.'),
+     vals:{agg:35,prot:98,eff:55,flex:60}},
+  z:{k:'z',name:t3('제로라인','ゼロライン','Zeroline'),en:'ZEROLINE',side:t3('중립파','中立派','Neutrals'),c:'#43d2e6',emoji:'🟦',
+     slogan:t3('정의보다 필요한 것은 정확한 판단.','正義より必要なのは、正確な判断。','What we need more than justice is accurate judgment.'),
+     desc:t3('감정과 이념보다 상황과 효율을 우선하는 클랜.','感情や理念より、状況と効率を優先するクラン。','A clan that puts the situation and efficiency ahead of emotion or ideology.'),
+     vals:{agg:60,prot:60,eff:97,flex:85}}
 };
 const GRADES=[
-  {L:'S',n:'초월급',g:'#ffcf5a',d:'국가적 재난이나 대형 빌런 사건에 투입되는 최상위 히어로. 독자적인 판단과 작전 지휘 권한을 가진다.'},
-  {L:'A',n:'특급',g:'#ff8a3d',d:'고위험 임무를 단독으로 수행할 수 있는 정예 히어로. 팀장이나 S급 히어로의 보좌관 역할을 맡기도 한다.'},
-  {L:'B',n:'상급',g:'#c58bff',d:'전투, 구조, 정보전 등 특정 분야에서 핵심 역할을 수행한다.'},
-  {L:'C',n:'정규급',g:'#7fc3ff',d:'순찰과 범죄 진압을 담당한다. 고위험 임무에서는 상위 등급의 지휘를 받아야 한다.'},
-  {L:'D',n:'수습급',g:'#9aa0ad',d:'갓 등록된 신입 히어로. 단독 임무가 금지되며 선임과 함께 경험을 쌓아야 한다.'}
+  {L:'S',n:t3('초월급','超越級','Transcendent'),g:'#ffcf5a',d:t3('국가적 재난이나 대형 빌런 사건에 투입되는 최상위 히어로. 독자적인 판단과 작전 지휘 권한을 가진다.','国家的災害や大型ヴィラン事件に投入される最上位ヒーロー。独自の判断と作戦指揮権を持つ。','Top-tier heroes deployed to national disasters and major villain incidents. They hold independent judgment and command authority.')},
+  {L:'A',n:t3('특급','特級','Elite'),g:'#ff8a3d',d:t3('고위험 임무를 단독으로 수행할 수 있는 정예 히어로. 팀장이나 S급 히어로의 보좌관 역할을 맡기도 한다.','高危険任務を単独で遂行できる精鋭。チームリーダーやS級ヒーローの補佐官を務めることもある。','Elites capable of high-risk solo missions. Some serve as team leaders or aides to S-Rank heroes.')},
+  {L:'B',n:t3('상급','上級','Senior'),g:'#c58bff',d:t3('전투, 구조, 정보전 등 특정 분야에서 핵심 역할을 수행한다.','戦闘・救助・情報戦など、特定分野で中核を担う。','Core specialists in a specific field such as combat, rescue or intelligence.')},
+  {L:'C',n:t3('정규급','正規級','Regular'),g:'#7fc3ff',d:t3('순찰과 범죄 진압을 담당한다. 고위험 임무에서는 상위 등급의 지휘를 받아야 한다.','パトロールと犯罪鎮圧を担当する。高危険任務では上位等級の指揮を受けなければならない。','Handle patrols and crime suppression. On high-risk missions they must follow a higher rank’s command.')},
+  {L:'D',n:t3('수습급','見習い級','Trainee'),g:'#9aa0ad',d:t3('갓 등록된 신입 히어로. 단독 임무가 금지되며 선임과 함께 경험을 쌓아야 한다.','登録されたばかりの新人ヒーロー。単独任務は禁止され、先輩と共に経験を積む。','Newly registered heroes. Solo missions are forbidden; they gain experience alongside seniors.')}
 ];
-const CRIT=[['POWER','능력의 위력'],['CONTROL','제어력'],['COMBAT','전투 능력'],['MISSION','임무 성공률'],['PROTECT','시민 보호 능력'],['COMMAND','지휘력']];
+const CRIT=[['POWER',t3('능력의 위력','能力の威力','Power of ability')],['CONTROL',t3('제어력','制御力','Control')],['COMBAT',t3('전투 능력','戦闘能力','Combat skill')],['MISSION',t3('임무 성공률','任務成功率','Mission success')],['PROTECT',t3('시민 보호 능력','市民保護能力','Civilian protection')],['COMMAND',t3('지휘력','指揮力','Command')]];
+const SEX={m:t3('남','男','M'),f:t3('여','女','F')};
 const HEROES=[
-  {id:'tg',name:'권태건',hero:'TITAN',heroK:'타이탄',clan:'r',sex:'남',age:29,grade:'S',ab:'신체 강화',
-   d:'근력, 속도, 반응력, 내구력을 폭발적으로 강화한다. 최대 출력에서는 장갑차를 뒤집고 대형 빌런과 맨몸으로 맞설 수 있다.',
+  {id:'tg',name:t3('권태건','クォン・テゴン','Kwon Tae-geon'),hero:'TITAN',heroK:t3('타이탄','タイタン','Titan'),clan:'r',sex:'m',age:29,grade:'S',ab:t3('신체 강화','身体強化','Physical Enhancement'),
+   d:t3('근력, 속도, 반응력, 내구력을 폭발적으로 강화한다. 최대 출력에서는 장갑차를 뒤집고 대형 빌런과 맨몸으로 맞설 수 있다.','筋力・スピード・反応速度・耐久力を爆発的に強化する。最大出力なら装甲車をひっくり返し、大型ヴィランと素手で渡り合える。','Explosively boosts strength, speed, reflexes and durability. At full output he can flip an armored vehicle and face giant villains bare-handed.'),
    img:P('e951a745-4254-4d21-b5c6-1ac068495a3c',['3ae7185d-1d78-448b-b806-da9c26931d46','e779ead5-a2a5-40de-b4aa-511faf01eebd','91a30ce5-fb5b-451b-9d4a-b3acf094f0e1','563196ee-63eb-4d85-bb04-1b9a9d4e7ba4','0a42fa42-7fe6-4b29-b435-b7f6ad1964c3'])},
-  {id:'sr',name:'차세린',hero:'SHADE',heroK:'쉐이드',clan:'r',sex:'여',age:27,grade:'A',ab:'은신',
-   d:'빛을 굴절시켜 몸을 투명하게 만들고, 발소리와 호흡 소리까지 크게 줄여 모습과 기척을 감춘다. 들고 있는 소형 장비와 무기도 함께 숨길 수 있으며, 주로 적의 뒤로 침투해 지휘관이나 핵심 능력자를 기습한다.',
+  {id:'sr',name:t3('차세린','チャ・セリン','Cha Se-rin'),hero:'SHADE',heroK:t3('쉐이드','シェイド','Shade'),clan:'r',sex:'f',age:27,grade:'A',ab:t3('은신','隠密','Stealth'),
+   d:t3('빛을 굴절시켜 몸을 투명하게 만들고, 발소리와 호흡 소리까지 크게 줄여 모습과 기척을 감춘다. 들고 있는 소형 장비와 무기도 함께 숨길 수 있으며, 주로 적의 뒤로 침투해 지휘관이나 핵심 능력자를 기습한다.','光を屈折させて体を透明にし、足音や呼吸音まで大きく抑えて姿と気配を消す。手にした小型装備や武器も一緒に隠せ、主に敵の背後へ潜入して指揮官や主力の能力者を奇襲する。','Bends light to turn invisible and muffles even her footsteps and breathing. She can hide the small gear and weapons she carries, slipping behind enemy lines to ambush commanders and key ability users.'),
    img:P('ba9fbd09-c583-41f8-9324-6cba8407e840',['3f1cbdec-69b3-4865-9607-45347601e77b','75547461-0d03-4aab-b65b-5dfec2566a0a','245d34af-404a-4340-ab89-831a943bf551','f754a82a-e723-4e88-9811-a65ff3c695b9','5d1a1fb9-0fd8-4826-b98b-c409daa44b95'])},
-  {id:'hy',name:'진호연',hero:'BREACHER',heroK:'브리처',clan:'r',sex:'남',age:24,grade:'B',ab:'충격파',
-   d:'주먹과 발을 휘두를 때 강한 충격파를 일으킨다. 범위를 좁히면 벽이나 방어막을 뚫는 관통 공격이 되고, 넓히면 다수의 적을 한꺼번에 밀어낼 수 있다.',
+  {id:'hy',name:t3('진호연','チン・ホヨン','Jin Ho-yeon'),hero:'BREACHER',heroK:t3('브리처','ブリーチャー','Breacher'),clan:'r',sex:'m',age:24,grade:'B',ab:t3('충격파','衝撃波','Shockwave'),
+   d:t3('주먹과 발을 휘두를 때 강한 충격파를 일으킨다. 범위를 좁히면 벽이나 방어막을 뚫는 관통 공격이 되고, 넓히면 다수의 적을 한꺼번에 밀어낼 수 있다.','拳や蹴りを放つたびに強烈な衝撃波を生む。範囲を絞れば壁や防御壁を貫く貫通攻撃に、広げれば多数の敵を一度に吹き飛ばせる。','Every punch and kick unleashes a powerful shockwave. Narrow it to pierce walls and barriers; widen it to blast back a crowd at once.'),
    img:P('9a7b83ff-0391-4bdd-bd4f-5588bca70cef',['d3a83eea-672c-424d-9839-53e756c5f501','9069e0a6-fb2c-4c79-b7d5-4595996737f5','b528563c-9837-4533-aaef-2e367f439ffc','d528bead-6225-43d0-bc66-282f58a80d0f','98dd186c-23e3-4f6d-b849-95d1b89386d3'])},
-  {id:'sa',name:'윤시아',hero:'LUMINA',heroK:'루미나',clan:'a',sex:'여',age:30,grade:'S',ab:'빛',
-   d:'빛을 만들어 자유롭게 다룬다. 광선으로 쏘거나 검과 창의 형태로 만들 수 있고, 넓은 빛의 방어막으로 공격을 막는다. 등 뒤에 빛의 날개를 펼쳐 비행하거나, 강한 섬광으로 적의 시야를 가릴 수도 있다.',
+  {id:'sa',name:t3('윤시아','ユン・シア','Yoon Si-a'),hero:'LUMINA',heroK:t3('루미나','ルミナ','Lumina'),clan:'a',sex:'f',age:30,grade:'S',ab:t3('빛','光','Light'),
+   d:t3('빛을 만들어 자유롭게 다룬다. 광선으로 쏘거나 검과 창의 형태로 만들 수 있고, 넓은 빛의 방어막으로 공격을 막는다. 등 뒤에 빛의 날개를 펼쳐 비행하거나, 강한 섬광으로 적의 시야를 가릴 수도 있다.','光を生み出し自在に操る。光線として放ったり剣や槍の形にしたりでき、広い光の障壁で攻撃を防ぐ。背中に光の翼を広げて飛行したり、強烈な閃光で敵の視界を奪うこともできる。','Creates and controls light — firing beams, forging blades and spears, or raising wide barriers. She can spread wings of light to fly, or blind enemies with a flash.'),
    img:P('e220c32a-98c0-46aa-b6e3-537e4c94f7a9',['601e84c7-c659-40c9-ad85-7749625a9a96','c7949441-e5a9-42e1-a08f-e5ef7198e02d','ea531f5a-1471-4d28-acbe-2f75321bc8f4','4f633aad-101a-4af9-97ab-dd2dbadba7e5','fa140dda-dcca-49a9-be15-774926ee4e7f'])},
-  {id:'sy',name:'백서윤',hero:'MEDICA',heroK:'메디카',clan:'a',sex:'여',age:28,grade:'A',ab:'치유',
-   d:'손으로 접촉한 사람의 상처를 빠르게 회복시킨다. 출혈, 골절, 화상, 장기 손상까지 치료할 수 있고, 여러 명의 가벼운 부상을 동시에 회복시킬 수도 있다.',
+  {id:'sy',name:t3('백서윤','ペク・ソユン','Baek Seo-yoon'),hero:'MEDICA',heroK:t3('메디카','メディカ','Medica'),clan:'a',sex:'f',age:28,grade:'A',ab:t3('치유','治癒','Healing'),
+   d:t3('손으로 접촉한 사람의 상처를 빠르게 회복시킨다. 출혈, 골절, 화상, 장기 손상까지 치료할 수 있고, 여러 명의 가벼운 부상을 동시에 회복시킬 수도 있다.','手で触れた相手の傷を素早く回復させる。出血・骨折・火傷・臓器損傷まで治療でき、複数人の軽傷を同時に癒すこともできる。','Rapidly heals anyone she touches — bleeding, fractures, burns, even organ damage — and can mend several people’s minor wounds at once.'),
    img:P('98ae2af3-c02d-4006-9a81-46cb63f32ada',['d6a08beb-933c-426b-a033-d0bc2b093ec3','1bd62a2b-3f0d-4b0e-a8dd-d4880d1048ca','cb06dabd-7ebc-4d99-92b5-973854262a7b','d6b581e0-6365-4d50-8af7-9e18c4a06a88','7438ed79-d56c-43cd-9d84-41a870ac366d'])},
-  {id:'yr',name:'한유리',hero:'AQUA',heroK:'아쿠아',clan:'a',sex:'여',age:21,grade:'B',ab:'물',
-   d:'주변의 물을 끌어모아 자유롭게 조종한다. 고압 물줄기로 공격하거나 물의 벽으로 총탄과 불꽃을 막는다. 물을 구체로 만들어 시민을 감싸 안전한 곳으로 옮기고, 화재 진압과 유독가스 차단에도 쓴다.',
+  {id:'yr',name:t3('한유리','ハン・ユリ','Han Yu-ri'),hero:'AQUA',heroK:t3('아쿠아','アクア','Aqua'),clan:'a',sex:'f',age:21,grade:'B',ab:t3('물','水','Water'),
+   d:t3('주변의 물을 끌어모아 자유롭게 조종한다. 고압 물줄기로 공격하거나 물의 벽으로 총탄과 불꽃을 막는다. 물을 구체로 만들어 시민을 감싸 안전한 곳으로 옮기고, 화재 진압과 유독가스 차단에도 쓴다.','周囲の水を集めて自在に操る。高圧の水流で攻撃し、水の壁で銃弾や炎を防ぐ。水を球体にして市民を包み安全な場所へ運び、消火や有毒ガスの遮断にも使う。','Gathers and controls nearby water — high-pressure jets to attack, walls of water against bullets and flames. She wraps citizens in water spheres to carry them to safety, and uses it to fight fires and block toxic gas.'),
    img:P('bd8e02b2-31cd-4534-85a4-02cf68d0038e',['a43f026b-c379-48bc-9607-e43274fc08b0','b71f835c-fd72-4b47-900d-d68696711253','2c1f224c-4de9-4c7c-b143-ba7c14a45f13','4a40f65f-8bde-42a0-96dc-37295b7a8390','7259975a-cfb9-40a0-bead-e8baae5ef32e'])},
-  {id:'hr',name:'류하린',hero:'VOLT',heroK:'볼트',clan:'z',sex:'여',age:24,grade:'S',ab:'번개',
-   d:'몸에서 강력한 전기를 만들어 다룬다. 번개를 직접 쏘거나 전류를 몸에 둘러 폭발적인 속도로 이동한다. 접촉한 적을 마비시키고, 전자 장비를 멈추거나 전력을 공급하며, 약한 전류를 퍼뜨려 주변의 생체 반응을 감지할 수도 있다.',
+  {id:'hr',name:t3('류하린','リュ・ハリン','Ryu Ha-rin'),hero:'VOLT',heroK:t3('볼트','ボルト','Volt'),clan:'z',sex:'f',age:24,grade:'S',ab:t3('번개','雷','Lightning'),
+   d:t3('몸에서 강력한 전기를 만들어 다룬다. 번개를 직접 쏘거나 전류를 몸에 둘러 폭발적인 속도로 이동한다. 접촉한 적을 마비시키고, 전자 장비를 멈추거나 전력을 공급하며, 약한 전류를 퍼뜨려 주변의 생체 반응을 감지할 수도 있다.','体から強力な電気を生み出して操る。雷を直接放ったり、電流をまとって爆発的な速度で移動する。触れた敵を麻痺させ、電子機器を止めたり電力を供給したり、微弱な電流を広げて周囲の生体反応を探知することもできる。','Generates and commands powerful electricity — hurling lightning or wrapping herself in current to move at explosive speed. She paralyzes on contact, shuts down or powers electronics, and senses nearby life signs with faint pulses.'),
    img:P('0ca276ee-ba5e-402d-bae7-9f714a559a32',['4c2a673a-b03e-4c18-92fc-33370e63efd4','5d86edcf-83bb-4bc5-a663-e2f216c759bf','a0fd0643-d35f-4589-8b8a-6a078ff47e7b','ca78c50a-d612-4be2-90bf-ed9c65506015','55a491e2-9062-41ce-a61c-55ae37511718'])},
-  {id:'cr',name:'채린',hero:'MIRROR',heroK:'미러',clan:'z',sex:'여',age:26,grade:'A',ab:'능력 복사',
-   d:'직접 목격한 상대의 능력을 짧은 시간 동안 복사한다. 불, 얼음, 번개처럼 단순한 능력은 빠르게 따라 하지만, 복잡한 능력은 분석할 시간이 필요하다. 한 번에 하나의 능력만 유지할 수 있고, 복사한 능력은 원본보다 약하다.',
+  {id:'cr',name:t3('채린','チェリン','Chae-rin'),hero:'MIRROR',heroK:t3('미러','ミラー','Mirror'),clan:'z',sex:'f',age:26,grade:'A',ab:t3('능력 복사','能力コピー','Ability Copy'),
+   d:t3('직접 목격한 상대의 능력을 짧은 시간 동안 복사한다. 불, 얼음, 번개처럼 단순한 능력은 빠르게 따라 하지만, 복잡한 능력은 분석할 시간이 필요하다. 한 번에 하나의 능력만 유지할 수 있고, 복사한 능력은 원본보다 약하다.','目撃した相手の能力を短時間コピーする。炎・氷・雷のような単純な能力はすぐ真似できるが、複雑な能力には分析の時間が要る。一度に保持できるのは一つだけで、コピーした能力は本物より弱い。','Briefly copies any ability she witnesses. Simple powers like fire, ice or lightning come quickly; complex ones need time to analyze. She can hold only one at a time, and copies are weaker than the original.'),
    img:P('1bd13280-3431-4578-b051-c7211ac13803',['8277fc7e-92ae-4457-826d-6006004c6422','8f963af8-58a3-4b71-959c-0fa76c0427cf','6280a29b-a6fe-4db2-82b8-5858829d125c','882b4406-4d7a-4d81-8109-0903a131f55d','a12f5573-e309-4a5a-987b-abc54df31a46'])},
-  {id:'sa2',name:'남서아',hero:'NOISE',heroK:'노이즈',clan:'z',sex:'여',age:23,grade:'B',ab:'전자 교란',
-   d:'일정 범위 안의 통신기기, 카메라, 경보 장치, 드론, 원격 조종 장비를 멈추거나 오작동시킨다. 전자 신호의 위치를 감지해 숨겨진 감시 장치와 폭발물을 찾아내고, 전술 노트북으로 해킹도 한다.',
+  {id:'sa2',name:t3('남서아','ナム・ソア','Nam Seo-a'),hero:'NOISE',heroK:t3('노이즈','ノイズ','Noise'),clan:'z',sex:'f',age:23,grade:'B',ab:t3('전자 교란','電子撹乱','Electronic Jamming'),
+   d:t3('일정 범위 안의 통신기기, 카메라, 경보 장치, 드론, 원격 조종 장비를 멈추거나 오작동시킨다. 전자 신호의 위치를 감지해 숨겨진 감시 장치와 폭발물을 찾아내고, 전술 노트북으로 해킹도 한다.','一定範囲内の通信機器、カメラ、警報装置、ドローン、遠隔操作機器を停止・誤作動させる。電子信号の位置を感知して隠された監視装置や爆発物を見つけ出し、戦術ノートPCでハッキングもこなす。','Shuts down or scrambles comms, cameras, alarms, drones and remote devices within range. She tracks electronic signals to find hidden surveillance and explosives, and hacks with her tactical laptop.'),
    img:P('f2430a7c-9a21-4d55-bfef-830f7d8de29a',['d73be0f5-bfb7-4ea6-a663-c09aa38a1c25','26194ef4-61f2-43ce-bc0c-e74c4230f5b1','3d5204ef-54e6-409e-8f3b-f16250a7e836','94b7eba7-5674-4a56-ac95-ffc955459c6e','8ad62563-21b5-4cbb-91b6-b0a93c13537c'])}
 ];
 const IGNIS=P('df2a0761-0b95-4cba-af7e-03b16c448e04',['f79bbfe8-54cb-49c0-8a5d-cebec1ff504d','ab663f2a-fc68-4b0a-8577-41caa90ca103','4c65e621-ac86-4920-951c-a0c09b25e8a1']);
-const gradeOf=L=>GRADES.find(g=>g.L===L);
+const gradeOf=G=>GRADES.find(g=>g.L===G);
+
+/* ---------- static page text ---------- */
+const STATIC=[
+  ['title',['NOVA : 黒い太陽 — ノヴァ・ヒーロー本部','NOVA : Black Sun — NOVA Hero HQ']],
+  ['.notice .gov span:first-child',['大韓民国政府 · 能力者管理局','ROK GOV · BUREAU OF ABILITIES']],
+  ['.notice h1',['出頭通知書','NOTICE OF SUMMONS']],
+  ['.notice .no',['文書番号 NOVA-HQ / 例外覚醒者 精密検査','Doc. No. NOVA-HQ / Precision exam for an exceptional awakener']],
+  ['.notice dl',['<dt>受 信</dt><dd><b id="nTo">Guest</b> 様</dd><dt>分 類</dt><dd>後天的 <span class="red">例外覚醒</span> 能力者</dd><dt>出頭先</dt><dd><b>ノヴァ・ヒーロー本部</b></dd><dt>目 的</dt><dd>能力精密検査および等級判定</dd>','<dt>To</dt><dd><b id="nTo">Guest</b></dd><dt>Class</dt><dd>Late-onset <span class="red">exceptional awakener</span></dd><dt>Report to</dt><dd><b>NOVA Hero HQ</b></dd><dt>Purpose</dt><dd>Precision ability exam &amp; rank assessment</dd>']],
+  ['.notice > p',['あなたに超自然的能力の発現が確認されました。ヒーロー制度に基づき、<b>ノヴァ・ヒーロー本部</b>への出頭を通知します。本通知は拒否できません。','An emergence of supernatural ability has been confirmed in you. Under the Hero System, you are hereby summoned to <b>NOVA Hero Headquarters</b>. This notice cannot be refused.']],
+  ['.notice .sig small',['NOVA HERO HEADQUARTERS<br>— 能力者とヒーローの時代 —','NOVA HERO HEADQUARTERS<br>— The Age of Abilities and Heroes —']],
+  ['#stamp',['<span>NOVA HQ</span><b>出頭</b><span>確認</span>','<span>NOVA HQ</span><b>SEEN</b><span>CONFIRMED</span>']],
+  ['#goBtn',['出頭確認 · 本部へ移動','CONFIRM · ENTER HQ']],
+  ['#menu a[href="#world"]',['<small>01</small>世界観','<small>01</small>World']],
+  ['#menu a[href="#hq"]',['<small>02</small>本部システム','<small>02</small>HQ System']],
+  ['#menu a[href="#clans"]',['<small>03</small>クラン','<small>03</small>Clans']],
+  ['#menu a[href="#grades"]',['<small>04</small>ヒーロー等級','<small>04</small>Hero Ranks']],
+  ['#menu a[href="#roster"]',['<small>05</small>ヒーロー名簿','<small>05</small>Hero Roster']],
+  ['#menu a[href="#classified"]',['<small>06</small>非公開ファイル','<small>06</small>Classified File']],
+  ['#menu a[href="#test"]',['<small>07</small>クラン適性検査','<small>07</small>Clan Aptitude Test']],
+  ['#menu a[href="#archive"]',['<small>08</small>資料室','<small>08</small>Archive']],
+  ['.hero h2',['黒い太陽','BLACK SUN']],
+  ['.hero .sub',['能力者とヒーローの時代','The Age of Abilities and Heroes']],
+  ['.hero .tags',['<span>#ヒーロー</span><span>#ヴィラン</span><span>#能力者</span><span>#超能力</span><span>#アクション</span><span>#マルチキャラ</span><span>#どんでん返し</span><span>#ヒーローvsヴィラン</span>','<span>#Hero</span><span>#Villain</span><span>#Abilities</span><span>#Superpowers</span><span>#Action</span><span>#MultiCast</span><span>#PlotTwist</span><span>#HeroVsVillain</span>']],
+  ['.hero .btns .cta:not(.ghost)',['▶ プロットをプレイ','▶ PLAY THE PLOT']],
+  ['.hero .btns .ghost',['クラン適性検査','Clan Aptitude Test']],
+  ['#world .sh h2',['平凡な人間に<br>力が宿った','Power Came to<br>Ordinary People']],
+  ['#world .tl .it:nth-child(1)',['<small>PHASE 01 — 発現</small><h3>超自然の力の出現</h3><p>世界各地で、平凡な人々に超自然的な力が現れ始めた。社会はたちまち混乱に陥った。</p>','<small>PHASE 01 — EMERGENCE</small><h3>Rise of the Supernatural</h3><p>All over the world, ordinary people began to manifest supernatural powers. Society fell into chaos almost overnight.</p>']],
+  ['#world .tl .it:nth-child(2)',['<small>PHASE 02 — 分裂</small><h3>ヴィランと能力者</h3><p>手にした力を犯罪に使う者が現れ、同じ力で市民を救おうとする能力者たちも現れた。</p>','<small>PHASE 02 — DIVISION</small><h3>Villains and the Gifted</h3><p>Some used their new powers for crime. Others used the very same powers to save citizens.</p>']],
+  ['#world .tl .it:nth-child(3)',['<small>PHASE 03 — 制度</small><h3>ヒーロー制度</h3><p>政府は混乱を収めるため<b>ヒーロー制度</b>を作った。その中心に立つ機関こそ<b>ノヴァ・ヒーロー本部</b>だ。</p>','<small>PHASE 03 — SYSTEM</small><h3>The Hero System</h3><p>To restore order, the government created the <b>Hero System</b>. At its center stands <b>NOVA Hero Headquarters</b>.</p>']],
+  ['#world .tl .it:nth-child(4)',['<small>PHASE 04 — 現在</small><h3>例外覚醒者、あなた</h3><p>能力が遅れて目覚めた例外的な能力者。政府の出頭通知を受けたあなたは、今、本部の精密検査台に立つ。</p>','<small>PHASE 04 — NOW</small><h3>You, the Exception</h3><p>An exceptional case whose power awakened late. Summoned by the government, you now stand on HQ’s examination table.</p>']],
+  ['#hq .sh h2',['ノヴァ・ヒーロー本部','NOVA Hero HQ']],
+  ['#hq .sh p',['ヒーロー制度の中心機関。すべてのヒーローとクランは本部の下で動く。各項目をタップして確認しよう。','The core institution of the Hero System. Every hero and clan operates under HQ. Tap each item to learn more.']],
+  ['.hqtop p',['政府が設立したヒーロー制度の中心 · 公式命令権を保有','Center of the government’s Hero System · Holds official command authority']],
+  ['#hqInfo',['<b>本部システム</b> — 上のクランや支援項目をタップしてみよう。','<b>HQ System</b> — Tap a clan or support module above.']],
+  ['.rules .rule:nth-child(1) > div:last-child',['<b>本部命令が最優先</b><p>本部の公式命令はすべてのクランに優先する。どのクラン所属でも例外はない。</p>','<b>HQ Orders Come First</b><p>Official HQ orders override every clan. No exceptions, whatever your clan.</p>']],
+  ['.rules .rule:nth-child(2) > div:last-child',['<b>現場はクランの色で</b><p>しかし実際の現場では、各クランの価値観が作戦に大きく影響する。</p>','<b>The Field Wears Clan Colors</b><p>Yet in the field, each clan’s values strongly shape how operations are run.</p>']],
+  ['.rules .rule:nth-child(3) > div:last-child',['<b>等級に応じた権限</b><p>S級は独自判断と作戦指揮権を持ち、D級は単独任務が禁止される。権限は等級に従う。</p>','<b>Authority by Rank</b><p>S-Rank holds independent judgment and command; D-Rank is barred from solo missions. Authority follows rank.</p>']],
+  ['.rules .rule:nth-child(4) > div:last-child',['<b>クラン支援体制</b><p>クランは本部から装備・情報・訓練・任務支援を受ける。</p>','<b>Clan Support</b><p>Clans receive equipment, intel, training and mission support from HQ.</p>']],
+  ['#yourfile .no',['YOUR FILE · 例外覚醒者','YOUR FILE · EXCEPTIONAL AWAKENER']],
+  ['.steps .step:nth-child(1)',['<small>STEP 01</small><b>遅れた覚醒</b><p>遅れて目覚めた例外的な能力</p>','<small>STEP 01</small><b>Late Awakening</b><p>A power that woke up late</p>']],
+  ['.steps .step:nth-child(2)',['<small>STEP 02</small><b>出頭通知書</b><p>政府から本部への出頭通知</p>','<small>STEP 02</small><b>Summons</b><p>Called to HQ by the government</p>']],
+  ['.steps .step:nth-child(3)',['<small>STEP 03</small><b>精密検査</b><p>本部での能力精密検査</p>','<small>STEP 03</small><b>Precision Exam</b><p>Ability testing at HQ</p>']],
+  ['.steps .step:nth-child(4)',['<small>STEP 04</small><b>???</b><p>その先は、あなたの物語</p>','<small>STEP 04</small><b>???</b><p>The rest is your story</p>']],
+  ['#clans .sh h2',['三つの信念','Three Creeds']],
+  ['#clans .sh p',['クランとは、似た信念と戦い方を持つヒーローたちが本部内に結成した内部組織だ。','Clans are internal groups formed inside HQ by heroes who share similar beliefs and fighting styles.']],
+  ['#compare h4',['CLAN COMPARISON · 傾向比較','CLAN COMPARISON']],
+  ['#compare .note',['* クラン説明をもとにしたファンメイドの傾向グラフです。','* A fan-made chart based on each clan’s description.']],
+  ['#grades .sh h2',['ヒーロー等級','Hero Ranks']],
+  ['#grades .sh p',['等級は能力の威力だけでは決まらない。タップして各等級の権限と所属ヒーローを確認しよう。','Rank isn’t decided by raw power alone. Tap a rank to see its authority and its heroes.']],
+  ['.criteria .no',['EVALUATION · 総合評価 6項目','EVALUATION · 6 CRITERIA']],
+  ['#roster .sh h2',['ヒーロー名簿','Hero Roster']],
+  ['#roster .sh p',['ノヴァ・ヒーロー本部に登録されたヒーローたち。カードをタップすると詳細ファイルが開く。','Heroes registered with NOVA Hero HQ. Tap a card to open their file.']],
+  ['#classified .sh h2',['非公開ファイル','Classified File']],
+  ['#classified .sh p',['名簿に名前だけが残る一人。すべての情報が封印されている。','One name left on the roster, and nothing else. Every detail is sealed.']],
+  ['#test .sh h2',['クラン適性検査','Clan Aptitude Test']],
+  ['#test .sh p',['本部精密検査の一部。6つの状況に答えると、あなたに合うクランを判定し、ヒーロー登録証を発行する。','Part of HQ’s precision exam. Answer six scenarios to find your clan and receive a hero license.']],
+  ['#tStart h3',['精密検査 — 傾向判定','Precision Exam — Disposition']],
+  ['#tStart p',['正解はない。あなたならどうするか選んでほしい。','There are no right answers. Choose what you would do.']],
+  ['#tGo',['検査開始','Begin Exam']],
+  ['#tRes .sh .no',['HERO LICENSE · 登録証発行','HERO LICENSE']],
+  ['#lName',['名前','Name']],
+  ['#lHero',['ヒーロー名(英字推奨)','Hero name']],
+  ['#lType',['能力系統','Ability type']],
+  ['#licSave',['登録証を保存','Save License']],
+  ['#tAgain',['もう一度','Retake']],
+  ['#archive .sh h2',['本部資料室','HQ Archive']],
+  ['#archive .sh p',['プロット紹介資料とイントロ資料。タップで拡大できる。','Plot introduction and intro materials. Tap to enlarge.']],
+  ['.final h2',['黒い太陽の下、<br>あなたはどんなヒーローになる？','Beneath the Black Sun,<br>what kind of hero will you be?']],
+  ['.final p',['ノヴァ・ヒーロー本部があなたを待っている。','NOVA Hero HQ is waiting for you.']],
+  ['.final .cta',['▶ zetaでプレイする','▶ PLAY ON ZETA']],
+  ['.final .rec',['おすすめモデル · <b>koji</b>, <b>luca</b>(記憶力 · 没入感)','Recommended models · <b>koji</b>, <b>luca</b> (memory · immersion)']],
+  ['footer p:nth-child(1)',['NOVA : 黒い太陽 · 原作プロット © ⭐_MEI','NOVA : Black Sun · Original plot © ⭐_MEI']],
+  ['footer p:nth-child(2)',['すべてのキャラクター画像の著作権は制作者に帰属し、無断保存・再配布を禁じます。','All character images belong to their creator. Saving or redistributing them without permission is prohibited.']],
+  ['#ignChip',['⚠ 特級災害 · 黒い太陽 出現 <u>封印復旧</u>','⚠ CATASTROPHE · BLACK SUN <u>RESEAL</u>']],
+  ['#sealFx textPath',['NOVA HQ · EMERGENCY SEAL PROTOCOL · 緊急封印 · NOVA HQ · EMERGENCY SEAL PROTOCOL · 緊急封印 ·','NOVA HQ · EMERGENCY SEAL PROTOCOL · SEAL · NOVA HQ · EMERGENCY SEAL PROTOCOL · SEAL ·']],
+  ['.sf-stamp',['SEALED<small>黒い太陽 · 再封印</small>','SEALED<small>BLACK SUN · RESEALED</small>']],
+  ['#gateHint',['サウンドは右上のボタンでいつでも切り替えられます。','You can toggle sound anytime with the button at the top right.']],
+  ['#gateGo',['本部へ入る','ENTER HQ']],
+  ['#gateTitle',['NOVA : 黒い太陽','NOVA : BLACK SUN']],
+  ['#menuLang',['言語','LANGUAGE']]
+];
+const CSSQ={
+  '--q-grade':t3('“등급 따위… 사람을 줄 세우는 숫자일 뿐이다.”  — 검은 태양','「等級など…人を並べるための数字にすぎない。」 — 黒い太陽','"Ranks… are just numbers to line people up." — The Black Sun'),
+  '--q-clan':t3('“클랜도, 명령도 필요 없어. 아무도 통제받지 않는 세계면 충분하다.”  — 검은 태양','「クランも命令も要らない。誰にも支配されない世界があればいい。」 — 黒い太陽','"No clans, no orders. A world where no one is controlled is enough." — The Black Sun'),
+  '--q-hq':t3('“영웅을 자처하는 곳이군. 기록을 지운 손으로.”  — 검은 태양','「英雄を名乗る場所か。記録を消したその手で。」 — 黒い太陽','"So this is where they call themselves heroes. With the hands that erased the records." — The Black Sun'),
+  '--deadlbl':t3('생체 신호 소실','生体反応消失','NO LIFE SIGNS'),
+  '--suntag':t3(' — 검은 태양',' — 黒い太陽',' — THE BLACK SUN')
+};
+const ORIG_STATIC=new Map();
+function applyStatic(){
+  STATIC.forEach(([sel,tr])=>{document.querySelectorAll(sel).forEach((el,i)=>{const key=sel+'#'+i;if(!ORIG_STATIC.has(key))ORIG_STATIC.set(key,el.innerHTML);
+    el.innerHTML=LANG==='ko'?ORIG_STATIC.get(key):(LANG==='ja'?tr[0]:tr[1])})});
+  const rs=document.documentElement.style;Object.entries(CSSQ).forEach(([k,v])=>rs.setProperty(k,JSON.stringify(L(v))));
+  document.documentElement.lang=LANG;
+  const ph={fName:t3('예) 김노바','例)星野ノヴァ','e.g. Nova Kim'),fHero:t3('예) ECLIPSE','例)ECLIPSE','e.g. ECLIPSE')};Object.entries(ph).forEach(([id,v])=>{const e=$(id);if(e)e.placeholder=L(v)});
+  document.querySelectorAll('[data-setlang]').forEach(b=>b.classList.toggle('on',b.dataset.setlang===LANG));
+}
 
 /* ---------- images: fit, fallback, protection ---------- */
 const WM='<b class="wm">© ⭐_MEI · NOVA</b>';
@@ -766,7 +1026,7 @@ addEventListener('resize',()=>{clearTimeout(refit.t);refit.t=setTimeout(refit,20
 ['contextmenu','dragstart','selectstart'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('.ph,#lb,img,.card,.cls-img'))e.preventDefault()}));
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s')e.preventDefault()});
 
-function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2200)}
+function toast(t){const el=$('toast');el.textContent=L(t);el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2200)}
 
 /* ---------- glyphs ---------- */
 const EMB={
@@ -775,88 +1035,93 @@ const EMB={
   z:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4 L54 16 V34 C54 48 44 56 32 60 C20 56 10 48 10 34 V16 Z"/><circle cx="32" cy="32" r="13"/><path d="M14 32 H50 M32 14 V50" stroke-opacity=".5"/><path d="M22 32 H42" stroke-width="3"/></svg>'
 };
 const MODS=[
-  {k:'eq',n:'장비',e:'EQUIPMENT',t:'클랜과 히어로에게 작전용 <b>장비</b>를 지원한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>'},
-  {k:'in',n:'정보',e:'INTEL',t:'빌런과 사건에 대한 <b>정보</b>를 공유받는다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>'},
-  {k:'tr',n:'훈련',e:'TRAINING',t:'능력 제어와 전투를 위한 <b>훈련</b>을 지원한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>'},
-  {k:'ms',n:'임무 지원',e:'MISSION',t:'현장 작전에 필요한 <b>임무 지원</b>을 받는다. 단, 본부의 공식 명령이 항상 우선한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><circle cx="15" cy="9" r="1.5"/></svg>'}
+  {k:'eq',n:t3('장비','装備','Equipment'),e:'EQUIPMENT',t:t3('클랜과 히어로에게 작전용 <b>장비</b>를 지원한다.','クランとヒーローに作戦用の<b>装備</b>を支給する。','Provides clans and heroes with operational <b>equipment</b>.'),svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>'},
+  {k:'in',n:t3('정보','情報','Intel'),e:'INTEL',t:t3('빌런과 사건에 대한 <b>정보</b>를 공유받는다.','ヴィランや事件に関する<b>情報</b>を共有する。','Shares <b>intel</b> on villains and incidents.'),svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>'},
+  {k:'tr',n:t3('훈련','訓練','Training'),e:'TRAINING',t:t3('능력 제어와 전투를 위한 <b>훈련</b>을 지원한다.','能力制御と戦闘のための<b>訓練</b>を支援する。','Supports <b>training</b> in ability control and combat.'),svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>'},
+  {k:'ms',n:t3('임무 지원','任務支援','Mission Support'),e:'MISSION',t:t3('현장 작전에 필요한 <b>임무 지원</b>을 받는다. 단, 본부의 공식 명령이 항상 우선한다.','現場作戦に必要な<b>任務支援</b>を受ける。ただし本部の公式命令が常に優先される。','Receives <b>mission support</b> for field operations — though official HQ orders always come first.'),svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><circle cx="15" cy="9" r="1.5"/></svg>'}
 ];
 
 /* ---------- build: HQ ---------- */
+function buildHQ(){
+  $('hqClans').innerHTML=Object.values(CLANS).map(c=>`<button data-k="${c.k}" style="--c:${c.c}"><b>${L(c.name)}</b><small>${L(c.side)}</small></button>`).join('');
+  $('hqMods').innerHTML=MODS.map(m=>`<button class="mod" data-k="${m.k}">${m.svg}<b>${L(m.n)}</b><small>${m.e}</small></button>`).join('');
+}
 (function(){
   const row=$('hqClans'),mods=$('hqMods'),info=$('hqInfo');
-  row.innerHTML=Object.values(CLANS).map(c=>`<button data-k="${c.k}" style="--c:${c.c}"><b>${c.name}</b><small>${c.side}</small></button>`).join('');
-  mods.innerHTML=MODS.map(m=>`<button class="mod" data-k="${m.k}">${m.svg}<b>${m.n}</b><small>${m.e}</small></button>`).join('');
   const clear=()=>document.querySelectorAll('#hqClans button,#hqMods .mod').forEach(b=>b.classList.remove('on'));
   row.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;clear();b.classList.add('on');const c=CLANS[b.dataset.k];
-    const mem=HEROES.filter(h=>h.clan===c.k).map(h=>`${h.name}(${h.grade})`).join(' · ');
-    info.innerHTML=`<b style="color:${c.c}">${c.emoji} ${c.name} · ${c.side}</b><br>${c.desc}<br><span style="color:var(--mute)">“${c.slogan}”</span><br><small style="color:var(--mute)">소속 : ${mem}</small>`});
-  mods.addEventListener('click',e=>{const b=e.target.closest('.mod');if(!b)return;clear();b.classList.add('on');const m=MODS.find(x=>x.k===b.dataset.k);info.innerHTML=`<b>${m.n} · ${m.e}</b><br>${m.t}`});
+    const mem=HEROES.filter(h=>h.clan===c.k).map(h=>`${L(h.name)}(${h.grade})`).join(' · ');
+    info.innerHTML=`<b style="color:${c.c}">${c.emoji} ${L(c.name)} · ${L(c.side)}</b><br>${L(c.desc)}<br><span style="color:var(--mute)">“${L(c.slogan)}”</span><br><small style="color:var(--mute)">${L(t3('소속','所属','Members'))} : ${mem}</small>`});
+  mods.addEventListener('click',e=>{const b=e.target.closest('.mod');if(!b)return;clear();b.classList.add('on');const m=MODS.find(x=>x.k===b.dataset.k);info.innerHTML=`<b>${L(m.n)} · ${m.e}</b><br>${L(m.t)}`});
 })();
 
 /* ---------- build: clans ---------- */
-(function(){
+function buildClans(){
   $('clanCards').innerHTML=Object.values(CLANS).map(c=>`<div class="clan reveal" style="--c:${c.c}"><span class="bigl">${c.en.split(' ')[0]}</span>
-    <div class="emb">${EMB[c.k]}</div><div class="side">${c.emoji} ${c.side} · CLAN</div>
-    <h3>${c.name}<small>${c.en}</small></h3><div class="slogan">“${c.slogan}”</div><p>${c.desc}</p>
-    <div class="mem">${HEROES.filter(h=>h.clan===c.k).map(h=>`<button data-h="${h.id}">${pic(big(h.img[0]),c.c,h.heroK,'char',false)}<em>${h.grade} · ${h.name}</em></button>`).join('')}</div></div>`).join('');
-  $('clanCards').addEventListener('click',e=>{const b=e.target.closest('button[data-h]');if(b)openHero(b.dataset.h)});
-  const keys=Object.keys(CLANS.r.vals);
-  $('cmpKey').innerHTML=Object.values(CLANS).map(c=>`<span style="--c:${c.c}"><i></i>${c.name}</span>`).join('');
-  $('cmpRows').innerHTML=keys.map(k=>`<div class="cmp"><span class="lab">${k}</span><div style="display:grid;gap:3px">${Object.values(CLANS).map(c=>`<div class="bar" style="--c:${c.c}"><i data-w="${c.vals[k]}"></i></div>`).join('')}</div></div>`).join('<div style="height:6px"></div>');
-})();
+    <div class="emb">${EMB[c.k]}</div><div class="side">${c.emoji} ${L(c.side)} · CLAN</div>
+    <h3>${L(c.name)}<small>${c.en}</small></h3><div class="slogan">“${L(c.slogan)}”</div><p>${L(c.desc)}</p>
+    <div class="mem">${HEROES.filter(h=>h.clan===c.k).map(h=>`<button data-h="${h.id}">${pic(big(h.img[0]),c.c,L(h.heroK),'char',false)}<em>${h.grade} · ${L(h.name)}</em></button>`).join('')}</div></div>`).join('');
+  $('cmpKey').innerHTML=Object.values(CLANS).map(c=>`<span style="--c:${c.c}"><i></i>${L(c.name)}</span>`).join('');
+  const done=$('compare').classList.contains('in');
+  $('cmpRows').innerHTML=Object.keys(VALK).map(k=>`<div class="cmp"><span class="lab">${L(VALK[k])}</span><div style="display:grid;gap:3px">${Object.values(CLANS).map(c=>`<div class="bar" style="--c:${c.c}"><i data-w="${c.vals[k]}"${done?` style="width:${c.vals[k]}%"`:''}></i></div>`).join('')}</div></div>`).join('<div style="height:6px"></div>');
+}
+$('clanCards').addEventListener('click',e=>{const b=e.target.closest('button[data-h]');if(b)openHero(b.dataset.h)});
 
 /* ---------- build: grades ---------- */
-(function(){
-  $('gradeList').innerHTML=GRADES.map((g,i)=>{const who=HEROES.filter(h=>h.grade===g.L);
-    return `<button class="gr${i===0?' on':''}" style="--g:${g.g}"><span class="L">${g.L}</span><b>${g.n}<small>${g.L}급</small></b>
+function buildGrades(){
+  const open=document.querySelector('.gr.on'),openL=open?open.querySelector('.L').textContent:'S';
+  $('gradeList').innerHTML=GRADES.map(g=>{const who=HEROES.filter(h=>h.grade===g.L);
+    return `<button class="gr${g.L===openL?' on':''}" style="--g:${g.g}"><span class="L">${g.L}</span><b>${L(g.n)}<small>${RK(g.L)}</small></b>
       <span class="who">${who.map(h=>`<i>${pic(q(h.img[0],128),CLANS[h.clan].c,'','char',false)}</i>`).join('')}</span>
-      <div class="d">${g.d}${who.length?`<br><span style="color:var(--mute);font-size:12.5px">명부 내 ${g.L}급 : ${who.map(h=>`<b style="color:${CLANS[h.clan].c};font-weight:600">${h.name}(${h.heroK})</b>`).join(' · ')}</span>`:'<br><span style="color:var(--mute);font-size:12.5px">명부 내 해당 히어로 없음 — 예외 각성자인 당신의 등급은?</span>'}</div></button>`}).join('');
-  $('gradeList').addEventListener('click',e=>{const b=e.target.closest('.gr');if(!b)return;const was=b.classList.contains('on');document.querySelectorAll('.gr').forEach(x=>x.classList.remove('on'));if(!was)b.classList.add('on')});
-  // hexagon
+      <div class="d">${L(g.d)}${who.length?`<br><span style="color:var(--mute);font-size:12.5px">${L(t3('명부 내 '+g.L+'급','名簿内の'+g.L+'級','On the roster ('+g.L+'-Rank)'))} : ${who.map(h=>`<b style="color:${CLANS[h.clan].c};font-weight:600">${L(h.name)}(${L(h.heroK)})</b>`).join(' · ')}</span>`:`<br><span style="color:var(--mute);font-size:12.5px">${L(t3('명부 내 해당 히어로 없음 — 예외 각성자인 당신의 등급은?','名簿に該当ヒーローなし — 例外覚醒者であるあなたの等級は？','No heroes on the roster — so what rank will you, the Exception, be?'))}</span>`}</div></button>`}).join('');
+  $('critList').innerHTML=CRIT.map(c=>`<li><small>${c[0]}</small>${L(c[1])}</li>`).join('');
+}
+$('gradeList').addEventListener('click',e=>{const b=e.target.closest('.gr');if(!b)return;const was=b.classList.contains('on');document.querySelectorAll('.gr').forEach(x=>x.classList.remove('on'));if(!was)b.classList.add('on')});
+(function(){
   const cx=120,cy=108,R=82,pt=(i,r)=>{const a=-Math.PI/2+i*Math.PI/3;return[cx+Math.cos(a)*r,cy+Math.sin(a)*r]};
   let s='';for(let k=1;k<=4;k++){s+=`<polygon points="${[0,1,2,3,4,5].map(i=>pt(i,R*k/4).join(',')).join(' ')}" fill="none" stroke="rgba(255,255,255,${k===4?.18:.07})"/>`}
   for(let i=0;i<6;i++){const[x,y]=pt(i,R);s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.07)"/>`;const[lx,ly]=pt(i,R+16);s+=`<text x="${lx}" y="${ly+3}" text-anchor="middle" font-family="Chakra Petch" font-size="9" letter-spacing="1" fill="#ffb347">${CRIT[i][0]}</text>`}
   s+=`<polygon id="hexP" points="${[0,1,2,3,4,5].map(i=>pt(i,8).join(',')).join(' ')}" fill="rgba(255,140,50,.22)" stroke="#ffb347" stroke-width="1.5" style="transition:all 1s"/>`;
   $('hex').innerHTML=s;
-  $('critList').innerHTML=CRIT.map(c=>`<li><small>${c[0]}</small>${c[1]}</li>`).join('');
-  let hexT=0;const hexAnim=()=>{const v=[.92,.78,.86,.7,.95,.66].map((b,i)=>b-.25+.25*Math.abs(Math.sin(hexT*.6+i)));$('hexP').setAttribute('points',v.map((r,i)=>pt(i,R*r).join(',')).join(' '));hexT++};
-  window._hexAnim=hexAnim;
+  let hexT=0;window._hexAnim=()=>{const v=[.92,.78,.86,.7,.95,.66].map((b,i)=>b-.25+.25*Math.abs(Math.sin(hexT*.6+i)));$('hexP').setAttribute('points',v.map((r,i)=>pt(i,R*r).join(',')).join(' '));hexT++};
 })();
 
 /* ---------- build: roster ---------- */
-(function(){
-  const F=[['all','전체'],['r','레드 베인'],['a','아스트라 가드'],['z','제로라인'],['S','S급'],['A','A급'],['B','B급']];
-  $('filters').innerHTML=F.map((f,i)=>`<button data-f="${f[0]}" class="${i?'':'on'}">${f[1]}</button>`).join('');
+function buildRoster(){
+  const F=[['all',t3('전체','すべて','All')],['r',CLANS.r.name],['a',CLANS.a.name],['z',CLANS.z.name],['S',RK('S')],['A',RK('A')],['B',RK('B')]];
+  const cur=(document.querySelector('#filters button.on')||{dataset:{f:'all'}}).dataset.f;
+  $('filters').innerHTML=F.map(f=>`<button data-f="${f[0]}" class="${f[0]===cur?'on':''}">${L(f[1])}</button>`).join('');
   $('rosterGrid').innerHTML=HEROES.map(h=>{const c=CLANS[h.clan],g=gradeOf(h.grade);
     return `<button class="card reveal" data-h="${h.id}" data-clan="${h.clan}" data-grade="${h.grade}" style="--c:${c.c};--g:${g.g}">${pic(big(h.img[0]),c.c,h.hero,'char')}
-      <span class="gb">${h.grade}</span><span class="cl"></span><div class="tx"><div class="hn">${h.hero}</div><div class="nm">${h.name}</div><div class="ab">${h.ab} · ${c.name}</div></div></button>`}).join('');
-  $('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
-    document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',!(f==='all'||c.dataset.clan===f||c.dataset.grade===f)));setTimeout(refit,30)});
-  $('rosterGrid').addEventListener('click',e=>{const b=e.target.closest('.card');if(b)openHero(b.dataset.h)});
-})();
+      <span class="gb">${h.grade}</span><span class="cl"></span><div class="tx"><div class="hn">${h.hero}</div><div class="nm">${L(h.name)}</div><div class="ab">${L(h.ab)} · ${L(c.name)}</div></div></button>`}).join('');
+  applyFilter(cur);
+}
+function applyFilter(f){document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',!(f==='all'||c.dataset.clan===f||c.dataset.grade===f)))}
+$('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));applyFilter(b.dataset.f);setTimeout(refit,30)});
+$('rosterGrid').addEventListener('click',e=>{const b=e.target.closest('.card');if(b)openHero(b.dataset.h)});
 
 /* ---------- hero modal ---------- */
 const GSCORE={S:5,A:4,B:3,C:2,D:1};
 function openHero(id){const h=HEROES.find(x=>x.id===id);if(!h)return;const c=CLANS[h.clan],g=gradeOf(h.grade);
   const base=GSCORE[h.grade];
-  $('md').innerHTML=`<button class="x" id="mdX" aria-label="닫기">✕</button>
+  $('md').innerHTML=`<button class="x" id="mdX" aria-label="close">✕</button>
   <div class="mdgrid" style="--c:${c.c}">
     <div><div class="mdimg" id="mdImg">${pic(big(h.img[0]),c.c,h.hero,'char')}</div>
       <div class="thumbs">${h.img.map((u,i)=>`<button class="${i?'':'on'}" data-i="${i}">${pic(q(u,256),c.c,'','',false)}</button>`).join('')}</div></div>
-    <div><div class="hn">${h.hero} · ${h.heroK}</div><h3>${h.name}</h3>
-      <div class="chips"><span><b>${c.emoji} ${c.name}</b> ${c.side}</span><span><b style="color:${g.g}">${h.grade}급</b> ${g.n}</span><span>${h.sex} · ${h.age}세</span></div>
-      <div class="abil"><small>ABILITY</small><h4>${h.ab}</h4><p>${h.d}</p></div>
-      <div class="abil" style="margin-top:10px;border-color:var(--line2)"><small style="color:var(--sun)">CLAN CREED</small><p>“${c.slogan}”</p></div>
-      <div class="stat"><span class="lab">등급 레벨</span><div class="bar"><i data-w="${base*20}"></i></div><span class="v">${h.grade}</span>
-        ${Object.entries(c.vals).map(([k,v])=>`<span class="lab">${k}</span><div class="bar"><i data-w="${v}"></i></div><span class="v">${v}</span>`).join('')}</div>
-      <div class="stnote">* 클랜 성향 수치는 클랜 설명을 바탕으로 한 팬메이드 그래프예요.</div>
-      <a class="cta" style="margin-top:18px" href="${PLAY}" target="_blank" rel="noopener">▶ ${h.name}와(과) 만나러 가기</a>
+    <div><div class="hn">${h.hero} · ${L(h.heroK)}</div><h3>${L(h.name)}</h3>
+      <div class="chips"><span><b>${c.emoji} ${L(c.name)}</b> ${L(c.side)}</span><span><b style="color:${g.g}">${RK(h.grade)}</b> ${L(g.n)}</span><span>${L(SEX[h.sex])} · ${h.age}${L(t3('세','歳',''))}</span></div>
+      <div class="abil"><small>ABILITY</small><h4>${L(h.ab)}</h4><p>${L(h.d)}</p></div>
+      <div class="abil" style="margin-top:10px;border-color:var(--line2)"><small style="color:var(--sun)">CLAN CREED</small><p>“${L(c.slogan)}”</p></div>
+      <div class="stat"><span class="lab">${L(t3('등급 레벨','等級レベル','Rank level'))}</span><div class="bar"><i data-w="${base*20}"></i></div><span class="v">${h.grade}</span>
+        ${Object.keys(VALK).map(k=>`<span class="lab">${L(VALK[k])}</span><div class="bar"><i data-w="${c.vals[k]}"></i></div><span class="v">${c.vals[k]}</span>`).join('')}</div>
+      <div class="stnote">${L(t3('* 클랜 성향 수치는 클랜 설명을 바탕으로 한 팬메이드 그래프예요.','* クラン傾向の数値は、クラン説明をもとにしたファンメイドです。','* Clan values are fan-made, based on each clan’s description.'))}</div>
+      <a class="cta" style="margin-top:18px" href="${PLAY}" target="_blank" rel="noopener">▶ ${L(t3(L(h.name)+'와(과) 만나러 가기',L(h.name)+'に会いに行く','Meet '+L(h.name)))}</a>
     </div></div>`;
   $('modal').classList.add('on');document.body.classList.add('lock');$('modal').scrollTop=0;
   requestAnimationFrame(()=>setTimeout(()=>$('md').querySelectorAll('.bar i').forEach(i=>i.style.width=i.dataset.w+'%'),60));
   $('md').querySelector('.thumbs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$('md').querySelectorAll('.thumbs button').forEach(x=>x.classList.toggle('on',x===b));
     $('mdImg').innerHTML=pic(big(h.img[+b.dataset.i]),c.c,h.hero,'char')});
-  $('mdX').onclick=closeModal;history.pushState({m:1},'')}
+  $('mdX').onclick=closeModal;history.pushState({m:1},'');if(typeof IGM!=='undefined')IGM.hero(id)}
 function closeModal(){if(!$('modal').classList.contains('on'))return;$('modal').classList.remove('on');if(!$('lb').classList.contains('on'))document.body.classList.remove('lock')}
 $('modal').addEventListener('click',e=>{if(e.target.id==='modal'||e.target.id==='md')closeModal()});
 addEventListener('popstate',()=>{if($('lb').classList.contains('on'))closeLb();else closeModal()});
@@ -876,39 +1141,64 @@ $('lb').addEventListener('click',()=>{closeLb()});
 /* ---------- classified : IGNIS CROW (zeroline unlock + easter egg) ---------- */
 const IGN=(()=>{
   const box=$('clsBox'),inner=box.querySelector('.cls-in');
-  const SEALED=inner.innerHTML;
+  const T={
+    sealed:()=>`<div class="cls-img" id="clsImg"><i class="scan"></i><span class="q">?</span></div>
+      <div class="cls-txt"><div class="lbl">ACCESS LEVEL : ██ · FILE SEALED</div><h3>IGNIS CROW</h3>
+      <dl class="redact"><dt>${L(t3('본 명','本 名','Name'))}</dt><dd>${L(t3('이그니스 크로우','イグニス・クロウ','Ignis Crow'))}</dd><dt>${L(t3('히어로명','ヒーロー名','Hero name'))}</dt><dd><s>████████</s></dd>
+      <dt>${L(t3('소 속','所 属','Affiliation'))}</dt><dd><s>██████</s></dd><dt>${L(t3('등 급','等 級','Rank'))}</dt><dd><s>██</s></dd><dt>${L(t3('능 력','能 力','Ability'))}</dt><dd><s>██████████████</s></dd>
+      <dt>${L(t3('상 태','状 態','Status'))}</dt><dd style="color:var(--red)">${L(t3('비공개','非公開','CLASSIFIED'))}</dd></dl>
+      <button class="access" id="accessBtn">${L(t3('▣ 파일 열람 요청','▣ ファイル閲覧申請','▣ REQUEST FILE ACCESS'))}</button><div class="alog" id="alog"></div></div>`,
+    msg:[t3('> 열람 요청 접수 … 신원 확인 중','> 閲覧申請を受理 … 身元確認中','> Access request received … verifying identity'),
+         t3('> 권한 부족 — ACCESS LEVEL 미달\n> 본부 최상위 권한으로 봉인된 파일입니다.','> 権限不足 — ACCESS LEVEL 不足\n> 本部最上位権限で封印されたファイルです。','> Insufficient clearance — ACCESS LEVEL too low\n> This file is sealed under HQ’s highest authority.')],
+    warn:t3('> 경고: 봉인 파일 재접근 시도 감지 …','> 警告: 封印ファイルへの再アクセスを検知 …','> WARNING: repeated access to a sealed file detected …'),
+    zlHd:t3('◆ ZEROLINE 보안 회선','◆ ZEROLINE 秘匿回線','◆ ZEROLINE SECURE LINE'),zlRank:t3('NOISE · B급','NOISE · B級','NOISE · B-RANK'),
+    zlTag:t3('[노이즈] ','[ノイズ] ','[NOISE] '),
+    zl:[t3('잠깐. 그 파일, 본부 서버에서 강제로 잠겨 있어.','待って。そのファイル、本部サーバーで強制ロックされてる。','Hold on. That file’s force-locked on HQ’s server.'),
+        t3('감정 말고 판단으로 보자. 알아야 할 건 알아야 하니까.','感情じゃなく判断で見よう。知るべきことは知らなきゃ。','Judgment, not emotion. Some things you need to know.'),
+        t3('봉인 우회 시작할게. 접속 흔적은 내가 지운다.','封印のバイパスを始める。接続の痕跡は私が消す。','Starting the seal bypass. I’ll wipe our tracks.'),
+        t3('…열렸어. 이건 본부가 지운 기록이야. 조심해.','…開いた。これは本部が消した記録だよ。気をつけて。','…It’s open. This is a record HQ erased. Be careful.')],
+    hello:t3('…드디어 열었군. 늦게 깨어난 「예외」.','…ようやく開けたか。遅れて目覚めた「例外」。','…So you finally opened it, late-awakened "Exception."'),
+    enough:t3('…충분하다.','…十分だ。','…Enough.'),
+    feed:t3('강한 기술일수록, 나를 키울 뿐이다.','強い技ほど、俺を育てるだけだ。','The stronger the technique, the more it feeds me.'),
+    grant:t3('…그래도 정면으로 온 건 인정하지, 「예외」. 다음엔 본부 지하에서 보자.','…それでも正面から来たことは認めよう、「例外」。次は本部の地下で会おう。','…Still, I’ll grant you came at me head-on, "Exception." Next time, we meet beneath HQ.'),
+    resealBtn:t3('▣ 봉인 복구 · 질서 되돌리기','▣ 封印復旧 · 秩序を取り戻す','▣ RESEAL · RESTORE ORDER'),
+    after:t3('> NOVA HQ 긴급 봉인 프로토콜 — 완료.\n> 대상: 특급 재난 「검은 태양」 · 상태: 재봉인\n> (제로라인 회선은 아직 열려 있다…)','> NOVA HQ 緊急封印プロトコル — 完了。\n> 対象: 特級災害「黒い太陽」 · 状態: 再封印\n> (ゼロラインの回線はまだ開いている…)','> NOVA HQ emergency seal protocol — complete.\n> Target: Special-Grade Catastrophe "The Black Sun" · Status: resealed\n> (The Zeroline line is still open…)'),
+    sealLines:{ig1:t3('…봉인이라. 이제 와서?','…封印か。今さら？','…A seal. Now, of all times?'),
+      hq:t3('긴급 봉인 프로토콜 승인. 대상 — 특급 재난 「검은 태양」.','緊急封印プロトコル承認。対象 — 特級災害「黒い太陽」。','Emergency seal protocol authorized. Target — Special-Grade Catastrophe, "The Black Sun."'),
+      zlWho:t3('ZEROLINE · 노이즈','ZEROLINE · ノイズ','ZEROLINE · NOISE'),
+      zl1:t3('봉인 코드 재주입 시작. 회선은 내가 붙잡고 있을게.','封印コード再注入開始。回線は私が押さえておく。','Re-injecting seal code. I’ll hold the line.'),
+      resist:t3('닫는다고… 사라지진 않아.','閉じたところで…消えはしない。','Closing it… won’t make me disappear.'),
+      zl2:t3('버텨 — 전 회선 차단. 지금이야!','耐えて — 全回線遮断。今だ！','Hold on — cutting every line. Now!'),
+      fin:t3('…좋다. 이번엔 닫혀 주지. 하지만 기억해, 「예외」. 노바 코어 아래에서… 다시 만난다.','…いいだろう。今回は閉じられてやる。だが覚えておけ、「例外」。ノヴァ・コアの下で…また会おう。','…Fine. I’ll let myself be shut, this time. But remember, "Exception." Beneath the Nova Core… we meet again.'),
+      done:t3('검은 태양 — 재봉인 완료','黒い太陽 — 再封印完了','Black Sun — resealed')}
+  };
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  let n=0,busy=false,energy=0,used={},released=false,sayTok=0;
+  let n=0,busy=false,energy=0,released=false,sayTok=0;
 
   function bindSealed(){
-    const img=$('clsImg');img.insertAdjacentHTML('afterbegin',pic(q(IGNIS[0],640),'#e2343f','','char',false));
+    $('clsImg').insertAdjacentHTML('afterbegin',pic(q(IGNIS[0],640),'#e2343f','','char',false));
     $('accessBtn').onclick=request;
   }
-  const MSG=['> 열람 요청 접수 … 신원 확인 중','> 권한 부족 — ACCESS LEVEL 미달\n> 본부 최상위 권한으로 봉인된 파일입니다.'];
   async function request(){if(busy)return;
-    if(n<MSG.length){$('alog').textContent=MSG[n++];glitch(box);BGM.sfx('deny');return}
+    if(n<T.msg.length){$('alog').textContent=L(T.msg[n++]);glitch(box);BGM.sfx('deny');return}
     busy=true;$('accessBtn').disabled=true;await zeroline();busy=false;openFile()}
   function glitch(el){el.classList.remove('glitch');void el.offsetWidth;el.classList.add('glitch')}
 
-  /* --- ZEROLINE · NOISE intercept --- */
   async function zeroline(){
-    $('alog').textContent='> 경고: 봉인 파일 재접근 시도 감지 …';glitch(box);BGM.sfx('deny');await sleep(900);
+    $('alog').textContent=L(T.warn);glitch(box);BGM.sfx('deny');await sleep(900);
     box.classList.add('teal');
     const zl=document.createElement('div');zl.className='zl on';
-    zl.innerHTML=`<div class="hd"><span>◆ ZEROLINE 보안 회선</span><span>NOISE · B급</span></div><div class="ln" id="zlLn"></div><div class="code" id="zlCode"></div><div class="hb"><i id="zlBar"></i></div>`;
+    zl.innerHTML=`<div class="hd"><span>${L(T.zlHd)}</span><span>${L(T.zlRank)}</span></div><div class="ln" id="zlLn"></div><div class="code" id="zlCode"></div><div class="hb"><i id="zlBar"></i></div>`;
     box.querySelector('.cls-txt').appendChild(zl);BGM.sfx('zl');
     const ln=$('zlLn'),code=$('zlCode'),bar=$('zlBar');
-    const type=async(t)=>{ln.textContent='';for(const ch of t){ln.textContent+=ch;await sleep(28)}};
-    await type('[노이즈] 잠깐. 그 파일, 본부 서버에서 강제로 잠겨 있어.');await sleep(700);
-    await type('[노이즈] 감정 말고 판단으로 보자. 알아야 할 건 알아야 하니까.');await sleep(500);
-    await type('[노이즈] 봉인 우회 시작할게. 접속 흔적은 내가 지운다.');
+    const type=async(t)=>{ln.textContent='';for(const ch of L(T.zlTag)+L(t)){ln.textContent+=ch;await sleep(28)}};
+    await type(T.zl[0]);await sleep(700);await type(T.zl[1]);await sleep(500);await type(T.zl[2]);
     const hex=()=>Array.from({length:4},()=>(Math.random()*0xffffffff>>>0).toString(16).padStart(8,'0')).join(' ');
     const steps=['bypass seal://nova-hq/classified','spoof clearance  : S-CLASS','restore deleted  : /record/awakening','decrypt subject  : I.CROW'];
     for(let i=0;i<=100;i+=4){bar.style.width=i+'%';code.textContent=steps[Math.min(3,i/26|0)]+'\n'+hex()+'\n'+hex();if(i%8===0)BGM.sfx('hack');await sleep(55)}
-    await type('[노이즈] …열렸어. 이건 본부가 지운 기록이야. 조심해.');await sleep(900);
+    await type(T.zl[3]);await sleep(900);
   }
 
-  /* --- open the file : light gets drained --- */
   async function openFile(){
     BGM.sfx('open');BGM.prep('ignis');
     box.classList.remove('teal');box.classList.add('dark');document.body.classList.add('drain-on');
@@ -916,7 +1206,7 @@ const IGN=(()=>{
     inner.innerHTML=DOSSIER();box.insertAdjacentHTML('afterbegin','<div class="drain"><i></i><i></i></div>');
     $('ignImg').insertAdjacentHTML('beforeend',pic(big(IGNIS[0]),'#e2343f','IGNIS','char'));
     bindDossier();setPower(0);placeDrain();addEventListener('resize',placeDrain);
-    await sleep(400);say('…드디어 열었군. 늦게 깨어난 「예외」.');
+    await sleep(400);say(L(T.hello));
     BGM.setTrack('ignis');
   }
   const DOSSIER=()=>`<div class="ign">
@@ -926,47 +1216,54 @@ const IGN=(()=>{
       <div class="energy"><div class="eh"><span>STORED ENERGY</span><b id="enP">0%</b></div><div class="eb"><i id="enB"></i></div></div>
     </div>
     <div class="ign-r">
-      <div class="lbl">FILE UNSEALED · 복구된 기록</div>
+      <div class="lbl">${L(t3('FILE UNSEALED · 복구된 기록','FILE UNSEALED · 復元された記録','FILE UNSEALED · RESTORED RECORD'))}</div>
       <h3 class="ign-name">IGNIS CROW</h3>
-      <div class="alias">이명 「검은 태양」</div>
-      <div class="threat">⚠ 위험 등급 · 특급 재난</div>
+      <div class="alias">${L(t3('이명 「검은 태양」','異名「黒い太陽」','Alias: "The Black Sun"'))}</div>
+      <div class="threat">${L(t3('⚠ 위험 등급 · 특급 재난','⚠ 危険等級 · 特級災害','⚠ THREAT · SPECIAL-GRADE CATASTROPHE'))}</div>
       <dl class="ign-dl">
-        <dt>소 속</dt><dd>빌런</dd><dt>이 력</dt><dd>전직 히어로 후보생</dd><dt>성별 · 나이</dt><dd>남 · 미상</dd>
-        <dt>능 력</dt><dd><b>에너지 흡수 · 방출</b></dd>
+        <dt>${L(t3('소 속','所 属','Affiliation'))}</dt><dd>${L(t3('빌런','ヴィラン','Villain'))}</dd>
+        <dt>${L(t3('이 력','経 歴','Background'))}</dt><dd>${L(t3('전직 히어로 후보생','元ヒーロー候補生','Former hero candidate'))}</dd>
+        <dt>${L(t3('성별 · 나이','性別 · 年齢','Sex · Age'))}</dt><dd>${L(t3('남 · 미상','男 · 不明','Male · Unknown'))}</dd>
+        <dt>${L(t3('능 력','能 力','Ability'))}</dt><dd><b>${L(t3('에너지 흡수 · 방출','エネルギー吸収・放出','Energy absorption & release'))}</b></dd>
       </dl>
       <div class="voice"><small>IGNIS CROW</small><p id="ignSay"></p></div>
-      <div class="atkh">▸ 히어로의 기술로 맞서 보세요</div>
+      <div class="atkh">${L(t3('▸ 히어로의 기술로 맞서 보세요','▸ ヒーローの技で立ち向かおう','▸ Strike back with a hero’s power'))}</div>
       <div class="atk" id="atk">
-        <button data-k="light" style="--k:#ffe08a">빛<small>루미나</small></button>
-        <button data-k="volt" style="--k:#7fe3ff">번개<small>볼트</small></button>
-        <button data-k="shock" style="--k:#d6b3ff">충격파<small>브리처</small></button>
-        <button data-k="fire" style="--k:#ff8a4a">불꽃<small>화염 능력자</small></button>
+        <button data-k="light" style="--k:#ffe08a">${L(t3('빛','光','Light'))}<small>${L(t3('루미나','ルミナ','Lumina'))}</small></button>
+        <button data-k="volt" style="--k:#7fe3ff">${L(t3('번개','雷','Lightning'))}<small>${L(t3('볼트','ボルト','Volt'))}</small></button>
+        <button data-k="shock" style="--k:#d6b3ff">${L(t3('충격파','衝撃波','Shockwave'))}<small>${L(t3('브리처','ブリーチャー','Breacher'))}</small></button>
+        <button data-k="fire" style="--k:#ff8a4a">${L(t3('불꽃','炎','Fire'))}<small>${L(t3('화염 능력자','炎の能力者','Pyrokinetic'))}</small></button>
       </div>
-      <div class="recs">
-        <div class="rec on"><small>OBSERVATION · 관찰 기록</small><p>큰 키에 마른 듯 단단한 체격. 길게 기른 검은 머리 사이로 붉은빛이 흐르고, 검은 눈동자에는 붉은 고리가 떠 있다. 얼굴 왼쪽에는 괴물 같은 얼굴이 있다. 긴 검은 코트 안에 검붉은 갑옷을 입었고, 등 뒤에는 검은 태양을 닮은 거대한 원형 에너지가 떠다닌다.</p>
-          <p>능력을 쓰면 주변의 빛이 그에게 빨려 들어가, <b>그가 선 자리만 밤처럼 어두워진다.</b></p></div>
-        <div class="rec on"><small>BEHAVIOR · 행동 분석</small><p>언제나 침착하고 위압적이다. 소리치거나 흥분하지 않고, 이미 이긴 사람처럼 여유롭다. 느리고 차분한 반말을 쓰며, 상대를 이름보다 능력이나 특징으로 부른다.</p>
-          <p>히어로 개인을 미워하지는 않는다. 오히려 본부의 명령대로 움직이는 히어로들을 불쌍히 여긴다. 다만 목적을 막는 자는 망설임 없이 제거한다. 약속을 어기거나 비겁한 짓을 싫어하고, 정면으로 맞서는 강자에게는 예의를 갖춘다.</p></div>
-        <div class="rec" data-at="25"><small>ABILITY · 에너지 흡수 · 방출</small><p>불꽃, 번개, 빛, 충격파처럼 에너지로 이루어진 공격을 흡수해 몸 안에 쌓아 둔다. 쌓인 힘은 검붉은 폭발이나 광선으로 되돌려 쏜다. 힘이 쌓일수록 등 뒤의 검은 태양 같은 에너지 고리가 커진다.</p>
-          <ul><li>흡수한 힘을 광선으로 방출</li><li>주변을 휩쓰는 광역 폭발</li><li>검은 에너지로 검과 창 생성</li><li>에너지를 몸에 둘러 신체 강화</li><li>축적한 힘으로 공중 부양</li></ul>
-          <p class="warn">⚠ 단순한 능력이지만, 히어로가 강한 기술을 쓸수록 오히려 그가 강해진다.</p></div>
-        <div class="rec" data-at="50"><small>RECORD · 인공 각성 실험 <em>[삭제된 기록 · 복구됨]</em></small><p>이그니스는 과거 노바 히어로 본부가 진행한 <b>인공 각성 실험</b>의 피험자였다.</p>
-          <p>명목은 <s>“능력이 약한 사람도 히어로로 만들 수 있다”</s>. 실제 목적은 <b>어떤 능력이든 흡수하고 다시 쓰는 전투 병기</b>였다. 그는 강한 힘을 얻었지만, 에너지를 다루지 못한 다른 피험자들은 폭주하거나 목숨을 잃었다.</p>
-          <p>본부는 시설을 폐쇄하고 모든 기록을 지웠다. 살아남은 그 역시 <s>사고로 사망</s> <b class="red">처리되었다.</b></p></div>
-        <div class="rec" data-at="75"><small>OBJECTIVE · 목적</small><p>함께 실험받은 이들을 버리고도 영웅을 자처하는 본부. 그는 그 본부를 증오한다.</p>
-          <p>목표는 <b>히어로 등급과 클랜 체제를 무너뜨리고</b>, 능력자가 누구의 통제도 받지 않는 새로운 세계를 만드는 것.</p>
-          <p>표적은 본부 지하에 보관된 <b class="red">노바 코어</b>. 수많은 능력자의 에너지가 저장된 그것을 흡수하면, 도시 하나를 지울 힘을 얻는다.</p></div>
-      </div>
-      <button class="seal" id="sealBtn">▣ 봉인 복구</button>
+      <div class="recs">${RECS()}</div>
+      <button class="seal" id="sealBtn" style="display:none">${L(T.resealBtn)}</button>
     </div></div>`;
+  const RECS=()=>({
+    ko:`<div class="rec on"><small>OBSERVATION · 관찰 기록</small><p>큰 키에 마른 듯 단단한 체격. 길게 기른 검은 머리 사이로 붉은빛이 흐르고, 검은 눈동자에는 붉은 고리가 떠 있다. 얼굴 왼쪽에는 괴물 같은 얼굴이 있다. 긴 검은 코트 안에 검붉은 갑옷을 입었고, 등 뒤에는 검은 태양을 닮은 거대한 원형 에너지가 떠다닌다.</p><p>능력을 쓰면 주변의 빛이 그에게 빨려 들어가, <b>그가 선 자리만 밤처럼 어두워진다.</b></p></div>
+      <div class="rec on"><small>BEHAVIOR · 행동 분석</small><p>언제나 침착하고 위압적이다. 소리치거나 흥분하지 않고, 이미 이긴 사람처럼 여유롭다. 느리고 차분한 반말을 쓰며, 상대를 이름보다 능력이나 특징으로 부른다.</p><p>히어로 개인을 미워하지는 않는다. 오히려 본부의 명령대로 움직이는 히어로들을 불쌍히 여긴다. 다만 목적을 막는 자는 망설임 없이 제거한다. 약속을 어기거나 비겁한 짓을 싫어하고, 정면으로 맞서는 강자에게는 예의를 갖춘다.</p></div>
+      <div class="rec" data-at="25"><small>ABILITY · 에너지 흡수 · 방출</small><p>불꽃, 번개, 빛, 충격파처럼 에너지로 이루어진 공격을 흡수해 몸 안에 쌓아 둔다. 쌓인 힘은 검붉은 폭발이나 광선으로 되돌려 쏜다. 힘이 쌓일수록 등 뒤의 검은 태양 같은 에너지 고리가 커진다.</p><ul><li>흡수한 힘을 광선으로 방출</li><li>주변을 휩쓰는 광역 폭발</li><li>검은 에너지로 검과 창 생성</li><li>에너지를 몸에 둘러 신체 강화</li><li>축적한 힘으로 공중 부양</li></ul><p class="warn">⚠ 단순한 능력이지만, 히어로가 강한 기술을 쓸수록 오히려 그가 강해진다.</p></div>
+      <div class="rec" data-at="50"><small>RECORD · 인공 각성 실험 <em>[삭제된 기록 · 복구됨]</em></small><p>이그니스는 과거 노바 히어로 본부가 진행한 <b>인공 각성 실험</b>의 피험자였다.</p><p>명목은 <s>“능력이 약한 사람도 히어로로 만들 수 있다”</s>. 실제 목적은 <b>어떤 능력이든 흡수하고 다시 쓰는 전투 병기</b>였다. 그는 강한 힘을 얻었지만, 에너지를 다루지 못한 다른 피험자들은 폭주하거나 목숨을 잃었다.</p><p>본부는 시설을 폐쇄하고 모든 기록을 지웠다. 살아남은 그 역시 <s>사고로 사망</s> <b class="red">처리되었다.</b></p></div>
+      <div class="rec" data-at="75"><small>OBJECTIVE · 목적</small><p>함께 실험받은 이들을 버리고도 영웅을 자처하는 본부. 그는 그 본부를 증오한다.</p><p>목표는 <b>히어로 등급과 클랜 체제를 무너뜨리고</b>, 능력자가 누구의 통제도 받지 않는 새로운 세계를 만드는 것.</p><p>표적은 본부 지하에 보관된 <b class="red">노바 코어</b>. 수많은 능력자의 에너지가 저장된 그것을 흡수하면, 도시 하나를 지울 힘을 얻는다.</p></div>`,
+    ja:`<div class="rec on"><small>OBSERVATION · 観察記録</small><p>長身で、痩せて見えるが引き締まった体。長く伸ばした黒髪の間に赤い光が流れ、黒い瞳には赤い輪が浮かぶ。顔の左側には怪物のような顔がある。長い黒のコートの下に赤黒い鎧をまとい、背後には黒い太陽に似た巨大な円形のエネルギーが漂う。</p><p>能力を使うと周囲の光が彼へ吸い込まれ、<b>彼の立つ場所だけが夜のように暗くなる。</b></p></div>
+      <div class="rec on"><small>BEHAVIOR · 行動分析</small><p>常に冷静で威圧的。声を荒げたり興奮したりせず、すでに勝ったかのように余裕がある。ゆっくりと落ち着いたタメ口で話し、相手を名前より能力や特徴で呼ぶ。</p><p>ヒーロー個人を憎んでいるわけではない。むしろ本部の命令で動くヒーローたちを哀れんでいる。ただし目的を阻む者はためらいなく排除する。約束を破ることや卑怯な行いを嫌い、正面から立ち向かう強者には礼を尽くす。</p></div>
+      <div class="rec" data-at="25"><small>ABILITY · エネルギー吸収・放出</small><p>炎、雷、光、衝撃波のようなエネルギーでできた攻撃を吸収し、体内に蓄える。蓄えた力は赤黒い爆発や光線として撃ち返す。力が溜まるほど、背後の黒い太陽のようなエネルギーの輪が大きくなる。</p><ul><li>吸収した力を光線として放出</li><li>周囲を薙ぎ払う広域爆発</li><li>黒いエネルギーで剣と槍を生成</li><li>エネルギーを纏って身体能力を強化</li><li>蓄えた力で空中浮遊</li></ul><p class="warn">⚠ 単純な能力だが、ヒーローが強い技を使うほど、むしろ彼が強くなる。</p></div>
+      <div class="rec" data-at="50"><small>RECORD · 人工覚醒実験 <em>[削除済み記録 · 復元]</em></small><p>イグニスはかつて、ノヴァ・ヒーロー本部が行った<b>人工覚醒実験</b>の被験者だった。</p><p>名目は<s>「能力の弱い者でもヒーローにできる」</s>。本当の目的は<b>どんな能力でも吸収し再利用できる戦闘兵器</b>だった。彼は強大な力を得たが、エネルギーを制御できなかった他の被験者たちは暴走するか命を落とした。</p><p>本部は施設を閉鎖し、すべての記録を消した。生き残った彼もまた<s>事故で死亡</s><b class="red">と処理された。</b></p></div>
+      <div class="rec" data-at="75"><small>OBJECTIVE · 目的</small><p>共に実験を受けた者たちを見捨てながら、英雄を名乗る本部。彼はその本部を憎んでいる。</p><p>目標は<b>ヒーロー等級とクラン体制を崩壊させ</b>、能力者が誰の支配も受けない新たな世界を作ること。</p><p>標的は本部の地下に保管された<b class="red">ノヴァ・コア</b>。無数の能力者のエネルギーが蓄えられたそれを吸収すれば、都市ひとつを消し去る力を得る。</p></div>`,
+    en:`<div class="rec on"><small>OBSERVATION</small><p>Tall, with a lean but hard build. Red light runs through his long black hair, and red rings float in his black irises. The left side of his face bears a monstrous visage. Beneath a long black coat he wears crimson-black armor, and a vast ring of energy like a black sun hovers at his back.</p><p>When he uses his power, the surrounding light is drawn into him — <b>only the place where he stands goes dark as night.</b></p></div>
+      <div class="rec on"><small>BEHAVIOR</small><p>Always calm and intimidating. He never shouts or loses composure, moving as if he has already won. He speaks slowly and casually, and calls people by their abilities or traits rather than their names.</p><p>He doesn’t hate heroes as individuals — if anything, he pities those who move on HQ’s orders. But anyone who blocks his goal is removed without hesitation. He despises broken promises and cowardice, and shows respect to the strong who face him head-on.</p></div>
+      <div class="rec" data-at="25"><small>ABILITY · ENERGY ABSORPTION &amp; RELEASE</small><p>He absorbs energy-based attacks — fire, lightning, light, shockwaves — and stores them in his body, firing them back as crimson-black blasts or beams. The more he stores, the larger the black-sun ring at his back grows.</p><ul><li>Releases absorbed power as beams</li><li>Wide-area explosions that sweep everything around him</li><li>Forges swords and spears of black energy</li><li>Wraps himself in energy to enhance his body</li><li>Levitates on stored power</li></ul><p class="warn">⚠ A simple power — but the stronger the heroes’ techniques, the stronger he becomes.</p></div>
+      <div class="rec" data-at="50"><small>RECORD · ARTIFICIAL AWAKENING EXPERIMENT <em>[DELETED · RESTORED]</em></small><p>Ignis was once a subject of the <b>artificial awakening experiment</b> run by NOVA Hero HQ.</p><p>The stated aim was <s>"to make heroes even of the weakly gifted."</s> The real goal was <b>a combat weapon that could absorb and reuse any ability.</b> He gained immense power — but the other subjects, unable to control the energy, went berserk or died.</p><p>HQ shut down the facility and erased every record. Even he, the survivor, was <b class="red">recorded as</b> <s>killed in an accident</s>.</p></div>
+      <div class="rec" data-at="75"><small>OBJECTIVE</small><p>An HQ that abandoned his fellow subjects, yet still calls itself heroic — that is what he hates.</p><p>His goal: <b>to tear down the hero ranks and the clan system</b> and build a new world where no ability user answers to anyone.</p><p>His target is the <b class="red">Nova Core</b>, stored beneath HQ. It holds the energy of countless ability users — absorb it, and he could erase an entire city.</p></div>`
+  })[LANG];
 
   const LINES={
-    light:['빛이라. …따뜻하군. 고맙게 받지.','「빛」. 본부의 상징이었지. 이제 내 거다.'],
-    volt:['번개. 빠르지만… 결국 내 안으로 흘러든다.','「번개」. 마비시키기엔 조금 약했어.'],
-    shock:['충격파. 두드리는 소리가 크군.','「충격파」. 벽은 뚫어도, 나는 못 뚫는다.'],
-    fire:['불꽃. 좋은 연료다.','「불꽃」. …더 태워 봐.']
+    light:[t3('빛이라. …따뜻하군. 고맙게 받지.','光か。…温かいな。ありがたくもらおう。','Light. …Warm. I’ll take it, gratefully.'),t3('「빛」. 본부의 상징이었지. 이제 내 거다.','「光」。本部の象徴だったな。今は俺のものだ。','"Light." HQ’s symbol, once. Mine now.'),t3('눈부시군. 그만큼 많이 삼킬 수 있다.','眩しいな。それだけ多く呑み込める。','Blinding. All the more for me to swallow.')],
+    volt:[t3('번개. 빠르지만… 결국 내 안으로 흘러든다.','雷。速いが…結局、俺の中へ流れ込む。','Lightning. Fast… but it all flows into me in the end.'),t3('「번개」. 마비시키기엔 조금 약했어.','「雷」。痺れさせるには少し弱かったな。','"Lightning." A little weak to paralyze me.'),t3('찌릿하군. 오랜만에 살아 있는 기분이다.','ビリッとくるな。久しぶりに生きている気がする。','A nice jolt. Haven’t felt this alive in a while.')],
+    shock:[t3('충격파. 두드리는 소리가 크군.','衝撃波。叩く音が大きいな。','A shockwave. Loud knocking.'),t3('「충격파」. 벽은 뚫어도, 나는 못 뚫는다.','「衝撃波」。壁は貫けても、俺は貫けない。','"Shockwave." It pierces walls. Not me.'),t3('울림이 좋다. 전부 내 안에서 멈췄지만.','いい響きだ。全部、俺の中で止まったがな。','Good resonance. It all stopped inside me, though.')],
+    fire:[t3('불꽃. 좋은 연료다.','炎。いい燃料だ。','Fire. Good fuel.'),t3('「불꽃」. …더 태워 봐.','「炎」。…もっと燃やしてみろ。','"Fire." …Burn hotter.'),t3('타오르는 건 좋다. 꺼지는 게 문제지.','燃えるのはいい。消えるのが問題だ。','Burning is fine. Burning out is the problem.')]
   };
-  const AFTER={25:'…알겠나. 강하게 칠수록, 나는 커진다.',50:'본부는 우리를 버렸다. 그리고 지금도 영웅이라 불리지.',75:'명령대로 움직이는 너희가… 불쌍할 뿐이다.'};
+  const AFTER={25:t3('…알겠나. 강하게 칠수록, 나는 커진다.','…わかるか。強く打つほど、俺は大きくなる。','…You see? The harder you hit, the bigger I get.'),
+    50:t3('본부는 우리를 버렸다. 그리고 지금도 영웅이라 불리지.','本部は俺たちを捨てた。そして今も英雄と呼ばれている。','HQ threw us away. And they’re still called heroes.'),
+    75:t3('명령대로 움직이는 너희가… 불쌍할 뿐이다.','命令通りに動くお前たちが…哀れなだけだ。','You, moving exactly as ordered… I only pity you.')};
   function placeDrain(){const im=$('ignImg');if(!im)return;const b=box.getBoundingClientRect(),r=im.getBoundingClientRect();box.style.setProperty('--dy',(r.top-b.top+r.height*.42)+'px');box.style.setProperty('--dx',(r.left-b.left+r.width/2)+'px')}
   function bindDossier(){
     inner.querySelector('.ign-th').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;inner.querySelectorAll('.ign-th button').forEach(x=>x.classList.toggle('on',x===b));
@@ -974,123 +1271,256 @@ const IGN=(()=>{
     $('atk').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled||busy)return;attack(b)});
     $('sealBtn').onclick=seal;
   }
-  async function say(t){const tok=++sayTok,p=$('ignSay');if(!p)return;p.textContent='';p.classList.add('typing');
-    for(const ch of t){if(tok!==sayTok)return;p.textContent+=ch;await sleep(ch==='.'||ch==='…'?190:62)}p.classList.remove('typing')}
+  async function say(t){const tok=++sayTok,p=$('ignSay');if(!p)return;t=L(t);p.textContent='';p.classList.add('typing');
+    for(const ch of t){if(tok!==sayTok)return;p.textContent+=ch;await sleep(ch==='.'||ch==='…'||ch==='。'?190:62)}p.classList.remove('typing')}
   function setPower(v){energy=v;const k=1+v/100*.55;$('bsun').style.setProperty('--k',k);$('bsun').style.setProperty('--glow',.35+v/100*.65);
     $('enP').textContent=v+'%';$('enB').style.width=v+'%';
     inner.querySelectorAll('.rec[data-at]').forEach(r=>{if(v>=+r.dataset.at&&!r.classList.contains('on')){r.classList.add('on','new');setTimeout(()=>r.classList.remove('new'),1600)}});
     box.style.setProperty('--dark',.55+v/100*.4)}
-  async function attack(b){busy=true;b.disabled=true;const k=b.dataset.k,col=getComputedStyle(b).getPropertyValue('--k').trim();used[k]=(used[k]||0)+1;
-    // projectile
+  async function attack(b){busy=true;b.disabled=true;const k=b.dataset.k,col=getComputedStyle(b).getPropertyValue('--k').trim();
     const r1=b.getBoundingClientRect(),r2=$('ignImg').getBoundingClientRect();const pj=document.createElement('i');pj.className='proj';pj.style.setProperty('--k',col);document.body.appendChild(pj);
     const x1=r1.left+r1.width/2,y1=r1.top+r1.height/2,x2=r2.left+r2.width/2,y2=r2.top+r2.height*.42;
     const an=pj.animate([{transform:`translate(${x1}px,${y1}px) scale(1)`,opacity:1},{transform:`translate(${x2}px,${y2}px) scale(.3)`,opacity:.9}],{duration:420,easing:'cubic-bezier(.5,0,.9,.4)'});
     await an.finished.catch(()=>{});pj.remove();
-    // absorb
     const im=$('ignImg');im.style.setProperty('--k2',col);im.classList.remove('absorb');void im.offsetWidth;im.classList.add('absorb');BGM.sfx('absorb');
     const nv=Math.min(100,energy+25);setPower(nv);
-    await say(LINES[k][0]);
+    await say(LINES[k][Math.random()*LINES[k].length|0]);
     if(AFTER[nv]){await sleep(500);await say(AFTER[nv])}
     busy=false;if(nv>=100)release()}
+  function toTop(){const h=document.documentElement,o=h.style.scrollBehavior;h.style.scrollBehavior='auto';window.scrollTo(0,0);h.style.scrollBehavior=o}
   async function release(){if(released)return;released=true;busy=true;
-    await sleep(400);$('ignImg').scrollIntoView({behavior:'smooth',block:'center'});await sleep(700);await say('…충분하다.');await sleep(700);
-    // detonation
+    await sleep(400);$('ignImg').scrollIntoView({behavior:'smooth',block:'center'});await sleep(700);await say(T.enough);await sleep(700);
     const bm=$('boom'),r=$('ignImg').getBoundingClientRect();bm.style.setProperty('--x',(r.left+r.width/2)+'px');bm.style.setProperty('--y',(r.top+r.height*.42)+'px');
     bm.classList.remove('on');void bm.offsetWidth;bm.classList.add('on');BGM.sfx('boom');EMBM.set('burst');
     box.classList.add('quake');setTimeout(()=>box.classList.remove('quake'),900);setTimeout(()=>{bm.classList.remove('on')},1700);
     await sleep(650);
-    document.body.classList.add('ignis');document.body.classList.remove('drain-on');$('logoT').textContent='NOVA HQ';
-    $('enP').textContent='RELEASED';box.classList.add('spent');
+    document.body.classList.add('ignis');document.body.classList.remove('drain-on');
+    $('enP').textContent='RELEASED';box.classList.add('spent');$('sealBtn').style.display='';
+    sayTok++;$('ignSay').classList.remove('typing');$('ignSay').textContent=L(T.grant);
+    toTop();IGM.on();
     setTimeout(()=>EMBM.set('ash'),1400);
-    await sleep(900);await say('강한 기술일수록, 나를 키울 뿐이다.');await sleep(600);
-    await say('…그래도 정면으로 온 건 인정하지, 「예외」. 다음엔 본부 지하에서 보자.');
-    $('sealBtn').textContent='▣ 봉인 복구 · 질서 되돌리기';busy=false}
-  async function seal(){if(busy)return;busy=true;
-    if(!released){await say('등을 보이는 건가. …실망이군.');await sleep(900)}
-    else{await say('봉인해도 사라지진 않아. …기억해 둬.');await sleep(800)}
-    restore();busy=false}
-  function restore(){sayTok++;document.body.classList.remove('ignis','drain-on');EMBM.set('idle');BGM.setTrack('main');
+    await sleep(1100);IGM.say(L(T.feed));IGM.say(L(T.grant));
+    busy=false}
+  async function seal(){if(busy||!released)return;busy=true;IGM.hush();const S=T.sealLines;
+    const fx=$('sealFx'),who=fx.querySelector('.sf-who'),tx=fx.querySelector('.sf-log p'),bar=fx.querySelector('.sf-bar i'),pc=fx.querySelector('.sf-bar em');
+    let ltok=0;
+    const log=async(name,cls,t,gap)=>{const my=++ltok;who.textContent=L(name);who.className='sf-who '+cls;tx.className=cls;tx.textContent='';for(const ch of L(t)){if(my!==ltok)return;tx.textContent+=ch;await sleep('.…,。、'.includes(ch)?150:cls==='ig'?58:32)}await sleep(gap||700)};
+    const prog=async(a,b,ms)=>{const t0=performance.now();await new Promise(res=>{(function f(){const k=Math.min(1,(performance.now()-t0)/ms),v=a+(b-a)*k;bar.style.width=v+'%';pc.textContent=Math.round(v)+'%';k<1?requestAnimationFrame(f):res()})()})};
+    fx.className='on';bar.style.width='0%';pc.textContent='0%';
+    await log('IGNIS CROW','ig',S.ig1,600);
+    fx.classList.add('ring');BGM.sfx('zl');
+    await log('NOVA HQ','hq',S.hq,400);
+    for(let i=1;i<=4;i++){fx.classList.add('c'+i);BGM.sfx('stamp');await sleep(230)}
+    await log(S.zlWho,'zl',S.zl1,200);
+    await prog(0,64,1300);
+    fx.classList.add('resist');BGM.sfx('deny');
+    await Promise.all([prog(64,31,700),log('IGNIS CROW','ig',S.resist,500)]);
+    fx.classList.remove('resist');
+    await log(S.zlWho,'zl',S.zl2,100);
+    await prog(31,100,1100);
+    fx.classList.add('collapse');BGM.sfx('absorb');
+    await log('IGNIS CROW','ig',S.fin,900);
+    fx.classList.add('flash');BGM.sfx('seal');
+    await sleep(260);restore();
+    fx.classList.add('stamp');
+    await sleep(1500);fx.classList.add('out');await sleep(800);fx.className='';
+    toast(S.done);busy=false}
+  function restore(silent){IGM.off();sayTok++;document.body.classList.remove('ignis','drain-on');EMBM.set('idle');BGM.setTrack('main');
     box.classList.remove('dark','spent','teal');box.style.removeProperty('--dark');const d=box.querySelector('.drain');if(d)d.remove();
-    inner.innerHTML=SEALED;bindSealed();n=MSG.length;energy=0;used={};released=false;
-    $('alog').textContent='> 파일이 다시 봉인되었습니다.\n> (제로라인 회선은 아직 열려 있다…)';}
-  $('ignChip').onclick=()=>{if(busy)return;document.getElementById('classified').scrollIntoView({behavior:'smooth'});setTimeout(()=>{if(!busy)seal()},500)};
-  bindSealed();
-  return{restore,get energy(){return energy}};
+    const wasOpen=!!$('ignImg');inner.innerHTML=T.sealed();bindSealed();energy=0;
+    if(silent){n=wasOpen?T.msg.length:n;released=false;return}
+    n=T.msg.length;released=false;$('alog').textContent=L(T.after);}
+  $('ignChip').onclick=()=>{if(!busy)seal()};
+  inner.innerHTML=T.sealed();bindSealed();
+  return{restore,relang(){if(busy)return false;const open=!!$('ignImg');if(open||released)restore(true);else{const log=$('alog').textContent;inner.innerHTML=T.sealed();bindSealed();if(n)$('alog').textContent=L(T.msg[Math.min(n,T.msg.length)-1])}return true},get busy(){return busy},get energy(){return energy},portrait(t){if($('ignSay')&&!busy)say(t)}};
+})();
+
+/* ---------- IGNIS takeover mode : destruction + interaction lines ---------- */
+const IGM=(()=>{
+  const B=document.body,isOn=()=>B.classList.contains('ignis');
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const pick=a=>a[Math.random()*a.length|0];
+  const V=$('ivoice'),VP=V.querySelector('p');let q=[],playing=false,tok=0;
+  function say(t,urgent){t=L(t);if(!t)return;if(urgent){q=[t];tok++;playing=false}else{if(q.includes(t)||q.length>2)return;q.push(t)}if(!playing)run()}
+  async function run(){playing=true;const my=tok;while(q.length){const t=q.shift();V.classList.add('on');VP.textContent='';VP.classList.add('typing');
+      for(const ch of t){if(my!==tok)return;VP.textContent+=ch;await sleep('.…,。、'.includes(ch)?170:55)}VP.classList.remove('typing');
+      await sleep(2200+t.length*45);if(my!==tok)return}
+    V.classList.remove('on');playing=false}
+  V.onclick=()=>{q=[];tok++;playing=false;V.classList.remove('on')};
+  const HERO={
+    tg:[t3('신체 강화. 몸으로 막겠다고? …좋은 각오다. 정면은 언제나 환영이지.','身体強化。体で止めるつもりか？…いい覚悟だ。正面からなら、いつでも歓迎だ。','Physical enhancement. You’d stop me with your body? …Good resolve. I always welcome a head-on fight.'),t3('타이탄. 그 주먹, 본부가 시키는 곳에만 휘두르겠지.','タイタン。その拳、本部が命じた場所にしか振るわないんだろう。','Titan. You only swing those fists where HQ tells you to, don’t you.')],
+    sr:[t3('은신. 숨어서 등을 노리는 건… 내 취향이 아니군.','隠密。隠れて背中を狙うのは…俺の趣味じゃないな。','Stealth. Hiding to stab me in the back… not my taste.'),t3('보이지 않아도 알 수 있다. 빛이 휘는 자리는 티가 나거든.','見えなくてもわかる。光が曲がる場所は目立つからな。','I don’t need to see you. Where light bends, it shows.')],
+    hy:[t3('충격파. 두드리는 소리가 크군. 아직 어리다.','衝撃波。叩く音が大きいな。まだ若い。','Shockwave. Loud knocking. Still young.'),t3('브리처. 뚫는 건 잘하겠지. 나는 벽이 아니다.','ブリーチャー。貫くのは得意だろう。俺は壁じゃない。','Breacher. You’re good at breaking through. I’m not a wall.')],
+    sa:[t3('빛. 네 빛이 밝을수록… 내 그림자는 짙어진다.','光。お前の光が眩しいほど…俺の影は濃くなる。','Light. The brighter you shine… the darker my shadow.'),t3('루미나. 날개까지 펼친 빛이라. …얼마나 맛있을까.','ルミナ。翼まで広げた光か。…さぞ美味いだろうな。','Lumina. Light spread wide as wings. …How delicious it must be.')],
+    sy:[t3('치유. 다 고칠 수 있다고? …그날 실험실에서 버려진 자들은 못 고쳤지.','治癒。何でも治せる？…あの日、実験室で見捨てられた者たちは治せなかったな。','Healing. You can fix anything? …You couldn’t fix the ones abandoned in that lab.'),t3('메디카. 그 손은 좋은 손이다. 쓰이는 곳이 문제지.','メディカ。いい手だ。問題は使われる場所だ。','Medica. Those are good hands. The problem is where they’re used.')],
+    yr:[t3('물. 불을 끄는 손이군. 나는 꺼지지 않는다.','水。火を消す手か。俺は消えない。','Water. The hand that puts out fires. I don’t go out.'),t3('아쿠아. 시민을 감싸는 물방울이라… 그 안은 따뜻한가.','アクア。市民を包む水の球か…その中は温かいか。','Aqua. Spheres of water around the citizens… is it warm in there?')],
+    hr:[t3('번개. 빠르군. 하지만 결국 흘러드는 곳은 정해져 있어.','雷。速いな。だが流れ着く先は決まっている。','Lightning. Fast. But where it flows is already decided.'),t3('볼트. 생체 반응을 읽는다고? 그럼 내가 얼마나 차분한지도 알겠군.','ボルト。生体反応を読めるんだろう？なら俺がどれほど落ち着いているかもわかるな。','Volt. You read life signs? Then you can tell how calm I am.')],
+    cr:[t3('복사. 나를 베껴 봐. …감당할 수 있다면.','コピー。俺を写してみろ。…扱えるならな。','Copy. Go on, mirror me. …If you can handle it.'),t3('미러. 남의 힘을 빌려 쓰는 건 나와 같군. 다만 넌 돌려줘야 하지.','ミラー。他人の力を借りるのは俺と同じだな。ただ、お前は返さなきゃならない。','Mirror. Borrowing others’ power — just like me. Except you have to give it back.')],
+    sa2:[t3('교란. 문을 열어준 건 너였지. 고맙다고 해 둘까.','撹乱。扉を開けたのはお前だったな。礼を言っておこうか。','Jamming. You’re the one who opened the door. Shall I thank you?'),t3('노이즈. 지운 흔적… 본부보다 네가 더 깔끔하더군.','ノイズ。痕跡の消し方…本部よりお前の方が手際がいい。','Noise. You erased those tracks more cleanly than HQ ever did.')]
+  };
+  const SEC={
+    world:t3('능력이 생긴 건 축복도 저주도 아니다. 그걸 누가 쥐느냐의 문제지.','能力が生まれたことは祝福でも呪いでもない。誰がそれを握るかの問題だ。','Powers aren’t a blessing or a curse. It’s about who holds them.'),
+    hq:t3('노바 히어로 본부. 지하에 뭐가 잠들어 있는지… 저들은 말하지 않겠지.','ノヴァ・ヒーロー本部。地下に何が眠っているか…奴らは言わないだろうな。','NOVA Hero HQ. What sleeps beneath it… they’ll never tell you.'),
+    clans:t3('신념이라. 명령 한 줄 앞에선 다 같은 색이다.','信念か。命令一行の前では、みな同じ色だ。','Creeds. Before a single line of orders, they’re all the same color.'),
+    grades:t3('S든 D든, 흡수하면 똑같은 에너지다.','SでもDでも、吸収すれば同じエネルギーだ。','S or D — absorbed, it’s all the same energy.'),
+    roster:t3('좋은 능력들이군. …연료로는.','いい能力ばかりだな。…燃料としては。','Fine abilities, all of them. …As fuel.'),
+    test:t3('어느 클랜을 고르든 상관없다. 결국 같은 우리 안이니까.','どのクランを選ぼうが関係ない。結局は同じ檻の中だ。','Pick any clan you like. It’s all the same cage.'),
+    archive:t3('기록은 지울 수 있어도, 사람은 지워지지 않는다.','記録は消せても、人は消えない。','Records can be erased. People can’t.'),
+    top:t3('그건 태양이 아니다. 삼킨 빛이 남긴 자국이지.','あれは太陽じゃない。呑み込んだ光が残した痕だ。','That isn’t a sun. It’s the scar left by the light I swallowed.')
+  };
+  const GRADE={S:t3('초월급. 하늘에 닿았다고 착각하는 자리다.','超越級。天に届いたと勘違いする席だ。','Transcendent. The seat where people mistake themselves for gods.'),
+    A:t3('특급. 혼자 싸울 수 있다면서… 왜 명령을 기다리지?','特級。一人で戦えると言いながら…なぜ命令を待つ？','Elite. You say you can fight alone… so why wait for orders?'),
+    B:t3('상급. 분야의 핵심이라. 대체 가능한 부품이라는 뜻이다.','上級。分野の中核か。替えのきく部品という意味だ。','Senior. "Core of the field." Meaning a replaceable part.'),
+    C:t3('정규급. 순찰하는 동안, 지하에선 무슨 일이 벌어지고 있을까.','正規級。パトロールしている間に、地下で何が起きているだろうな。','Regular. While you’re on patrol, what do you think is happening underground?'),
+    D:t3('수습급. 혼자 움직이지 말라고 배웠겠지. …나도 그렇게 배웠다.','見習い級。一人で動くなと教わっただろう。…俺もそう教わった。','Trainee. They taught you never to act alone. …They taught me the same.')};
+  const CLAN={r:t3('레드 베인. 위협을 먼저 지운다… 나와 가장 닮은 자들이군.','レッドベイン。脅威を先に消す…俺に一番似た連中だ。','Red Vein. Erase the threat first… the ones most like me.'),
+    a:t3('아스트라 가드. 한 사람이라도 더 구한다… 실험실의 우리는 그 한 사람이 아니었나 보지.','アストラガード。一人でも多く救う…実験室の俺たちは、その「一人」じゃなかったらしい。','Astra Guard. Save one more… apparently we in that lab weren’t the "one."'),
+    z:t3('제로라인. 정확한 판단이라. 문을 열어준 것도 너희였지.','ゼロライン。正確な判断か。扉を開けたのもお前たちだったな。','Zeroline. Accurate judgment. You’re the ones who opened the door, too.')};
+  const RESULT={r:t3('레드 베인이라. 위협을 먼저 지우는 눈… 나쁘지 않다. 언젠가 그 눈이 본부를 향하길.','レッドベインか。脅威を先に消す目…悪くない。いつかその目が本部に向くといい。','Red Vein, then. Eyes that erase threats first… not bad. I hope someday they turn toward HQ.'),
+    a:t3('아스트라 가드. 지키고 싶은 게 있다면, 먼저 누가 버려졌는지 물어봐라.','アストラガード。守りたいものがあるなら、まず誰が見捨てられたのか問え。','Astra Guard. If there’s something you want to protect, first ask who was abandoned.'),
+    z:t3('제로라인. 판단하는 쪽이군. 그럼 판단해 봐. 누가 진짜 재난인지.','ゼロライン。判断する側か。なら判断してみろ。本当の災害は誰なのか。','Zeroline. One who judges. Then judge — who is the real catastrophe?')};
+  const MISC={
+    mod:t3('장비, 정보, 훈련, 임무 지원… 목록에서 하나가 빠졌군. 「실험」.','装備、情報、訓練、任務支援…リストから一つ抜けているな。「実験」だ。','Equipment, intel, training, mission support… one item is missing from that list. "Experiments."'),
+    gal:t3('기록은 지워도, 흔적은 남는다.','記録は消しても、痕跡は残る。','Erase the records, and the traces still remain.'),
+    menu:[t3('어디로 가든, 같은 건물 안이다.','どこへ行こうと、同じ建物の中だ。','Wherever you go, it’s the same building.'),t3('길을 찾는 건가. …출구는 없어.','道を探しているのか。…出口はない。','Looking for a way out? …There isn’t one.')],
+    bgmOff:t3('음악을 끄면… 조용해지는군. 나쁘지 않다.','音楽を止めると…静かだな。悪くない。','With the music off… it’s quiet. Not bad.'),
+    bgmOn:t3('소리를 켰군. 내 발소리도 잘 들리겠어.','音を点けたか。俺の足音もよく聞こえるだろう。','Sound on. You’ll hear my footsteps clearly now.'),
+    play:t3('그쪽으로 가는 건가. …거기서 보자, 「예외」.','そっちへ行くのか。…向こうで会おう、「例外」。','Heading there? …I’ll see you on the other side, "Exception."'),
+    idle:[t3('…왜 멈췄지, 「예외」.','…なぜ止まった、「例外」。','…Why did you stop, "Exception"?'),t3('조용하군. 폭풍 전은 원래 이렇다.','静かだな。嵐の前は元々こうだ。','Quiet. It always is before the storm.'),t3('생각할 시간은 충분히 줬다.','考える時間は十分にやった。','I’ve given you plenty of time to think.')],
+    back:t3('돌아왔군. 도망친 줄 알았다.','戻ったか。逃げたと思ったぞ。','You came back. I thought you’d run.'),
+    portrait:[t3('보는 건 자유다. …보이는 게 전부는 아니지만.','見るのは自由だ。…見えるものが全てではないがな。','Look all you like. …What you see isn’t everything.'),t3('등 뒤의 이건 장식이 아니다. 삼킨 힘이 쌓인 거지.','背後のこれは飾りじゃない。呑み込んだ力が積もったものだ。','This at my back isn’t decoration. It’s every power I’ve swallowed.'),t3('오래 들여다보면, 너도 빨려 들어온다.','長く覗き込めば、お前も吸い込まれる。','Stare too long, and you’ll be drawn in too.'),t3('왼쪽 얼굴이 궁금한가. …다들 그렇더군.','左の顔が気になるか。…皆そうだ。','Curious about the left side of my face? …Everyone is.')],
+    title:t3('통제의 시대는 끝났다.','支配の時代は終わった。','The age of control is over.')
+  };
+  const SWAP=[['.hero .kicker','THE AGE OF NO CONTROL'],['.hero .sub',t3('통제의 시대는 끝났다','支配の時代は終わった','The age of control is over')],['.final h2',t3('검은 태양 아래,<br>히어로는 필요 없다','黒い太陽の下、<br>ヒーローは要らない','Beneath the Black Sun,<br>there is no need for heroes')],['.final p',t3('노바 히어로 본부는 이미 무너지고 있다.','ノヴァ・ヒーロー本部は、すでに崩れ始めている。','NOVA Hero HQ is already crumbling.')],['#logoT','NOVA ▒▒']];
+  const ORIG=new Map();let seen=new Set(),io=null,secIO=null,timers=[],idleT=0;
+  const SKIP=e=>e.closest('.ign,.cls-img,#lb,#md');
+  function kill(ph){if(ph.classList.contains('dead'))return;ph.classList.add('dead','snap');const c=ph.closest('.card');if(c)c.classList.add('dead');setTimeout(()=>ph.classList.remove('snap'),700)}
+  function on(){
+    SWAP.forEach(([s,t])=>{const e=document.querySelector(s);if(!e)return;if(!ORIG.has(s))ORIG.set(s,e.innerHTML);e.innerHTML=L(t)});
+    io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){io.unobserve(en.target);setTimeout(()=>kill(en.target),120+Math.random()*500)}}),{threshold:.25});
+    document.querySelectorAll('.ph').forEach(ph=>{if(!SKIP(ph))io.observe(ph)});
+    secIO=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&isOn()){const id=en.target.id||'top';if(!seen.has(id)&&SEC[id]){seen.add(id);say(SEC[id])}}}),{threshold:.35});
+    setTimeout(()=>{if(isOn()&&secIO)['world','hq','clans','grades','roster','test','archive'].forEach(id=>secIO.observe($(id)))},2600);
+    document.querySelectorAll('.sh h2').forEach((h,i)=>setTimeout(()=>scramble(h,900),i*120));
+    timers.push(setInterval(()=>{const hs=[...document.querySelectorAll('.sh h2')].filter(vis);if(hs.length)scramble(pick(hs),520)},4200));
+    timers.push(setInterval(()=>{const ps=[...document.querySelectorAll('.ph.dead')].filter(vis);if(!ps.length)return;const p=pick(ps);p.classList.add('gl');setTimeout(()=>p.classList.remove('gl'),360)},1300));
+    timers.push(setInterval(()=>{if(Date.now()-idleT>32000&&!document.hidden){idleT=Date.now();say(pick(MISC.idle))}},4000));
+    idleT=Date.now();
+  }
+  function off(){
+    ORIG.forEach((h,s)=>{const e=document.querySelector(s);if(e)e.innerHTML=h});ORIG.clear();
+    if(io)io.disconnect();if(secIO)secIO.disconnect();timers.forEach(clearInterval);timers=[];seen=new Set();
+    document.querySelectorAll('.dead,.gl,.snap').forEach(e=>e.classList.remove('dead','gl','snap'));
+    document.querySelectorAll('.sh h2[data-o]').forEach(h=>{h.innerHTML=h.dataset.o;h.removeAttribute('data-o')});
+    q=[];tok++;playing=false;V.classList.remove('on')}
+  const vis=e=>{const r=e.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};
+  const GLY='█▓▒░#%&@$!?¥§';
+  function scramble(h,dur){if(!h.dataset.o)h.dataset.o=h.innerHTML;const o=h.dataset.o,txt=h.textContent;const t0=performance.now();
+    (function f(){const k=(performance.now()-t0)/dur;if(k>=1||!isOn()){h.innerHTML=o;return}
+      h.textContent=[...txt].map(ch=>ch===' '||Math.random()>.45*(1-k)+.12?ch:GLY[Math.random()*GLY.length|0]).join('');requestAnimationFrame(f)})()}
+  document.addEventListener('pointerdown',()=>{idleT=Date.now()},true);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&isOn())say(MISC.back)});
+  document.addEventListener('click',e=>{const t=e.target;if(!t.closest)return;
+    if(t.closest('#ignImg')){IGN.portrait(pick(MISC.portrait));return}
+    if(!isOn())return;
+    let m;
+    if((m=t.closest('.gr')))say(GRADE[m.querySelector('.L').textContent.trim()],1);
+    else if((m=t.closest('#hqClans button')))say(CLAN[m.dataset.k],1);
+    else if(t.closest('.mod'))say(MISC.mod,1);
+    else if(t.closest('#gal button'))say(MISC.gal,1);
+    else if(t.closest('#mOpen'))say(pick(MISC.menu),1);
+    else if(t.closest('#bgm'))setTimeout(()=>say(BGM.on?MISC.bgmOn:MISC.bgmOff,1),50);
+    else if(t.closest('a.cta[href*="zeta-ai"]'))say(MISC.play,1);
+    else if(t.closest('.hero .sun'))say(SEC.top,1);
+    else if(t.closest('.hero h1'))say(MISC.title,1);
+  },true);
+  return{on,off,say,hush(){q=[];tok++;playing=false;V.classList.remove('on')},hero(id){if(isOn()&&HERO[id])say(pick(HERO[id]),1)},result(k){if(isOn())setTimeout(()=>say(RESULT[k],1),600)},get active(){return isOn()}};
 })();
 
 /* ---------- aptitude test ---------- */
 const QS=[
-  ['도심 한복판, 빌런이 시민을 인질로 잡았다. 당신의 첫 행동은?',[['인질이 다치기 전에, 빌런부터 즉시 무력화한다','r'],['인질의 안전부터 확보하고 시간을 번다','a'],['빌런의 능력과 주변 지형을 먼저 분석한다','z']]],
-  ['아직 범죄를 저지르지 않은 위험 능력자가 발견되었다.',[['위협은 자라기 전에 막아야 한다','r'],['그 사람도 지켜야 할 시민이다','a'],['감시를 붙이고, 데이터를 모은 뒤 판단한다','z']]],
-  ['작전 중, 본부의 명령과 당신의 판단이 다르다.',[['명령은 따르되, 가장 빠르게 적을 제압할 방법을 찾는다','r'],['명령은 따르되, 한 사람이라도 더 살릴 방법을 찾는다','a'],['명령은 따르되, 성공 확률이 가장 높은 방법을 계산한다','z']]],
-  ['히어로에게 가장 필요한 것은?',[['적을 압도하는 힘','r'],['끝까지 지키려는 마음','a'],['흔들리지 않는 판단력','z']]],
-  ['동료의 실수로 작전이 틀어졌다.',[['다음엔 없다고 단호하게 말한다','r'],['다친 데는 없는지 먼저 살핀다','a'],['원인을 분석해 같은 일이 없도록 정리한다','z']]],
-  ['당신이 되고 싶은 히어로는?',[['빌런이 이름만 들어도 떠는 히어로','r'],['시민이 이름만 들어도 안심하는 히어로','a'],['아무도 모르게 사건을 끝내는 히어로','z']]]
+  [t3('도심 한복판, 빌런이 시민을 인질로 잡았다. 당신의 첫 행동은?','都心のど真ん中、ヴィランが市民を人質に取った。あなたの最初の行動は？','Downtown, a villain has taken a civilian hostage. Your first move?'),[[t3('인질이 다치기 전에, 빌런부터 즉시 무력화한다','人質が傷つく前に、まずヴィランを即座に無力化する','Neutralize the villain at once, before the hostage gets hurt'),'r'],[t3('인질의 안전부터 확보하고 시간을 번다','人質の安全を最優先に確保し、時間を稼ぐ','Secure the hostage’s safety first and buy time'),'a'],[t3('빌런의 능력과 주변 지형을 먼저 분석한다','ヴィランの能力と周囲の地形をまず分析する','First analyze the villain’s ability and the terrain'),'z']]],
+  [t3('아직 범죄를 저지르지 않은 위험 능력자가 발견되었다.','まだ罪を犯していない危険な能力者が見つかった。','A dangerous ability user who hasn’t committed a crime yet has been found.'),[[t3('위협은 자라기 전에 막아야 한다','脅威は育つ前に止めるべきだ','Threats must be stopped before they grow'),'r'],[t3('그 사람도 지켜야 할 시민이다','その人も守るべき市民だ','They’re a citizen we should protect, too'),'a'],[t3('감시를 붙이고, 데이터를 모은 뒤 판단한다','監視をつけ、データを集めてから判断する','Put them under watch, gather data, then decide'),'z']]],
+  [t3('작전 중, 본부의 명령과 당신의 판단이 다르다.','作戦中、本部の命令とあなたの判断が食い違う。','Mid-operation, HQ’s orders and your judgment disagree.'),[[t3('명령은 따르되, 가장 빠르게 적을 제압할 방법을 찾는다','命令には従いつつ、最速で敵を制圧する方法を探す','Follow orders — but find the fastest way to take the enemy down'),'r'],[t3('명령은 따르되, 한 사람이라도 더 살릴 방법을 찾는다','命令には従いつつ、一人でも多く救う方法を探す','Follow orders — but find a way to save even one more person'),'a'],[t3('명령은 따르되, 성공 확률이 가장 높은 방법을 계산한다','命令には従いつつ、成功率が最も高い方法を計算する','Follow orders — but calculate the plan with the best odds'),'z']]],
+  [t3('히어로에게 가장 필요한 것은?','ヒーローに最も必要なものは？','What does a hero need most?'),[[t3('적을 압도하는 힘','敵を圧倒する力','Power that overwhelms the enemy'),'r'],[t3('끝까지 지키려는 마음','最後まで守ろうとする心','A heart that protects to the end'),'a'],[t3('흔들리지 않는 판단력','揺るがない判断力','Unshakable judgment'),'z']]],
+  [t3('동료의 실수로 작전이 틀어졌다.','仲間のミスで作戦が狂った。','A teammate’s mistake derails the operation.'),[[t3('다음엔 없다고 단호하게 말한다','次はないと、きっぱり言う','Tell them firmly: there won’t be a next time'),'r'],[t3('다친 데는 없는지 먼저 살핀다','まず怪我はないか確かめる','First check whether they’re hurt'),'a'],[t3('원인을 분석해 같은 일이 없도록 정리한다','原因を分析して、二度と起きないよう整理する','Analyze the cause so it never happens again'),'z']]],
+  [t3('당신이 되고 싶은 히어로는?','あなたがなりたいヒーローは？','What kind of hero do you want to be?'),[[t3('빌런이 이름만 들어도 떠는 히어로','名前を聞くだけでヴィランが震えるヒーロー','One whose name makes villains tremble'),'r'],[t3('시민이 이름만 들어도 안심하는 히어로','名前を聞くだけで市民が安心するヒーロー','One whose name makes citizens feel safe'),'a'],[t3('아무도 모르게 사건을 끝내는 히어로','誰にも知られず事件を終わらせるヒーロー','One who ends cases without anyone knowing'),'z']]]
 ];
-const TYPES=['신체 강화','원소 (불·물·번개 등)','빛 / 어둠','정신 · 감각','치유 · 보조','은신 · 기동','전자 · 기계','측정 불가 (예외)'];
+const TYPES=[t3('신체 강화','身体強化','Physical enhancement'),t3('원소 (불·물·번개 등)','元素(炎・水・雷など)','Elemental (fire, water, lightning…)'),t3('빛 / 어둠','光 / 闇','Light / Darkness'),t3('정신 · 감각','精神・感覚','Mind & senses'),t3('치유 · 보조','治癒・補助','Healing & support'),t3('은신 · 기동','隠密・機動','Stealth & mobility'),t3('전자 · 기계','電子・機械','Electronic & mechanical'),t3('측정 불가 (예외)','測定不能(例外)','Unmeasurable (Exception)')];
 let ans=[],qi=0,result=null;
-$('fType').innerHTML=TYPES.map(t=>`<option>${t}</option>`).join('');
-function showQ(){const [t,o]=QS[qi];$('tNum').textContent=`Q.${String(qi+1).padStart(2,'0')} / ${String(QS.length).padStart(2,'0')}`;$('tBar').style.width=(qi/QS.length*100)+'%';$('tText').textContent=t;
+function buildTypes(){const i=$('fType').selectedIndex;$('fType').innerHTML=TYPES.map((t,j)=>`<option value="${j}">${L(t)}</option>`).join('');if(i>=0)$('fType').selectedIndex=i}
+function showQ(){const [t,o]=QS[qi];$('tNum').textContent=`Q.${String(qi+1).padStart(2,'0')} / ${String(QS.length).padStart(2,'0')}`;$('tBar').style.width=(qi/QS.length*100)+'%';$('tText').textContent=L(t);
   const opts=o.map((x,i)=>({x,i})).sort(()=>Math.random()-.5);
-  $('tOpts').innerHTML=opts.map(({x},j)=>`<button data-k="${x[1]}"><i>${'ABC'[j]}</i><span>${x[0]}</span></button>`).join('')}
+  $('tOpts').innerHTML=opts.map(({x},j)=>`<button data-k="${x[1]}"><i>${'ABC'[j]}</i><span>${L(x[0])}</span></button>`).join('')}
 $('tGo').onclick=()=>{ans=[];qi=0;$('tStart').style.display='none';$('tRes').classList.remove('on');$('tQ').style.display='block';showQ();BGM.sfx('ok')};
 $('tOpts').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.classList.contains('pick'))return;b.classList.add('pick');ans.push(b.dataset.k);BGM.sfx('tick');
   setTimeout(()=>{qi++;if(qi<QS.length)showQ();else finishTest()},260)});
-function finishTest(){$('tBar').style.width='100%';const cnt={r:0,a:0,z:0};ans.forEach(k=>cnt[k]++);
-  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||(ans.lastIndexOf(b)-ans.lastIndexOf(a)));const k=top[0];result={k,cnt};const c=CLANS[k];
-  const mates=HEROES.filter(h=>h.clan===k);const mate=mates[Math.floor(Math.random()*mates.length)];
+function renderResult(){if(!result)return;const {k,cnt,mate}=result,c=CLANS[k];
   $('resClan').style.setProperty('--c',c.c);
-  $('resClan').innerHTML=`<small>판정 결과 · RECOMMENDED CLAN</small><h4>${c.emoji} ${c.name}</h4><p>“${c.slogan}”<br>${c.desc}</p>
-    <p style="color:var(--mute);font-size:13px;margin-top:8px">같은 클랜의 선배 : <b style="color:${c.c}">${mate.name} (${mate.heroK} · ${mate.grade}급)</b></p>
+  $('resClan').innerHTML=`<small>${L(t3('판정 결과','判定結果','RESULT'))} · RECOMMENDED CLAN</small><h4>${c.emoji} ${L(c.name)}</h4><p>“${L(c.slogan)}”<br>${L(c.desc)}</p>
+    <p style="color:var(--mute);font-size:13px;margin-top:8px">${L(t3('같은 클랜의 선배','同じクランの先輩','A senior in your clan'))} : <b style="color:${c.c}">${L(mate.name)} (${L(mate.heroK)} · ${RK(mate.grade)})</b></p>
     <div class="mix">${['r','a','z'].map(x=>`<i style="flex:${cnt[x]||.15};background:${CLANS[x].c}"></i>`).join('')}</div>
-    <p style="color:var(--mute);font-size:12px;margin-top:6px">${['r','a','z'].map(x=>`${CLANS[x].name} ${Math.round(cnt[x]/QS.length*100)}%`).join(' · ')}</p>`;
-  $('tQ').style.display='none';$('tRes').classList.add('on');BGM.sfx('result');drawLic();setTimeout(()=>$('tRes').scrollIntoView({behavior:'smooth',block:'start'}),80)}
+    <p style="color:var(--mute);font-size:12px;margin-top:6px">${['r','a','z'].map(x=>`${L(CLANS[x].name)} ${Math.round(cnt[x]/QS.length*100)}%`).join(' · ')}</p>`;
+  drawLic()}
+function finishTest(){$('tBar').style.width='100%';const cnt={r:0,a:0,z:0};ans.forEach(k=>cnt[k]++);
+  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||(ans.lastIndexOf(b)-ans.lastIndexOf(a)));const k=top[0];
+  const mates=HEROES.filter(h=>h.clan===k);result={k,cnt,mate:mates[Math.floor(Math.random()*mates.length)]};
+  renderResult();
+  $('tQ').style.display='none';$('tRes').classList.add('on');if(typeof IGM!=='undefined')IGM.result(k);BGM.sfx('result');setTimeout(()=>$('tRes').scrollIntoView({behavior:'smooth',block:'start'}),80)}
 $('tAgain').onclick=()=>{$('tRes').classList.remove('on');$('tStart').style.display='block';$('testBox').scrollIntoView({behavior:'smooth'})};
 ['fName','fHero','fType'].forEach(id=>$(id).addEventListener('input',()=>drawLic()));
-
+const DF='"Black Han Sans","Dela Gothic One","Noto Sans JP","Pretendard Variable",sans-serif',BF='"Pretendard Variable","Noto Sans JP",sans-serif';
 function drawLic(){if(!result)return;const cv=$('lic'),g=cv.getContext('2d'),W=1000,H=620,c=CLANS[result.k];
-  const name=($('fName').value.trim()||'Guest'),hero=($('fHero').value.trim()||'UNREGISTERED').toUpperCase(),type=$('fType').value;
+  const name=($('fName').value.trim()||'Guest'),hero=($('fHero').value.trim()||'UNREGISTERED').toUpperCase(),type=L(TYPES[+$('fType').value||0]);
   g.clearRect(0,0,W,H);
-  // body
   const rr=(x,y,w,h,r)=>{g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
   rr(4,4,W-8,H-8,28);const bg=g.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#14131a');bg.addColorStop(1,'#07070a');g.fillStyle=bg;g.fill();
   g.save();rr(4,4,W-8,H-8,28);g.clip();
   const gl=g.createRadialGradient(W*.82,H*.28,10,W*.82,H*.28,420);gl.addColorStop(0,c.c+'55');gl.addColorStop(1,'transparent');g.fillStyle=gl;g.fillRect(0,0,W,H);
   g.strokeStyle='rgba(255,255,255,.035)';g.lineWidth=1;for(let y=0;y<H;y+=6){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
-  // black sun
   const sx=W-170,sy=170;for(let i=0;i<72;i++){const a=i/72*Math.PI*2;g.strokeStyle=`rgba(255,170,70,${i%3?.12:.28})`;g.beginPath();g.moveTo(sx+Math.cos(a)*92,sy+Math.sin(a)*92);g.lineTo(sx+Math.cos(a)*(i%3?130:160),sy+Math.sin(a)*(i%3?130:160));g.stroke()}
   const co=g.createRadialGradient(sx,sy,70,sx,sy,104);co.addColorStop(0,'rgba(255,226,168,1)');co.addColorStop(.25,'rgba(255,170,70,.6)');co.addColorStop(1,'rgba(255,106,42,0)');g.fillStyle=co;g.beginPath();g.arc(sx,sy,104,0,7);g.fill();
   g.fillStyle='#040405';g.beginPath();g.arc(sx,sy,76,0,7);g.fill();
-  // stripe
   g.fillStyle=c.c;g.fillRect(0,0,W,10);g.fillRect(0,H-64,W,64);
   g.restore();
   g.strokeStyle='rgba(255,190,110,.35)';g.lineWidth=2;rr(4,4,W-8,H-8,28);g.stroke();
-  // text
   g.fillStyle='#ffb347';g.font='600 22px "Chakra Petch", sans-serif';g.textBaseline='alphabetic';g.fillText('NOVA HERO HEADQUARTERS',50,70);
-  g.fillStyle='rgba(255,255,255,.45)';g.font='500 16px "Chakra Petch", sans-serif';g.fillText('HERO LICENSE · 히어로 등록증',50,98);
-  // photo box (silhouette)
+  g.fillStyle='rgba(255,255,255,.45)';g.font='500 16px "Chakra Petch", '+BF;g.fillText(L(t3('HERO LICENSE · 히어로 등록증','HERO LICENSE · ヒーロー登録証','HERO LICENSE · OFFICIAL')),50,98);
   const px=50,py=130,pw=200,ph=250;g.fillStyle='#0d0d12';g.fillRect(px,py,pw,ph);g.strokeStyle=c.c;g.lineWidth=2;g.strokeRect(px,py,pw,ph);
   g.fillStyle=c.c+'33';g.beginPath();g.arc(px+pw/2,py+100,48,0,7);g.fill();g.beginPath();g.ellipse(px+pw/2,py+ph+10,90,95,0,Math.PI,0);g.fill();
   g.fillStyle='rgba(255,255,255,.5)';g.font='600 13px "Chakra Petch", sans-serif';g.textAlign='center';g.fillText('PHOTO PENDING',px+pw/2,py+ph-14);g.textAlign='left';
-  // fields
-  const fx=290;const field=(lab,val,y,big)=>{g.fillStyle='rgba(255,255,255,.45)';g.font='500 15px "Chakra Petch", "Pretendard Variable", sans-serif';g.fillText(lab,fx,y);g.fillStyle='#f2f0f5';g.font=(big?'44px ':'26px ')+'"Black Han Sans", "Pretendard Variable", sans-serif';g.fillText(val,fx,y+(big?46:32))};
+  const fx=290;const field=(lab,val,y,bigT)=>{g.fillStyle='rgba(255,255,255,.45)';g.font='500 15px "Chakra Petch", '+BF;g.fillText(lab,fx,y);g.fillStyle='#f2f0f5';g.font=(bigT?'44px ':'26px ')+DF;g.fillText(val,fx,y+(bigT?46:32))};
   g.fillStyle=c.c;g.font='700 30px "Chakra Petch", sans-serif';g.fillText(hero,fx,160);
-  field('NAME · 이름',name,200,true);
-  field('CLAN · 소속',c.name+'  ('+c.side+')',290);
-  field('ABILITY · 능력 계열',type,366);
-  // grade box
-  g.strokeStyle='#ffb347';g.lineWidth=2;g.strokeRect(50,410,200,120);g.fillStyle='rgba(255,255,255,.45)';g.font='500 14px "Chakra Petch", sans-serif';g.fillText('GRADE · 등급',64,436);
-  g.fillStyle='#ffb347';g.font='700 46px "Chakra Petch", sans-serif';g.fillText('D?',64,492);g.font='500 13px "Pretendard Variable", sans-serif';g.fillStyle='rgba(255,255,255,.6)';g.fillText('정밀 검사 중 · 예외 각성자',64,516);
-  g.fillStyle='rgba(255,255,255,.55)';g.font='italic 20px "Pretendard Variable", sans-serif';wrap(g,'“'+c.slogan+'”',fx,452,600,28);
-  // bottom bar
+  field(L(t3('NAME · 이름','NAME · 名前','NAME')),name,200,true);
+  field(L(t3('CLAN · 소속','CLAN · 所属','CLAN')),L(c.name)+'  ('+L(c.side)+')',290);
+  field(L(t3('ABILITY · 능력 계열','ABILITY · 能力系統','ABILITY TYPE')),type,366);
+  g.strokeStyle='#ffb347';g.lineWidth=2;g.strokeRect(50,410,200,120);g.fillStyle='rgba(255,255,255,.45)';g.font='500 14px "Chakra Petch", '+BF;g.fillText(L(t3('GRADE · 등급','GRADE · 等級','GRADE')),64,436);
+  g.fillStyle='#ffb347';g.font='700 46px "Chakra Petch", sans-serif';g.fillText('D?',64,492);g.font='500 13px '+BF;g.fillStyle='rgba(255,255,255,.6)';g.fillText(L(t3('정밀 검사 중 · 예외 각성자','精密検査中 · 例外覚醒者','Under exam · Exception')),64,516);
+  g.fillStyle='rgba(255,255,255,.55)';g.font='italic 20px '+BF;wrap(g,'“'+L(c.slogan)+'”',fx,452,LANG==='en'?470:500,28);
   g.fillStyle='#08080b';g.font='700 18px "Chakra Petch", sans-serif';const idn='NV-'+(name.split('').reduce((a,ch)=>a*31+ch.charCodeAt(0)>>>0,7)%900000+100000);
   g.fillText('ID '+idn+'  ·  '+c.en+'  ·  ISSUED BY NOVA HQ',50,H-26);g.textAlign='right';g.fillText('© ⭐_MEI · NOVA',W-40,H-26);g.textAlign='left';
-  // stamp
   g.save();g.translate(W-170,H-150);g.rotate(-.25);g.strokeStyle='rgba(226,52,63,.85)';g.lineWidth=4;g.beginPath();g.arc(0,0,62,0,7);g.stroke();g.lineWidth=1.5;g.beginPath();g.arc(0,0,54,0,7);g.stroke();
-  g.fillStyle='rgba(226,52,63,.9)';g.textAlign='center';g.font='700 14px "Chakra Petch", sans-serif';g.fillText('NOVA HQ',0,-20);g.font='30px "Black Han Sans", sans-serif';g.fillText('임시등록',0,14);g.font='700 11px "Chakra Petch", sans-serif';g.fillText('PROVISIONAL',0,34);g.restore();g.textAlign='left'}
-function wrap(g,t,x,y,w,lh){let line='';for(const ch of t){if(g.measureText(line+ch).width>w){g.fillText(line,x,y);line=ch;y+=lh}else line+=ch}g.fillText(line,x,y)}
-$('licSave').onclick=()=>{const cv=$('lic');try{cv.toBlob(b=>{if(!b){toast('저장에 실패했어요');return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='NOVA_히어로등록증.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);toast('등록증을 저장했어요 (안 되면 이미지를 길게 눌러 저장)')},'image/png')}catch(e){toast('이미지를 길게 눌러 저장해 주세요')}};
+  g.fillStyle='rgba(226,52,63,.9)';g.textAlign='center';g.font='700 14px "Chakra Petch", sans-serif';g.fillText('NOVA HQ',0,-20);g.font=(LANG==='en'?'26px ':'30px ')+DF;g.fillText(L(t3('임시등록','仮登録','TEMP')),0,14);g.font='700 11px "Chakra Petch", sans-serif';g.fillText('PROVISIONAL',0,34);g.restore();g.textAlign='left'}
+function wrap(g,t,x,y,w,lh){if(LANG==='en'){let line='';t.split(' ').forEach(wd=>{const tt=line?line+' '+wd:wd;if(g.measureText(tt).width>w&&line){g.fillText(line,x,y);line=wd;y+=lh}else line=tt});g.fillText(line,x,y);return}
+  let line='';for(const ch of t){if(g.measureText(line+ch).width>w){g.fillText(line,x,y);line=ch;y+=lh}else line+=ch}g.fillText(line,x,y)}
+$('licSave').onclick=()=>{const cv=$('lic');try{cv.toBlob(b=>{if(!b){toast(t3('저장에 실패했어요','保存に失敗しました','Save failed'));return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='NOVA_hero_license.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);toast(t3('등록증을 저장했어요 (안 되면 이미지를 길게 눌러 저장)','登録証を保存しました(できない場合は画像を長押し)','License saved (if not, long-press the image)'))},'image/png')}catch(e){toast(t3('이미지를 길게 눌러 저장해 주세요','画像を長押しして保存してください','Long-press the image to save it'))}};
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{drawLic()});
+
+/* ---------- language switching ---------- */
+function loadJaFonts(){if(document.getElementById('jaFonts'))return;const l=document.createElement('link');l.id='jaFonts';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@400;500;700;900&display=swap';document.head.appendChild(l);
+  if(document.fonts&&document.fonts.ready)l.onload=()=>document.fonts.ready.then(()=>drawLic())}
+function buildAll(){buildHQ();buildClans();buildGrades();buildRoster();buildTypes();renderResult();if($('tQ').style.display==='block')showQ()}
+function setLang(l,first){if(!['ko','ja','en'].includes(l))return;
+  if(!first&&l===LANG)return;
+  if(!first&&IGN.busy){toast(t3('지금은 바꿀 수 없어요','今は変更できません','Can’t switch right now'));return}
+  LANG=l;if(!first)IGN.relang();try{localStorage.setItem('nova-lang',l)}catch(e){}
+  if(l==='ja')loadJaFonts();
+  applyStatic();buildAll();
+  try{document.querySelectorAll('.reveal:not(.in)').forEach(e=>io.observe(e))}catch(e){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'))}
+  setTimeout(refit,60)}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-setlang]');if(!b||b.closest('#gate'))return;setLang(b.dataset.setlang)});
+buildAll();applyStatic();if(LANG==='ja')loadJaFonts();
+
 
 /* ---------- BGM (pre-rendered loop via <audio>: works on iPhone silent mode & Android) ---------- */
 const BGM=(()=>{
@@ -1162,6 +1592,7 @@ const BGM=(()=>{
     if(n==='result')[523,659,784,1047].forEach((f,i)=>nt('square',f,t+i*.09,.14,.07));
     if(n==='deny'){nt('sawtooth',220,t,.25,.12,90);nt('square',180,t+.12,.2,.08,70)}
     if(n==='stamp'){nt('sine',120,t,.25,.5,40)}
+    if(n==='seal'){[1568,2093,2637,3136].forEach((f,i)=>nt('sine',f,t+i*.06,.9,.08))}
     if(n==='hack'){nt('square',1800+Math.random()*900,t,.03,.04)}
     if(n==='zl'){nt('sine',1200,t,.12,.12);nt('sine',1600,t+.12,.14,.1)}
     if(n==='absorb'){nt('sawtooth',900,t,.55,.12,60);nt('sine',300,t+.1,.6,.25,40)}
@@ -1169,7 +1600,7 @@ const BGM=(()=>{
     if(n==='open'){[220,207,196,185].forEach((f,i)=>nt('sawtooth',f,t+i*.18,.5,.08,f*.98))}}
   setTimeout(()=>prep('main'),1500);
   function setTrack(k){if(!TRK[k]||k===cur)return;cur=k;if(!urls[k]){prep(k);return}if(on){const a=audio();a.src=urls[k];const p=a.play();if(p&&p.catch)p.catch(()=>{})}}
-  const first=e=>{if(e&&e.target&&e.target.closest&&e.target.closest('#bgm'))return;document.removeEventListener('pointerdown',first,true);if(on)start()};
+  const first=e=>{if(e&&e.target&&e.target.closest&&e.target.closest('#bgm,#gate'))return;document.removeEventListener('pointerdown',first,true);if(on)start()};
   document.addEventListener('pointerdown',first,true);
   document.addEventListener('visibilitychange',()=>{if(!el)return;if(document.hidden)el.pause();else if(on){const p=el.play();if(p&&p.catch)p.catch(()=>{})}});
   ui();
@@ -1185,9 +1616,19 @@ function finishIntro(fast){if(introDone)return;introDone=true;
   setTimeout(()=>{$('eclipse').classList.add('on');$('intro').classList.add('done');$('skip').remove()},650);
   setTimeout(()=>{$('eclipse').style.transition='opacity .8s';$('eclipse').style.opacity='0';document.body.classList.remove('lock')},2700);
   setTimeout(()=>{$('eclipse').remove();$('intro').remove()},3600)}
-$('goBtn').onclick=()=>{if(!BGM.on)BGM.start();finishIntro(false)};
+$('goBtn').onclick=()=>finishIntro(false);
 $('skip').onclick=()=>finishIntro(true);
 try{if(sessionStorage.getItem('nova-intro')){finishIntro(true)}sessionStorage.setItem('nova-intro','1')}catch(e){}
+
+/* ---------- start gate : language + BGM ---------- */
+(function(){const g=$('gate');let seen=false;try{seen=!!sessionStorage.getItem('nova-gate')}catch(e){}
+  if(seen){g.remove();return}
+  let gl=LANG,gb=true;try{const v=localStorage.getItem('nova-bgm');gb=v===null?true:v==='1'}catch(e){}
+  const paint=()=>{g.querySelectorAll('[data-glang]').forEach(b=>b.classList.toggle('on',b.dataset.glang===gl));g.querySelectorAll('[data-gbgm]').forEach(b=>b.classList.toggle('on',(b.dataset.gbgm==='1')===gb))};
+  g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.glang){gl=b.dataset.glang;setLang(gl);paint()}if(b.dataset.gbgm){gb=b.dataset.gbgm==='1';paint()}});
+  $('gateGo').onclick=()=>{if(gb)BGM.start();else if(BGM.on)BGM.stop();else{try{localStorage.setItem('nova-bgm','0')}catch(e){}}
+    try{sessionStorage.setItem('nova-gate','1')}catch(e){}g.classList.add('out');setTimeout(()=>g.remove(),700)};
+  paint()})();
 
 /* ---------- menu, progress, reveal ---------- */
 $('mOpen').onclick=()=>$('menu').classList.add('on');$('mClose').onclick=()=>$('menu').classList.remove('on');
