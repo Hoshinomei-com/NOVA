@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NOVA : 검은태양 — 노바 히어로 본부</title>
+<meta name="description" content="능력자와 히어로의 시대. 노바 히어로 본부, 세 개의 클랜, 그리고 검은 태양.">
+<meta name="theme-color" content="#060608">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#060608;--bg2:#0d0d12;--panel:#111118;--line:rgba(255,255,255,.09);--line2:rgba(255,190,110,.28);
+  --ink:#ecebef;--mute:#8c8a97;--dim:#5c5a66;
+  --sun:#ffb347;--sun2:#ff6a2a;--flare:#ffe2a8;
+  --red:#e2343f;--blue:#3f7cff;--teal:#43d2e6;
+  --disp:'Black Han Sans','Pretendard Variable',sans-serif;
+  --tech:'Chakra Petch','Pretendard Variable',monospace;
+  --body:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:hidden;max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.7;word-break:keep-all;-webkit-tap-highlight-color:transparent}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block}
+::selection{background:var(--sun2);color:#000}
+#embers{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),
+  radial-gradient(90% 60% at 50% -10%,rgba(255,120,40,.10),transparent 70%)}
+main,header,footer{position:relative;z-index:1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ---------- images + protection ---------- */
+.ph{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--c,#ffb347) 30%,transparent),transparent 70%),linear-gradient(180deg,#17161e,#0a0a0e)}
+.ph>span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:var(--tech);letter-spacing:.2em;font-size:11px;color:color-mix(in srgb,var(--c,#ffb347) 70%,#fff);text-align:center;padding:10px;opacity:.75}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.ph.char>img{object-position:center 18%}
+.ph>.bb{position:absolute;inset:-30px;z-index:1;background:center/cover no-repeat;filter:blur(22px) brightness(.42) saturate(1.1);display:none}
+.ph.fit>.bb{display:block}
+.ph.fit>img{object-fit:contain;object-position:center}
+.ph.nat.ok{aspect-ratio:auto!important;min-height:0!important}
+.ph.nat.ok>img{position:relative;height:auto}
+.ph,.ph img,#lb img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.ph>img,.ph>.bb,#lb img{pointer-events:none}
+.ph::after{content:"";position:absolute;inset:0;z-index:3}
+b.wm{position:absolute;right:12px;bottom:9px;z-index:4;font-family:var(--tech);font-weight:500;font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.6);text-shadow:0 1px 4px rgba(0,0,0,.95);pointer-events:none}
+
+/* ---------- black sun ---------- */
+.sun{position:relative;width:var(--s,300px);height:var(--s,300px);flex:none}
+.sun .rays{position:absolute;inset:-38%;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,170,70,.16) 0 2deg,transparent 2deg 9deg);-webkit-mask:radial-gradient(circle,transparent 30%,#000 34%,transparent 70%);mask:radial-gradient(circle,transparent 30%,#000 34%,transparent 70%);animation:spin 80s linear infinite}
+.sun .rays.r2{inset:-24%;background:repeating-conic-gradient(from 4deg,rgba(255,110,40,.22) 0 1deg,transparent 1deg 13deg);animation-duration:55s;animation-direction:reverse}
+.sun .corona{position:absolute;inset:-9%;border-radius:50%;background:radial-gradient(circle,transparent 52%,rgba(255,226,168,.95) 55%,rgba(255,170,70,.55) 58%,rgba(255,106,42,.18) 66%,transparent 74%);filter:blur(1px);animation:breathe 5s ease-in-out infinite}
+.sun .disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 42% 38%,#121117,#030304 62%);box-shadow:inset 0 0 26px rgba(255,140,60,.25),0 0 60px rgba(255,120,40,.35),0 0 140px rgba(255,90,30,.18)}
+.sun .ring{position:absolute;inset:-18%;border-radius:50%;border:1px dashed rgba(255,190,110,.22);animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{50%{transform:scale(1.025);opacity:.85}}
+
+/* ---------- intro: notice ---------- */
+#intro{position:fixed;inset:0;z-index:100;background:#040405;display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto}
+#intro.done{animation:introOut .9s ease forwards}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+.notice{position:relative;width:min(420px,100%);background:linear-gradient(180deg,#eeeae1,#ddd8cc);color:#1b1a1f;padding:30px 26px 24px;box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);transform:rotate(-1.2deg);animation:paperIn 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes paperIn{from{transform:translateY(40px) rotate(-4deg);opacity:0}}
+.notice::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.025) 0 1px,transparent 1px 4px);pointer-events:none}
+.notice .gov{font-family:var(--tech);font-size:10px;letter-spacing:.28em;color:#6a665e;display:flex;justify-content:space-between;border-bottom:2px solid #1b1a1f;padding-bottom:8px}
+.notice h1{font-family:var(--disp);font-weight:400;font-size:30px;letter-spacing:.06em;margin:18px 0 6px}
+.notice .no{font-family:var(--tech);font-size:11px;color:#6a665e;letter-spacing:.12em}
+.notice dl{display:grid;grid-template-columns:76px 1fr;gap:6px 10px;margin:18px 0;font-size:13.5px}
+.notice dt{color:#6a665e;font-size:12px}
+.notice dd b{font-weight:700}
+.notice p{font-size:13.5px;line-height:1.75}
+.notice .red{color:#b0161f;font-weight:700}
+.notice .sig{display:flex;align-items:flex-end;justify-content:space-between;margin-top:20px}
+.notice .sig small{font-family:var(--tech);font-size:10px;letter-spacing:.18em;color:#6a665e;line-height:1.6}
+.stamp{width:84px;height:84px;border:3px double #b0161f;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#b0161f;font-family:var(--tech);font-weight:700;font-size:9px;letter-spacing:.12em;transform:rotate(-14deg);opacity:0}
+.stamp b{font-family:var(--disp);font-weight:400;font-size:16px;letter-spacing:.04em}
+.stamp.hit{animation:stamp .35s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp{from{transform:rotate(-14deg) scale(2.4);opacity:0}to{transform:rotate(-14deg) scale(1);opacity:.85}}
+.notice .go{display:block;width:100%;margin-top:20px;padding:14px;background:#1b1a1f;color:#f3e6cf;font-family:var(--disp);font-size:17px;letter-spacing:.14em;position:relative;overflow:hidden}
+.notice .go::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,180,90,.35) 50%,transparent 70%);transform:translateX(-100%);animation:sheen 2.6s ease-in-out infinite}
+@keyframes sheen{60%,100%{transform:translateX(100%)}}
+.skip{position:fixed;right:16px;top:14px;z-index:101;font-family:var(--tech);font-size:11px;letter-spacing:.2em;color:var(--mute);padding:8px 10px}
+#eclipse{position:fixed;inset:0;z-index:99;display:none;align-items:center;justify-content:center;background:#000;pointer-events:none}
+#eclipse.on{display:flex}
+#eclipse .sun{--s:min(58vw,300px);animation:eclIn 2.2s cubic-bezier(.5,0,.2,1) forwards}
+#eclipse .cap{position:absolute;bottom:18%;left:0;right:0;text-align:center;font-family:var(--tech);letter-spacing:.5em;font-size:11px;color:var(--sun);opacity:0;animation:fadeIn .6s .9s forwards}
+@keyframes eclIn{0%{transform:scale(.2);opacity:0;filter:brightness(4)}45%{opacity:1;filter:brightness(1.6)}100%{transform:scale(1);filter:brightness(1)}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ---------- header ---------- */
+header{position:fixed!important;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));background:linear-gradient(180deg,rgba(6,6,8,.92),rgba(6,6,8,.6));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--tech);font-weight:700;letter-spacing:.24em;font-size:13px}
+.logo i{width:16px;height:16px;border-radius:50%;background:#050506;box-shadow:0 0 0 2px var(--sun),0 0 10px var(--sun2)}
+header .sp{flex:1}
+.bgm{font-family:var(--tech);font-size:11px;letter-spacing:.14em;padding:6px 10px;border:1px solid var(--line);color:var(--mute);display:flex;align-items:center;gap:7px}
+.bgm.on{color:var(--sun);border-color:var(--line2)}
+.bgm .eq{display:flex;gap:2px;align-items:flex-end;height:10px}
+.bgm .eq s{width:2px;height:3px;background:currentColor}
+.bgm.on .eq s{animation:eq .8s ease-in-out infinite}
+.bgm.on .eq s:nth-child(2){animation-delay:-.3s}.bgm.on .eq s:nth-child(3){animation-delay:-.55s}
+@keyframes eq{50%{height:10px}}
+.mbtn{width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 8px}
+.mbtn s{height:1.5px;background:var(--ink);display:block}
+#menu{position:fixed;inset:0;z-index:60;background:rgba(4,4,6,.97);display:none;flex-direction:column;justify-content:center;padding:40px 30px}
+#menu.on{display:flex}
+#menu a{font-family:var(--disp);font-size:26px;padding:9px 0;display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line)}
+#menu a small{font-family:var(--tech);font-size:11px;color:var(--sun);letter-spacing:.2em;width:28px}
+#menu .x{position:absolute;top:18px;right:18px;font-family:var(--tech);font-size:12px;letter-spacing:.2em;color:var(--mute);padding:10px}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:51;background:linear-gradient(90deg,var(--sun2),var(--flare));box-shadow:0 0 10px var(--sun)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px 20px 50px;position:relative;overflow:hidden}
+.hero .sun{--s:min(70vw,360px);margin-bottom:-6%}
+.hero .kicker,.hero h1,.hero h2{position:relative;z-index:2}
+.hero .kicker{text-shadow:0 0 12px #000,0 0 4px #000;font-family:var(--tech);font-size:11px;letter-spacing:.5em;color:var(--sun);margin-bottom:10px}
+.hero h1{font-family:var(--tech);font-weight:700;font-size:clamp(54px,15vw,120px);line-height:.95;letter-spacing:.08em;background:linear-gradient(180deg,#fff,#ffd9a0 55%,#ff7a35);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(255,120,40,.35))}
+.hero h2{font-family:var(--disp);font-weight:400;font-size:clamp(26px,7vw,44px);letter-spacing:.3em;margin-top:6px;padding-left:.3em}
+.hero .sub{margin-top:14px;color:var(--mute);font-size:14px;letter-spacing:.08em}
+.hero .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:20px 0 26px;max-width:520px}
+.hero .tags span{font-size:11.5px;padding:3px 9px;border:1px solid var(--line);color:var(--mute)}
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:linear-gradient(90deg,var(--sun2),var(--sun));color:#140a02;font-weight:800;letter-spacing:.06em;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.cta.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line2);clip-path:none}
+.hero .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.scrollhint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--tech);font-size:10px;letter-spacing:.4em;color:var(--dim);animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
+
+/* ---------- sections ---------- */
+section{padding:84px 0 40px;scroll-margin-top:50px}
+.sh{margin-bottom:30px}
+.sh .no{font-family:var(--tech);font-size:11px;letter-spacing:.38em;color:var(--sun);display:flex;align-items:center;gap:10px}
+.sh .no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+.sh h2{font-family:var(--disp);font-weight:400;font-size:clamp(30px,7.5vw,46px);line-height:1.15;margin-top:8px}
+.sh p{color:var(--mute);margin-top:8px;max-width:620px}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid var(--line);position:relative}
+.panel.cut{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.corner::before,.corner::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--sun);opacity:.7}
+.corner::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.corner::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* world timeline */
+.tl{position:relative;padding-left:26px;display:grid;gap:16px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--sun),var(--line),var(--sun2))}
+.tl .it{position:relative;padding:16px 18px}
+.tl .it::before{content:"";position:absolute;left:-24px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 2px var(--sun),0 0 12px var(--sun2)}
+.tl .it small{font-family:var(--tech);font-size:10.5px;letter-spacing:.3em;color:var(--sun)}
+.tl .it h3{font-family:var(--disp);font-weight:400;font-size:21px;margin:2px 0 4px}
+.tl .it p{color:#c9c7d0;font-size:14.5px}
+.split{display:grid;gap:18px}
+@media(min-width:820px){.split{grid-template-columns:1.05fr 1fr;align-items:start}}
+.figure{aspect-ratio:4/5}
+.figure.nat{aspect-ratio:3/4}
+
+/* HQ system */
+.hq{display:grid;gap:12px}
+.hqtop{padding:20px;text-align:center}
+.hqtop .lbl{font-family:var(--tech);font-size:10.5px;letter-spacing:.32em;color:var(--sun)}
+.hqtop h3{font-family:var(--disp);font-weight:400;font-size:26px;margin:4px 0}
+.hqtop p{color:var(--mute);font-size:13.5px}
+.flow{display:flex;justify-content:center;font-family:var(--tech);font-size:10.5px;letter-spacing:.25em;color:var(--sun);gap:8px;align-items:center}
+.flow::before,.flow::after{content:"";width:1px;height:18px;background:var(--line2)}
+.flow{flex-direction:column;gap:2px}
+.clanrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.clanrow button{padding:14px 6px;text-align:center;border:1px solid var(--line);background:rgba(255,255,255,.02);position:relative;transition:.25s}
+.clanrow button::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--c)}
+.clanrow button b{font-family:var(--disp);font-weight:400;font-size:16px;display:block;color:var(--c)}
+.clanrow button small{font-size:11px;color:var(--mute)}
+.clanrow button.on{background:color-mix(in srgb,var(--c) 14%,transparent);border-color:var(--c)}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:720px){.mods{grid-template-columns:repeat(4,1fr)}}
+.mod{padding:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);text-align:left;transition:.2s}
+.mod svg{width:26px;height:26px;color:var(--sun);margin-bottom:6px}
+.mod b{display:block;font-size:15px}
+.mod small{color:var(--mute);font-size:12px}
+.mod.on{border-color:var(--line2);background:rgba(255,170,70,.07)}
+.hqinfo{padding:16px 18px;min-height:92px;font-size:14.5px;color:#d6d4dc}
+.hqinfo b{color:var(--sun)}
+.rules{display:grid;gap:10px}
+@media(min-width:720px){.rules{grid-template-columns:1fr 1fr}}
+.rule{padding:16px 18px;display:flex;gap:14px}
+.rule .n{font-family:var(--tech);font-weight:700;font-size:26px;color:var(--sun);line-height:1}
+.rule b{display:block;font-size:15px;margin-bottom:2px}
+.rule p{font-size:13.5px;color:var(--mute)}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:720px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{padding:14px;border:1px solid var(--line);position:relative}
+.step small{font-family:var(--tech);font-size:10px;letter-spacing:.3em;color:var(--sun)}
+.step b{display:block;font-family:var(--disp);font-weight:400;font-size:18px;margin:2px 0}
+.step p{font-size:12.5px;color:var(--mute)}
+.step.you{border-style:dashed;border-color:var(--line2)}
+.step.you b{color:var(--sun)}
+
+/* clans */
+.clans{display:grid;gap:14px}
+@media(min-width:900px){.clans{grid-template-columns:repeat(3,1fr)}}
+.clan{--c:#fff;padding:22px 20px 18px;border:1px solid var(--line);position:relative;overflow:hidden;background:linear-gradient(170deg,color-mix(in srgb,var(--c) 14%,transparent),transparent 45%),var(--bg2)}
+.clan .emb{width:56px;height:56px;color:var(--c);filter:drop-shadow(0 0 10px color-mix(in srgb,var(--c) 60%,transparent))}
+.clan .side{font-family:var(--tech);font-size:10.5px;letter-spacing:.3em;color:var(--c);margin-top:12px}
+.clan h3{font-family:var(--disp);font-weight:400;font-size:30px;line-height:1.1}
+.clan h3 small{display:block;font-family:var(--tech);font-size:11px;letter-spacing:.32em;color:var(--mute);margin-top:4px}
+.clan .slogan{margin:14px 0;padding:12px 14px;border-left:2px solid var(--c);background:rgba(0,0,0,.25);font-size:15px;font-weight:600}
+.clan p{font-size:14px;color:#c9c7d0}
+.clan .mem{display:flex;gap:6px;margin-top:16px}
+.clan .mem button{flex:1;min-width:0}
+.clan .mem .ph{aspect-ratio:3/4;border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.clan .mem em{display:block;font-style:normal;font-size:11.5px;color:var(--mute);margin-top:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clan .bigl{position:absolute;right:-12px;top:-14px;font-family:var(--tech);font-weight:700;font-size:96px;color:var(--c);opacity:.06;line-height:1;pointer-events:none}
+.compare{margin-top:16px;padding:16px 18px}
+.compare h4{font-family:var(--tech);font-size:11px;letter-spacing:.3em;color:var(--sun);font-weight:500;margin-bottom:10px}
+.cmp{display:grid;grid-template-columns:64px 1fr;gap:4px 10px;font-size:13px;align-items:center}
+.cmp .bar{height:8px;background:rgba(255,255,255,.06);position:relative;overflow:hidden}
+.cmp .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--c);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.cmp .lab{color:var(--mute);font-size:12px}
+.cmpkey{display:flex;gap:14px;font-size:12px;color:var(--mute);margin-bottom:10px;flex-wrap:wrap}
+.cmpkey i{display:inline-block;width:9px;height:9px;background:var(--c);margin-right:5px}
+.cmprow{display:grid;gap:3px}
+.note{font-size:11.5px;color:var(--dim);margin-top:10px}
+
+/* grades */
+.grades{display:grid;gap:8px}
+.gr{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);text-align:left;width:100%;transition:.2s;background:rgba(255,255,255,.015)}
+.gr .L{font-family:var(--tech);font-weight:700;font-size:34px;line-height:1;text-align:center;color:var(--g)}
+.gr b{font-family:var(--disp);font-weight:400;font-size:18px}
+.gr b small{font-family:var(--body);font-size:12px;color:var(--mute);margin-left:6px}
+.gr .who{display:flex;gap:-4px}
+.gr .who i{width:26px;height:26px;border-radius:50%;margin-left:-6px;border:1px solid var(--bg);overflow:hidden;position:relative}
+.gr .who i .ph{position:absolute;inset:0}
+.gr .d{grid-column:1/-1;font-size:13.5px;color:#cfcdd6;display:none;padding-top:6px;border-top:1px dashed var(--line)}
+.gr.on{border-color:color-mix(in srgb,var(--g) 60%,transparent);background:color-mix(in srgb,var(--g) 8%,transparent)}
+.gr.on .d{display:block}
+.criteria{margin-top:18px;padding:18px;display:grid;gap:14px}
+@media(min-width:720px){.criteria{grid-template-columns:240px 1fr;align-items:center}}
+.criteria svg{width:100%;max-width:240px;margin:0 auto;display:block}
+.criteria ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.criteria li{font-size:13.5px;padding:8px 10px;border:1px solid var(--line)}
+.criteria li small{display:block;font-family:var(--tech);font-size:9.5px;letter-spacing:.25em;color:var(--sun)}
+
+/* roster */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{font-size:12.5px;padding:6px 12px;border:1px solid var(--line);color:var(--mute)}
+.filters button.on{color:#140a02;background:var(--sun);border-color:var(--sun);font-weight:700}
+.roster{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:720px){.roster{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.roster{grid-template-columns:repeat(4,1fr)}}
+.card{--c:#fff;text-align:left;border:1px solid var(--line);background:var(--bg2);position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.card:active{transform:scale(.98)}
+.card .ph{aspect-ratio:3/4}
+.card .ph::before{content:"";position:absolute;inset:auto 0 0 0;height:55%;z-index:3;background:linear-gradient(transparent,rgba(6,6,8,.95))}
+.card .gb{position:absolute;top:8px;left:8px;z-index:5;font-family:var(--tech);font-weight:700;font-size:13px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:1px solid var(--g);color:var(--g)}
+.card .cl{position:absolute;top:8px;right:8px;z-index:5;width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.card .tx{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:10px 12px}
+.card .hn{font-family:var(--tech);font-weight:700;font-size:11px;letter-spacing:.24em;color:var(--c)}
+.card .nm{font-family:var(--disp);font-weight:400;font-size:20px;line-height:1.15}
+.card .ab{font-size:11.5px;color:var(--mute)}
+.card.hide{display:none}
+.card b.wm{bottom:auto;top:10px;right:24px;font-size:8.5px}
+.gal b.wm{bottom:auto;top:7px;right:8px;font-size:8.5px}
+
+/* classified */
+.classified{position:relative;overflow:hidden;border:1px solid rgba(226,52,63,.35);background:repeating-linear-gradient(-45deg,rgba(226,52,63,.05) 0 10px,transparent 10px 20px),#0b0709}
+.cls-in{display:grid;gap:16px;padding:18px}
+@media(min-width:720px){.cls-in{grid-template-columns:260px 1fr;align-items:center}}
+.cls-img{aspect-ratio:3/4;position:relative}
+.cls-img .ph{position:absolute;inset:0}
+.cls-img .ph>img{filter:brightness(.05) contrast(2) blur(3px);transition:filter .12s}
+.cls-img.peek .ph>img{filter:brightness(.9) contrast(1.1) blur(0) saturate(.2) hue-rotate(-20deg)}
+.cls-img .scan{position:absolute;inset:0;z-index:6;background:repeating-linear-gradient(0deg,rgba(226,52,63,.12) 0 2px,transparent 2px 5px);mix-blend-mode:screen;pointer-events:none}
+.cls-img .q{position:absolute;inset:0;z-index:7;display:flex;align-items:center;justify-content:center;font-family:var(--tech);font-weight:700;font-size:64px;color:rgba(226,52,63,.75);text-shadow:0 0 20px rgba(226,52,63,.6)}
+.cls-txt .lbl{font-family:var(--tech);font-size:11px;letter-spacing:.32em;color:var(--red)}
+.cls-txt h3{font-family:var(--tech);font-weight:700;font-size:30px;letter-spacing:.06em;margin:4px 0 10px}
+.redact{display:grid;grid-template-columns:72px 1fr;gap:6px 10px;font-size:13.5px}
+.redact dt{color:var(--mute);font-size:12px}
+.redact dd s{text-decoration:none;background:#e8e6ec;color:transparent;user-select:none;border-radius:1px}
+.access{margin-top:16px;width:100%;padding:13px;border:1px solid var(--red);color:var(--red);font-family:var(--tech);font-weight:700;letter-spacing:.24em;font-size:13px;background:rgba(226,52,63,.06)}
+.access:disabled{opacity:.55}
+.alog{margin-top:10px;font-family:var(--tech);font-size:12px;color:#d8a3a8;min-height:3.6em;white-space:pre-line}
+.glitch{animation:glitch .35s steps(2) 2}
+@keyframes glitch{25%{transform:translate(-3px,1px);filter:hue-rotate(40deg)}50%{transform:translate(3px,-2px)}75%{transform:translate(-1px,2px);filter:invert(.2)}}
+
+/* ===== IGNIS easter egg ===== */
+.zl{margin-top:12px;border:1px solid rgba(67,210,230,.5);background:rgba(67,210,230,.06);padding:12px 14px;font-family:var(--tech);font-size:12.5px;animation:zlIn .3s ease}
+.zl .hd{display:flex;justify-content:space-between;letter-spacing:.18em;font-size:10.5px;color:var(--teal);margin-bottom:6px}
+.zl .ln{min-height:3.2em;color:#dff9fd;font-family:var(--body);font-size:14px}
+.zl .code{font-size:10.5px;color:rgba(67,210,230,.65);height:3.9em;overflow:hidden;margin-top:6px;white-space:pre;line-height:1.3}
+.zl .hb{height:4px;background:rgba(67,210,230,.15);margin-top:8px}
+.zl .hb i{display:block;height:100%;width:0;background:var(--teal);box-shadow:0 0 8px var(--teal);transition:width .1s}
+@keyframes zlIn{from{opacity:0;transform:translateY(6px)}}
+.classified{transition:background .8s,border-color .8s,box-shadow .8s}
+.classified.teal{border-color:rgba(67,210,230,.6);box-shadow:0 0 30px rgba(67,210,230,.15)}
+.classified.dark{background:#000;border-color:rgba(255,40,50,.45);box-shadow:0 0 90px rgba(255,20,40,.18),inset 0 0 140px #000}
+.classified.dark .cls-in{position:relative;z-index:1}
+.drain{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.drain i{position:absolute;left:50%;top:26%;width:240vmax;height:240vmax;margin:-120vmax;border-radius:50%;background:repeating-conic-gradient(rgba(255,210,160,.16) 0 .6deg,transparent .6deg 6deg);-webkit-mask:radial-gradient(circle,transparent 3%,#000 12%,transparent 34%);mask:radial-gradient(circle,transparent 3%,#000 12%,transparent 34%);animation:suck 2.2s linear infinite;opacity:0}
+.drain i+i{animation-delay:-1.1s}
+@media(min-width:720px){.drain i{left:150px;top:45%}}
+@keyframes suck{0%{transform:scale(1.1) rotate(0);opacity:0}25%{opacity:1}100%{transform:scale(.05) rotate(70deg);opacity:0}}
+.classified.spent .drain{display:none}
+body.drain-on::after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(70% 60% at 50% 50%,transparent 30%,rgba(0,0,0,.55));animation:fadeIn 1.2s both}
+
+.ign{display:grid;gap:18px}
+@media(min-width:760px){.ign{grid-template-columns:280px 1fr;align-items:start}}
+.ign-l{position:relative}
+.ign-img{position:relative;aspect-ratio:3/4;margin:26px 10px 0;--k:.7;--glow:.35}
+.ign-img .ph{position:absolute;inset:0;z-index:2;border:1px solid rgba(255,40,50,.4)}
+.ign-img .ph>img{filter:contrast(1.08) saturate(.85)}
+.ign-img .ph::before{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,transparent 40%,rgba(80,0,8,.55)),radial-gradient(80% 60% at 50% 35%,transparent 40%,rgba(0,0,0,.5))}
+.bsun{position:absolute;left:50%;top:40%;width:118%;aspect-ratio:1;transform:translate(-50%,-50%) scale(var(--k));z-index:1;transition:transform 1s cubic-bezier(.2,.9,.3,1.3)}
+.bsun .rays{position:absolute;inset:-30%;border-radius:50%;background:repeating-conic-gradient(rgba(255,40,50,.3) 0 1.5deg,transparent 1.5deg 8deg);-webkit-mask:radial-gradient(circle,transparent 32%,#000 36%,transparent 70%);mask:radial-gradient(circle,transparent 32%,#000 36%,transparent 70%);animation:spin 40s linear infinite}
+.bsun .rays.r2{inset:-18%;animation-duration:26s;animation-direction:reverse;opacity:.7}
+.bsun .corona{position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(circle,transparent 52%,rgba(255,140,140,var(--glow)) 55%,rgba(220,20,40,.7) 58%,rgba(120,0,10,.3) 66%,transparent 74%);animation:breathe 3.2s ease-in-out infinite}
+.bsun .disc{position:absolute;inset:0;border-radius:50%;background:#000;box-shadow:0 0 calc(40px + 80px*var(--glow)) rgba(255,20,40,calc(var(--glow)*.7))}
+.ign-img.absorb .ph{animation:absorb .7s ease}
+.ign-img.absorb::after{content:"";position:absolute;left:50%;top:42%;width:20px;height:20px;margin:-10px;border-radius:50%;z-index:4;background:var(--k2);box-shadow:0 0 40px 20px var(--k2);animation:sink .6s ease-in forwards;pointer-events:none}
+@keyframes absorb{30%{filter:brightness(.2) contrast(1.6);transform:scale(.97)}60%{filter:brightness(1.4) hue-rotate(-20deg)}}
+@keyframes sink{from{transform:scale(3);opacity:1}to{transform:scale(0);opacity:0}}
+.ign-th{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:10px 10px 0;position:relative;z-index:3}
+.ign-th .ph{aspect-ratio:1;border:1px solid rgba(255,255,255,.1);opacity:.5}
+.ign-th button.on .ph{opacity:1;border-color:#ff3b47}
+.energy{margin:14px 10px 0;position:relative;z-index:3}
+.energy .eh{display:flex;justify-content:space-between;font-family:var(--tech);font-size:11px;letter-spacing:.22em;color:#ff6b74}
+.energy .eb{height:8px;background:rgba(255,40,50,.12);margin-top:5px;position:relative;overflow:hidden}
+.energy .eb i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#300,#ff2d3d);box-shadow:0 0 12px #ff2d3d;transition:width .8s}
+.ign-r .lbl{font-family:var(--tech);font-size:11px;letter-spacing:.3em;color:#ff5a63}
+.ign-name{font-family:var(--tech);font-weight:700;font-size:clamp(32px,9vw,46px);letter-spacing:.06em;line-height:1.05;margin-top:4px;color:#fff;text-shadow:0 0 18px rgba(255,30,40,.5)}
+.alias{font-family:var(--disp);font-size:20px;color:#ff5a63;margin-top:2px}
+.threat{display:inline-block;margin:10px 0 12px;padding:5px 10px;border:1px solid #ff2d3d;color:#ff2d3d;font-weight:700;font-size:13px;animation:threat 1.6s ease-in-out infinite}
+@keyframes threat{50%{background:rgba(255,30,45,.18);box-shadow:0 0 18px rgba(255,30,45,.35)}}
+.ign-dl{display:grid;grid-template-columns:84px 1fr;gap:4px 10px;font-size:13.5px}
+.ign-dl dt{color:var(--mute);font-size:12px}
+.voice{margin:16px 0 12px;padding:14px 16px;border-left:2px solid #ff2d3d;background:linear-gradient(90deg,rgba(255,30,45,.1),transparent)}
+.voice small{font-family:var(--tech);font-size:10px;letter-spacing:.3em;color:#ff5a63}
+.voice p{font-size:16.5px;line-height:1.6;min-height:1.6em;color:#f4e9ea;letter-spacing:.02em}
+.voice p.typing::after{content:"▍";color:#ff2d3d;animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.atkh{font-family:var(--tech);font-size:11px;letter-spacing:.2em;color:var(--mute);margin-bottom:6px}
+.atk{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.atk button{padding:10px 4px;border:1px solid color-mix(in srgb,var(--k) 50%,transparent);color:var(--k);font-weight:700;font-size:14px;background:color-mix(in srgb,var(--k) 7%,transparent);display:flex;flex-direction:column;align-items:center;gap:2px;transition:.2s}
+.atk button small{font-size:10.5px;font-weight:400;color:var(--mute)}
+.atk button:disabled{opacity:.28;filter:grayscale(1)}
+.proj{position:fixed;left:0;top:0;z-index:70;width:22px;height:22px;margin:-11px;border-radius:50%;background:var(--k);box-shadow:0 0 18px 8px var(--k);pointer-events:none}
+.recs{display:grid;gap:8px;margin-top:14px}
+.rec{display:none;padding:12px 14px;border:1px solid rgba(255,60,70,.22);background:rgba(20,0,2,.6);font-size:13.5px;color:#dcd0d2}
+.rec.on{display:block}
+.rec.new{animation:recIn 1.4s ease}
+@keyframes recIn{0%{opacity:0;transform:translateY(8px);background:rgba(255,30,45,.35)}100%{opacity:1}}
+.rec small{font-family:var(--tech);font-size:10.5px;letter-spacing:.24em;color:#ff5a63;display:block;margin-bottom:4px}
+.rec small em{font-style:normal;color:var(--teal);letter-spacing:.05em}
+.rec p+p{margin-top:6px}
+.rec b{color:#fff}
+.rec .red,.rec b.red{color:#ff3b47}
+.rec s{color:#8d7d80;text-decoration-color:#ff2d3d;text-decoration-thickness:2px}
+.rec ul{margin:6px 0 6px 18px;font-size:13px}
+.rec .warn{color:#ff8a92}
+.seal{margin-top:14px;width:100%;padding:12px;border:1px solid var(--line);color:var(--mute);font-family:var(--tech);letter-spacing:.2em;font-size:12px}
+#boom{position:fixed;inset:0;z-index:95;pointer-events:none;display:none}
+#boom.on{display:block;animation:boomFade 1.6s ease forwards}
+#boom::before{content:"";position:absolute;left:var(--x);top:var(--y);width:10px;height:10px;margin:-5px;border-radius:50%;background:radial-gradient(circle,#000 38%,#ff2d3d 44%,rgba(120,0,10,.7) 56%,transparent 70%);animation:blast 1.1s cubic-bezier(.1,.8,.2,1) forwards}
+#boom::after{content:"";position:absolute;inset:0;background:#ff1a2a;mix-blend-mode:screen;animation:flash .5s ease forwards}
+@keyframes blast{to{transform:scale(320)}}
+@keyframes flash{0%{opacity:.85}100%{opacity:0}}
+@keyframes boomFade{80%{opacity:1}100%{opacity:0}}
+html.quake body{animation:quake .9s ease}
+@keyframes quake{10%,50%,90%{transform:translate(-6px,3px)}30%,70%{transform:translate(6px,-4px)}}
+#ignChip{position:fixed;left:12px;bottom:14px;z-index:55;display:none;font-size:12px;padding:8px 12px;border:1px solid #ff2d3d;color:#ff9aa0;background:rgba(10,0,2,.9);box-shadow:0 0 20px rgba(255,30,45,.3)}
+#ignChip u{color:#fff;margin-left:6px}
+/* ===== IGNIS mode: the site is taken over ===== */
+body.ignis{--sun:#ff3b47;--sun2:#8a0012;--flare:#ffb3b3;--line2:rgba(255,60,70,.35)}
+body.ignis #ignChip{display:block;animation:threat 1.6s infinite}
+body.ignis::before{background:repeating-linear-gradient(0deg,rgba(255,30,40,.03) 0 1px,transparent 1px 3px),radial-gradient(90% 60% at 50% -10%,rgba(255,20,40,.18),transparent 70%)}
+body.ignis .sun .corona{background:radial-gradient(circle,transparent 52%,rgba(255,140,140,.95) 55%,rgba(220,20,40,.65) 58%,rgba(120,0,10,.25) 66%,transparent 74%)}
+body.ignis .sun .rays{background:repeating-conic-gradient(rgba(255,40,50,.22) 0 2deg,transparent 2deg 9deg)}
+body.ignis .sun .disc{box-shadow:inset 0 0 26px rgba(255,30,40,.35),0 0 70px rgba(255,20,30,.45),0 0 170px rgba(150,0,10,.35)}
+body.ignis .hero .sun{animation:grow 6s ease-in-out infinite}
+@keyframes grow{50%{transform:scale(1.08)}}
+body.ignis .hero h1{background:linear-gradient(180deg,#fff,#ff9a9a 50%,#a0001a);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 24px rgba(255,20,40,.45))}
+body.ignis .logo i{box-shadow:0 0 0 2px #ff2d3d,0 0 12px #ff2d3d}
+body.ignis #logoT{animation:logoG 3s steps(1) infinite}
+@keyframes logoG{0%,86%{opacity:1}88%{opacity:.2;transform:translateX(2px)}90%{opacity:1}94%{opacity:.4;transform:translateX(-2px)}96%{opacity:1;transform:none}}
+body.ignis .gr .L{position:relative;opacity:.6}
+body.ignis .gr .L::after{content:"";position:absolute;left:10px;right:10px;top:48%;height:3px;background:#ff2d3d;box-shadow:0 0 8px #ff2d3d;transform:rotate(-22deg)}
+body.ignis #gradeList::before,body.ignis #clanCards::before,body.ignis #hqClans::before{display:block;grid-column:1/-1;padding:12px 14px;border:1px solid rgba(255,40,50,.45);background:rgba(30,0,4,.8);color:#ff8f96;font-size:14px;letter-spacing:.02em}
+body.ignis #gradeList::before{content:"“등급 따위… 사람을 줄 세우는 숫자일 뿐이다.”  — 검은 태양"}
+body.ignis #clanCards::before{content:"“클랜도, 명령도 필요 없어. 아무도 통제받지 않는 세계면 충분하다.”  — 검은 태양"}
+body.ignis #hqClans::before{content:"“영웅을 자처하는 곳이군. 기록을 지운 손으로.”  — 검은 태양"}
+body.ignis .clan{filter:saturate(.3) brightness(.85)}
+body.ignis .clan::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 47%,rgba(255,40,50,.7) 47.4%,transparent 48%),linear-gradient(70deg,transparent 62%,rgba(255,40,50,.45) 62.3%,transparent 62.8%)}
+body.ignis .hqtop h3{text-decoration:line-through;text-decoration-color:#ff2d3d}
+body.ignis .cta:not(.ghost){background:linear-gradient(90deg,#7a0010,#ff2d3d);color:#fff}
+
+/* test + license */
+.test{padding:20px}
+.test .meta{display:flex;justify-content:space-between;font-family:var(--tech);font-size:11px;letter-spacing:.25em;color:var(--sun)}
+.test .pbar{height:3px;background:rgba(255,255,255,.06);margin:10px 0 18px}
+.test .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun2),var(--sun));transition:width .4s}
+.test h3{font-family:var(--disp);font-weight:400;font-size:22px;line-height:1.35;margin-bottom:14px}
+.opts{display:grid;gap:8px}
+.opts button{text-align:left;padding:13px 15px;border:1px solid var(--line);background:rgba(255,255,255,.02);font-size:14.5px;transition:.15s;display:flex;gap:12px}
+.opts button i{font-style:normal;font-family:var(--tech);color:var(--sun);font-weight:700}
+.opts button:active,.opts button.pick{border-color:var(--sun);background:rgba(255,170,70,.1)}
+.testStart{text-align:center;padding:8px 0}
+.testStart p{color:var(--mute);margin:6px 0 18px}
+.result{display:none}
+.result.on{display:block}
+.res-clan{--c:#fff;padding:18px;border:1px solid var(--c);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 18%,transparent),transparent 60%);margin-bottom:14px}
+.res-clan small{font-family:var(--tech);font-size:10.5px;letter-spacing:.3em;color:var(--c)}
+.res-clan h4{font-family:var(--disp);font-weight:400;font-size:30px;line-height:1.15}
+.res-clan p{font-size:14px;color:#d1cfd8;margin-top:6px}
+.res-clan .mix{display:flex;height:6px;margin-top:12px;gap:2px}
+.res-clan .mix i{display:block;height:100%}
+.form{display:grid;gap:10px;margin:14px 0}
+.form label{font-size:12px;color:var(--mute);display:grid;gap:4px}
+.form input,.form select{font:inherit;font-size:16px;color:var(--ink);background:#0c0c11;border:1px solid var(--line);padding:11px 12px;border-radius:0;-webkit-appearance:none;appearance:none}
+.form input:focus,.form select:focus{outline:0;border-color:var(--sun)}
+#lic{width:100%;max-width:560px;display:block;margin:12px auto 0;box-shadow:0 20px 60px rgba(0,0,0,.6);-webkit-touch-callout:default}
+.licbtns{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:720px){.gal{grid-template-columns:repeat(3,1fr)}}
+.gal button{position:relative}
+.gal .ph{aspect-ratio:1}
+.gal .ph::before{content:attr(data-cap);position:absolute;left:0;bottom:0;z-index:5;font-family:var(--tech);font-size:10px;letter-spacing:.2em;color:var(--sun);background:rgba(0,0,0,.7);padding:4px 8px}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:80;background:rgba(3,3,5,.985);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#modal.on{display:block}
+.md{max-width:860px;margin:0 auto;padding:64px 18px 40px;position:relative}
+.md .x{position:fixed;top:12px;right:12px;z-index:3;width:42px;height:42px;border:1px solid var(--line);background:rgba(0,0,0,.6);font-family:var(--tech);font-size:18px}
+.mdgrid{display:grid;gap:18px}
+@media(min-width:760px){.mdgrid{grid-template-columns:330px 1fr}}
+.mdimg{aspect-ratio:3/4;border:1px solid var(--line);position:relative}
+.mdimg .ph{position:absolute;inset:0}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:6px}
+.thumbs button .ph{aspect-ratio:1;border:1px solid var(--line);opacity:.55;transition:.2s}
+.thumbs button.on .ph{opacity:1;border-color:var(--c)}
+.md .hn{font-family:var(--tech);font-weight:700;letter-spacing:.32em;color:var(--c);font-size:13px}
+.md h3{font-family:var(--disp);font-weight:400;font-size:36px;line-height:1.1}
+.md .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.md .chips span{font-size:12px;padding:4px 10px;border:1px solid var(--line);color:#cfcdd6}
+.md .chips span b{color:var(--c)}
+.md .abil{padding:16px;border-left:2px solid var(--c);background:rgba(255,255,255,.03);margin-top:6px}
+.md .abil small{font-family:var(--tech);font-size:10.5px;letter-spacing:.3em;color:var(--c)}
+.md .abil h4{font-size:18px;margin:2px 0 6px}
+.md .abil p{font-size:14.5px;color:#d6d4dc}
+.md .stat{display:grid;grid-template-columns:72px 1fr 26px;gap:4px 10px;font-size:12.5px;align-items:center;margin-top:16px}
+.md .stat .bar{height:6px;background:rgba(255,255,255,.07);position:relative}
+.md .stat .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .9s}
+.md .stat .lab{color:var(--mute)}
+.md .stat .v{font-family:var(--tech);font-size:12px;color:var(--mute);text-align:right}
+.md .stnote{font-size:11px;color:var(--dim);margin-top:6px}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:20px}
+#lb.on{display:flex}
+#lb .ph{width:100%;max-width:900px;max-height:88vh}
+#lb .ph.nat.ok>img{max-height:88vh;object-fit:contain}
+
+/* footer */
+.final{text-align:center;padding:80px 20px 60px}
+.final .sun{--s:140px;margin:0 auto 26px}
+.final h2{font-family:var(--disp);font-weight:400;font-size:clamp(28px,7vw,42px);line-height:1.25}
+.final p{color:var(--mute);margin:10px 0 24px}
+.final .rec{font-size:12.5px;color:var(--mute);margin-top:18px}
+.final .rec b{color:var(--sun)}
+footer{border-top:1px solid var(--line);padding:26px 20px 40px;text-align:center;font-size:12px;color:var(--dim);font-family:var(--tech);letter-spacing:.12em}
+footer p+p{margin-top:4px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:120;background:#18171f;border:1px solid var(--line2);padding:10px 16px;font-size:13px;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="lock">
+<canvas id="embers"></canvas>
+<div id="prog"></div>
+
+<!-- ================= INTRO: 출석 통지서 ================= -->
+<div id="intro">
+  <button class="skip" id="skip">SKIP ›</button>
+  <div class="notice" id="notice">
+    <div class="gov"><span>대한민국 정부 · 능력자 관리국</span><span>DOC-NV-0723</span></div>
+    <h1>출석 통지서</h1>
+    <div class="no">문서번호 NOVA-HQ / 예외 각성자 정밀 검사</div>
+    <dl>
+      <dt>수 신</dt><dd><b id="nTo">Guest</b> 귀하</dd>
+      <dt>분 류</dt><dd>후천적 <span class="red">예외 각성</span> 능력자</dd>
+      <dt>출석처</dt><dd><b>노바 히어로 본부</b></dd>
+      <dt>목 적</dt><dd>능력 정밀 검사 및 등급 판정</dd>
+    </dl>
+    <p>귀하에게서 초자연적 능력의 발현이 확인되었습니다. 이에 히어로 제도에 따라 <b>노바 히어로 본부</b>로의 출석을 통지합니다. 본 통지는 거부할 수 없습니다.</p>
+    <div class="sig">
+      <small>NOVA HERO HEADQUARTERS<br>— 능력자와 히어로의 시대 —</small>
+      <div class="stamp" id="stamp"><span>NOVA HQ</span><b>출석</b><span>確認</span></div>
+    </div>
+    <button class="go" id="goBtn">출석 확인 · 본부로 이동</button>
+  </div>
+</div>
+<div id="eclipse"><div class="sun"><i class="rays"></i><i class="rays r2"></i><i class="corona"></i><i class="disc"></i></div><div class="cap">ENTERING NOVA HERO HEADQUARTERS</div></div>
+
+<header>
+  <a href="#top" class="logo"><i></i><span id="logoT">NOVA HQ</span></a>
+  <span class="sp"></span>
+  <button class="bgm" id="bgm" aria-label="배경음악 켜기/끄기"><span class="eq"><s></s><s></s><s></s></span><span id="bgmT">BGM OFF</span></button>
+  <button class="mbtn" id="mOpen" aria-label="메뉴"><s></s><s></s><s></s></button>
+</header>
+<nav id="menu">
+  <button class="x" id="mClose">CLOSE ✕</button>
+  <a href="#world"><small>01</small>세계관</a>
+  <a href="#hq"><small>02</small>본부 시스템</a>
+  <a href="#clans"><small>03</small>클랜</a>
+  <a href="#grades"><small>04</small>히어로 등급</a>
+  <a href="#roster"><small>05</small>히어로 명부</a>
+  <a href="#classified"><small>06</small>비공개 파일</a>
+  <a href="#test"><small>07</small>클랜 적성 검사</a>
+  <a href="#archive"><small>08</small>자료실</a>
+</nav>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="sun"><i class="ring"></i><i class="rays"></i><i class="rays r2"></i><i class="corona"></i><i class="disc"></i></div>
+  <div class="kicker">THE AGE OF ABILITIES</div>
+  <h1>NOVA</h1>
+  <h2>검은태양</h2>
+  <div class="sub">능력자와 히어로의 시대</div>
+  <div class="tags"><span>#히어로</span><span>#빌런</span><span>#능력자</span><span>#초능력</span><span>#액션</span><span>#다인캐</span><span>#반전</span><span>#히빌물</span></div>
+  <div class="btns">
+    <a class="cta" href="https://zeta-ai.io/ko/plots/51a65743-1879-4f8f-bdbb-8c1853ec1c57/profile?share_id=jfnld6mba" target="_blank" rel="noopener">▶ 플롯 플레이하기</a>
+    <a class="cta ghost" href="#test">클랜 적성 검사</a>
+  </div>
+  <div class="scrollhint">SCROLL</div>
+</div>
+
+<!-- ================= 01 WORLD ================= -->
+<section id="world"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 01 · WORLD</div><h2>평범한 인간에게<br>힘이 깃들었다</h2></div>
+  <div class="split">
+    <div class="tl">
+      <div class="it panel reveal"><small>PHASE 01 — 발현</small><h3>초자연적 힘의 등장</h3><p>세계 곳곳에서 평범한 인간들에게 초자연적인 힘이 나타나기 시작했다. 사회는 순식간에 혼란에 빠졌다.</p></div>
+      <div class="it panel reveal"><small>PHASE 02 — 분열</small><h3>빌런과 능력자</h3><p>얻은 힘을 범죄에 쓰는 자들이 나타났고, 같은 힘으로 시민을 구하려는 능력자들도 함께 나타났다.</p></div>
+      <div class="it panel reveal"><small>PHASE 03 — 제도</small><h3>히어로 제도</h3><p>정부는 혼란을 수습하기 위해 <b>히어로 제도</b>를 만들었다. 그 중심에 선 기관이 바로 <b>노바 히어로 본부</b>다.</p></div>
+      <div class="it panel reveal"><small>PHASE 04 — 지금</small><h3>예외 각성자, 당신</h3><p>능력이 뒤늦게 깨어난 예외적인 능력자. 정부의 출석 통지서를 받은 당신은 이제 본부의 정밀 검사대 위에 선다.</p></div>
+    </div>
+    <div class="reveal"><div class="ph nat figure corner" id="figCover" style="--c:#ffb347"><span>NOVA : 검은태양</span></div></div>
+  </div>
+</div></section>
+
+<!-- ================= 02 HQ ================= -->
+<section id="hq"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 02 · HEADQUARTERS</div><h2>노바 히어로 본부</h2><p>히어로 제도의 중심 기관. 모든 히어로와 클랜은 본부 아래에서 움직인다. 각 항목을 눌러 확인하세요.</p></div>
+  <div class="hq reveal">
+    <div class="hqtop panel cut corner"><div class="lbl">GOVERNMENT · HERO SYSTEM</div><h3>NOVA HERO HQ</h3><p>정부가 설립한 히어로 제도의 중심 · 공식 명령권 보유</p></div>
+    <div class="flow">OFFICIAL ORDER</div>
+    <div class="clanrow" id="hqClans"></div>
+    <div class="mods" id="hqMods"></div>
+    <div class="hqinfo panel" id="hqInfo"><b>본부 시스템</b> — 위의 클랜이나 지원 항목을 눌러 보세요.</div>
+  </div>
+  <div class="rules" style="margin-top:14px">
+    <div class="rule panel reveal"><div class="n">01</div><div><b>본부 명령이 최우선</b><p>본부의 공식 명령은 모든 클랜보다 우선한다. 어느 클랜 소속이든 예외는 없다.</p></div></div>
+    <div class="rule panel reveal"><div class="n">02</div><div><b>현장은 클랜의 색으로</b><p>그러나 실제 현장에서는 각 클랜의 가치관이 작전 방식에 큰 영향을 준다.</p></div></div>
+    <div class="rule panel reveal"><div class="n">03</div><div><b>등급에 따른 권한</b><p>S급은 독자적 판단과 작전 지휘권을, D급은 단독 임무가 금지된다. 권한은 등급을 따라간다.</p></div></div>
+    <div class="rule panel reveal"><div class="n">04</div><div><b>클랜 지원 체계</b><p>클랜은 본부로부터 장비 · 정보 · 훈련 · 임무 지원을 받는다.</p></div></div>
+  </div>
+  <div class="sh reveal" style="margin:34px 0 14px"><div class="no">YOUR FILE · 예외 각성자</div></div>
+  <div class="steps reveal">
+    <div class="step"><small>STEP 01</small><b>늦은 각성</b><p>뒤늦게 깨어난 예외적인 능력</p></div>
+    <div class="step"><small>STEP 02</small><b>출석 통지서</b><p>정부로부터 본부 출석 통지</p></div>
+    <div class="step"><small>STEP 03</small><b>정밀 검사</b><p>본부에서 능력 정밀 검사</p></div>
+    <div class="step you"><small>STEP 04</small><b>???</b><p>그 다음은, 당신의 이야기</p></div>
+  </div>
+</div></section>
+
+<!-- ================= 03 CLANS ================= -->
+<section id="clans"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 03 · CLANS</div><h2>세 개의 신념</h2><p>클랜은 비슷한 신념과 전투 방식을 가진 히어로들이 본부 안에 결성한 내부 조직이다.</p></div>
+  <div class="clans" id="clanCards"></div>
+  <div class="compare panel reveal" id="compare">
+    <h4>CLAN COMPARISON · 성향 비교</h4>
+    <div class="cmpkey" id="cmpKey"></div>
+    <div class="cmprow" id="cmpRows"></div>
+    <div class="note">* 클랜 설명을 바탕으로 한 팬메이드 성향 그래프예요.</div>
+  </div>
+</div></section>
+
+<!-- ================= 04 GRADES ================= -->
+<section id="grades"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 04 · RANK</div><h2>히어로 등급</h2><p>등급은 능력의 위력만으로 정해지지 않는다. 눌러서 각 등급의 권한과 소속 히어로를 확인하세요.</p></div>
+  <div class="grades reveal" id="gradeList"></div>
+  <div class="criteria panel reveal">
+    <svg viewBox="0 0 240 220" id="hex"></svg>
+    <div><div class="sh" style="margin:0 0 10px"><div class="no">EVALUATION · 종합 평가 6항목</div></div><ul id="critList"></ul></div>
+  </div>
+</div></section>
+
+<!-- ================= 05 ROSTER ================= -->
+<section id="roster"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 05 · HERO ROSTER</div><h2>히어로 명부</h2><p>노바 히어로 본부에 등록된 히어로들. 카드를 누르면 상세 파일이 열립니다.</p></div>
+  <div class="filters reveal" id="filters"></div>
+  <div class="roster" id="rosterGrid"></div>
+</div></section>
+
+<!-- ================= 06 CLASSIFIED ================= -->
+<section id="classified"><div class="wrap">
+  <div class="sh reveal"><div class="no" style="color:var(--red)">SECTOR 06 · CLASSIFIED</div><h2>비공개 파일</h2><p>명부에 이름만 남아 있는 한 사람. 모든 정보가 봉인되어 있다.</p></div>
+  <div class="classified reveal" id="clsBox">
+    <div class="cls-in">
+      <div class="cls-img" id="clsImg"><i class="scan"></i><span class="q">?</span></div>
+      <div class="cls-txt">
+        <div class="lbl">ACCESS LEVEL : ██ · FILE SEALED</div>
+        <h3>IGNIS CROW</h3>
+        <dl class="redact">
+          <dt>본 명</dt><dd>이그니스 크로우</dd>
+          <dt>히어로명</dt><dd><s>████████</s></dd>
+          <dt>소 속</dt><dd><s>██████</s></dd>
+          <dt>등 급</dt><dd><s>██</s></dd>
+          <dt>능 력</dt><dd><s>██████████████</s></dd>
+          <dt>상 태</dt><dd style="color:var(--red)">비공개</dd>
+        </dl>
+        <button class="access" id="accessBtn">▣ 파일 열람 요청</button>
+        <div class="alog" id="alog"></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= 07 TEST ================= -->
+<section id="test"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 07 · APTITUDE</div><h2>클랜 적성 검사</h2><p>본부 정밀 검사의 일부. 상황 6개에 답하면 당신에게 맞는 클랜을 판정하고, 히어로 등록증을 발급합니다.</p></div>
+  <div class="test panel cut corner reveal" id="testBox">
+    <div class="testStart" id="tStart">
+      <div class="sun" style="--s:90px;margin:6px auto 18px"><i class="rays"></i><i class="corona"></i><i class="disc"></i></div>
+      <h3>정밀 검사 — 성향 판정</h3>
+      <p>정답은 없습니다. 당신이라면 어떻게 할지 고르세요.</p>
+      <button class="cta" id="tGo">검사 시작</button>
+    </div>
+    <div id="tQ" style="display:none">
+      <div class="meta"><span id="tNum">Q.01 / 06</span><span>NOVA HQ · APTITUDE</span></div>
+      <div class="pbar"><i id="tBar"></i></div>
+      <h3 id="tText"></h3>
+      <div class="opts" id="tOpts"></div>
+    </div>
+    <div class="result" id="tRes">
+      <div class="res-clan" id="resClan"></div>
+      <div class="sh" style="margin:6px 0 0"><div class="no">HERO LICENSE · 등록증 발급</div></div>
+      <div class="form">
+        <label>이름<input id="fName" maxlength="10" placeholder="예) 김노바" autocomplete="off"></label>
+        <label>히어로명 (영문 추천)<input id="fHero" maxlength="14" placeholder="예) ECLIPSE" autocomplete="off"></label>
+        <label>능력 계열<select id="fType"></select></label>
+      </div>
+      <canvas id="lic" width="1000" height="620"></canvas>
+      <div class="licbtns"><button class="cta" id="licSave">등록증 저장</button><button class="cta ghost" id="tAgain">다시 검사</button></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= 08 ARCHIVE ================= -->
+<section id="archive"><div class="wrap">
+  <div class="sh reveal"><div class="no">SECTOR 08 · ARCHIVE</div><h2>본부 자료실</h2><p>플롯 소개 자료와 인트로 자료. 눌러서 크게 볼 수 있어요.</p></div>
+  <div class="gal reveal" id="gal"></div>
+</div></section>
+
+<div class="final">
+  <div class="sun"><i class="rays"></i><i class="rays r2"></i><i class="corona"></i><i class="disc"></i></div>
+  <h2>검은 태양 아래,<br>당신은 어떤 히어로가 될까</h2>
+  <p>노바 히어로 본부가 당신을 기다리고 있습니다.</p>
+  <a class="cta" href="https://zeta-ai.io/ko/plots/51a65743-1879-4f8f-bdbb-8c1853ec1c57/profile?share_id=jfnld6mba" target="_blank" rel="noopener">▶ 제타에서 플레이하기</a>
+  <div class="rec">추천 모델 · <b>koji</b>, <b>luca</b> (기억력 · 몰입감)</div>
+</div>
+</main>
+
+<footer>
+  <p>NOVA : 검은태양 · 원작 플롯 © ⭐_MEI</p>
+  <p>모든 캐릭터 이미지의 저작권은 제작자에게 있으며 무단 저장·재배포를 금지합니다.</p>
+</footer>
+
+<div id="modal"><div class="md" id="md"></div></div>
+<div id="lb"></div>
+<div class="toast" id="toast"></div>
+<button id="ignChip">⚠ 특급 재난 · 검은 태양 출현 <u>봉인 복구</u></button>
+<div id="boom"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const PID='51a65743-1879-4f8f-bdbb-8c1853ec1c57';
+const Z='https://image.zeta-ai.io/';
+const PLAY='https://zeta-ai.io/ko/plots/51a65743-1879-4f8f-bdbb-8c1853ec1c57/profile?share_id=jfnld6mba';
+const q=(u,w)=>u+'?w='+(w||1080)+'&q=88&f=webp';
+const big=u=>q(u,1080)+'|'+q(u,640);
+const IMG={
+  cover:Z+'plot-cover-image/'+PID+'/c44c0304-7fc2-46af-81f0-d1ff8ebc37c6.png',
+  about:['04df2d74-da39-4fa8-a982-3c4b25c68ab1','903b644a-dba6-4aeb-8e2a-1859ee3e50d2','1ebd0eeb-0351-45fe-8858-bae68b655c20','5e342d0b-6368-419f-9caa-ebc5427e076b','dfa0bd73-6222-46c0-a8aa-8c48054e5d57'].map(f=>Z+'plot-about-image/'+PID+'/'+f+'.png'),
+  intro:['c71f1076-2df9-454e-a7e7-c5753588bbef','2fa09923-0f1a-4780-b537-189872872179'].map(f=>Z+'plot-intro-image/'+PID+'/'+f+'.png')
+};
+const P=(dir,files)=>files.map(f=>Z+'profile-image/'+PID+'/'+dir+'/'+f+'.png');
+
+/* ---------- data ---------- */
+const CLANS={
+  r:{k:'r',name:'레드 베인',en:'RED VEIN',side:'과격파',c:'#e2343f',emoji:'🔴',
+     slogan:'위협은 자라기 전에 제거.',
+     desc:'빌런과 위험 능력자에 대한 강경 대응을 주장하는 전투 중심 클랜.',
+     vals:{공격성:95,'시민 보호':45,효율:70,유연성:35}},
+  a:{k:'a',name:'아스트라 가드',en:'ASTRA GUARD',side:'온건파',c:'#3f7cff',emoji:'🔵',
+     slogan:'한 사람이라도 더 구하는 것이 히어로의 승리.',
+     desc:'시민 보호와 인명 구조를 가장 중시하는 본부 최대 규모의 클랜.',
+     vals:{공격성:35,'시민 보호':98,효율:55,유연성:60}},
+  z:{k:'z',name:'제로라인',en:'ZEROLINE',side:'중립파',c:'#43d2e6',emoji:'🟦',
+     slogan:'정의보다 필요한 것은 정확한 판단.',
+     desc:'감정과 이념보다 상황과 효율을 우선하는 클랜.',
+     vals:{공격성:60,'시민 보호':60,효율:97,유연성:85}}
+};
+const GRADES=[
+  {L:'S',n:'초월급',g:'#ffcf5a',d:'국가적 재난이나 대형 빌런 사건에 투입되는 최상위 히어로. 독자적인 판단과 작전 지휘 권한을 가진다.'},
+  {L:'A',n:'특급',g:'#ff8a3d',d:'고위험 임무를 단독으로 수행할 수 있는 정예 히어로. 팀장이나 S급 히어로의 보좌관 역할을 맡기도 한다.'},
+  {L:'B',n:'상급',g:'#c58bff',d:'전투, 구조, 정보전 등 특정 분야에서 핵심 역할을 수행한다.'},
+  {L:'C',n:'정규급',g:'#7fc3ff',d:'순찰과 범죄 진압을 담당한다. 고위험 임무에서는 상위 등급의 지휘를 받아야 한다.'},
+  {L:'D',n:'수습급',g:'#9aa0ad',d:'갓 등록된 신입 히어로. 단독 임무가 금지되며 선임과 함께 경험을 쌓아야 한다.'}
+];
+const CRIT=[['POWER','능력의 위력'],['CONTROL','제어력'],['COMBAT','전투 능력'],['MISSION','임무 성공률'],['PROTECT','시민 보호 능력'],['COMMAND','지휘력']];
+const HEROES=[
+  {id:'tg',name:'권태건',hero:'TITAN',heroK:'타이탄',clan:'r',sex:'남',age:29,grade:'S',ab:'신체 강화',
+   d:'근력, 속도, 반응력, 내구력을 폭발적으로 강화한다. 최대 출력에서는 장갑차를 뒤집고 대형 빌런과 맨몸으로 맞설 수 있다.',
+   img:P('e951a745-4254-4d21-b5c6-1ac068495a3c',['3ae7185d-1d78-448b-b806-da9c26931d46','e779ead5-a2a5-40de-b4aa-511faf01eebd','91a30ce5-fb5b-451b-9d4a-b3acf094f0e1','563196ee-63eb-4d85-bb04-1b9a9d4e7ba4','0a42fa42-7fe6-4b29-b435-b7f6ad1964c3'])},
+  {id:'sr',name:'차세린',hero:'SHADE',heroK:'쉐이드',clan:'r',sex:'여',age:27,grade:'A',ab:'은신',
+   d:'빛을 굴절시켜 몸을 투명하게 만들고, 발소리와 호흡 소리까지 크게 줄여 모습과 기척을 감춘다. 들고 있는 소형 장비와 무기도 함께 숨길 수 있으며, 주로 적의 뒤로 침투해 지휘관이나 핵심 능력자를 기습한다.',
+   img:P('ba9fbd09-c583-41f8-9324-6cba8407e840',['3f1cbdec-69b3-4865-9607-45347601e77b','75547461-0d03-4aab-b65b-5dfec2566a0a','245d34af-404a-4340-ab89-831a943bf551','f754a82a-e723-4e88-9811-a65ff3c695b9','5d1a1fb9-0fd8-4826-b98b-c409daa44b95'])},
+  {id:'hy',name:'진호연',hero:'BREACHER',heroK:'브리처',clan:'r',sex:'남',age:24,grade:'B',ab:'충격파',
+   d:'주먹과 발을 휘두를 때 강한 충격파를 일으킨다. 범위를 좁히면 벽이나 방어막을 뚫는 관통 공격이 되고, 넓히면 다수의 적을 한꺼번에 밀어낼 수 있다.',
+   img:P('9a7b83ff-0391-4bdd-bd4f-5588bca70cef',['d3a83eea-672c-424d-9839-53e756c5f501','9069e0a6-fb2c-4c79-b7d5-4595996737f5','b528563c-9837-4533-aaef-2e367f439ffc','d528bead-6225-43d0-bc66-282f58a80d0f','98dd186c-23e3-4f6d-b849-95d1b89386d3'])},
+  {id:'sa',name:'윤시아',hero:'LUMINA',heroK:'루미나',clan:'a',sex:'여',age:30,grade:'S',ab:'빛',
+   d:'빛을 만들어 자유롭게 다룬다. 광선으로 쏘거나 검과 창의 형태로 만들 수 있고, 넓은 빛의 방어막으로 공격을 막는다. 등 뒤에 빛의 날개를 펼쳐 비행하거나, 강한 섬광으로 적의 시야를 가릴 수도 있다.',
+   img:P('e220c32a-98c0-46aa-b6e3-537e4c94f7a9',['601e84c7-c659-40c9-ad85-7749625a9a96','c7949441-e5a9-42e1-a08f-e5ef7198e02d','ea531f5a-1471-4d28-acbe-2f75321bc8f4','4f633aad-101a-4af9-97ab-dd2dbadba7e5','fa140dda-dcca-49a9-be15-774926ee4e7f'])},
+  {id:'sy',name:'백서윤',hero:'MEDICA',heroK:'메디카',clan:'a',sex:'여',age:28,grade:'A',ab:'치유',
+   d:'손으로 접촉한 사람의 상처를 빠르게 회복시킨다. 출혈, 골절, 화상, 장기 손상까지 치료할 수 있고, 여러 명의 가벼운 부상을 동시에 회복시킬 수도 있다.',
+   img:P('98ae2af3-c02d-4006-9a81-46cb63f32ada',['d6a08beb-933c-426b-a033-d0bc2b093ec3','1bd62a2b-3f0d-4b0e-a8dd-d4880d1048ca','cb06dabd-7ebc-4d99-92b5-973854262a7b','d6b581e0-6365-4d50-8af7-9e18c4a06a88','7438ed79-d56c-43cd-9d84-41a870ac366d'])},
+  {id:'yr',name:'한유리',hero:'AQUA',heroK:'아쿠아',clan:'a',sex:'여',age:21,grade:'B',ab:'물',
+   d:'주변의 물을 끌어모아 자유롭게 조종한다. 고압 물줄기로 공격하거나 물의 벽으로 총탄과 불꽃을 막는다. 물을 구체로 만들어 시민을 감싸 안전한 곳으로 옮기고, 화재 진압과 유독가스 차단에도 쓴다.',
+   img:P('bd8e02b2-31cd-4534-85a4-02cf68d0038e',['a43f026b-c379-48bc-9607-e43274fc08b0','b71f835c-fd72-4b47-900d-d68696711253','2c1f224c-4de9-4c7c-b143-ba7c14a45f13','4a40f65f-8bde-42a0-96dc-37295b7a8390','7259975a-cfb9-40a0-bead-e8baae5ef32e'])},
+  {id:'hr',name:'류하린',hero:'VOLT',heroK:'볼트',clan:'z',sex:'여',age:24,grade:'S',ab:'번개',
+   d:'몸에서 강력한 전기를 만들어 다룬다. 번개를 직접 쏘거나 전류를 몸에 둘러 폭발적인 속도로 이동한다. 접촉한 적을 마비시키고, 전자 장비를 멈추거나 전력을 공급하며, 약한 전류를 퍼뜨려 주변의 생체 반응을 감지할 수도 있다.',
+   img:P('0ca276ee-ba5e-402d-bae7-9f714a559a32',['4c2a673a-b03e-4c18-92fc-33370e63efd4','5d86edcf-83bb-4bc5-a663-e2f216c759bf','a0fd0643-d35f-4589-8b8a-6a078ff47e7b','ca78c50a-d612-4be2-90bf-ed9c65506015','55a491e2-9062-41ce-a61c-55ae37511718'])},
+  {id:'cr',name:'채린',hero:'MIRROR',heroK:'미러',clan:'z',sex:'여',age:26,grade:'A',ab:'능력 복사',
+   d:'직접 목격한 상대의 능력을 짧은 시간 동안 복사한다. 불, 얼음, 번개처럼 단순한 능력은 빠르게 따라 하지만, 복잡한 능력은 분석할 시간이 필요하다. 한 번에 하나의 능력만 유지할 수 있고, 복사한 능력은 원본보다 약하다.',
+   img:P('1bd13280-3431-4578-b051-c7211ac13803',['8277fc7e-92ae-4457-826d-6006004c6422','8f963af8-58a3-4b71-959c-0fa76c0427cf','6280a29b-a6fe-4db2-82b8-5858829d125c','882b4406-4d7a-4d81-8109-0903a131f55d','a12f5573-e309-4a5a-987b-abc54df31a46'])},
+  {id:'sa2',name:'남서아',hero:'NOISE',heroK:'노이즈',clan:'z',sex:'여',age:23,grade:'B',ab:'전자 교란',
+   d:'일정 범위 안의 통신기기, 카메라, 경보 장치, 드론, 원격 조종 장비를 멈추거나 오작동시킨다. 전자 신호의 위치를 감지해 숨겨진 감시 장치와 폭발물을 찾아내고, 전술 노트북으로 해킹도 한다.',
+   img:P('f2430a7c-9a21-4d55-bfef-830f7d8de29a',['d73be0f5-bfb7-4ea6-a663-c09aa38a1c25','26194ef4-61f2-43ce-bc0c-e74c4230f5b1','3d5204ef-54e6-409e-8f3b-f16250a7e836','94b7eba7-5674-4a56-ac95-ffc955459c6e','8ad62563-21b5-4cbb-91b6-b0a93c13537c'])}
+];
+const IGNIS=P('df2a0761-0b95-4cba-af7e-03b16c448e04',['f79bbfe8-54cb-49c0-8a5d-cebec1ff504d','ab663f2a-fc68-4b0a-8577-41caa90ca103','4c65e621-ac86-4920-951c-a0c09b25e8a1']);
+const gradeOf=L=>GRADES.find(g=>g.L===L);
+
+/* ---------- images: fit, fallback, protection ---------- */
+const WM='<b class="wm">© ⭐_MEI · NOVA</b>';
+function imgTag(url,lazy){const [src,fb]=String(url).split('|');
+  return `<i class="bb"></i><img src="${src}"${fb?` data-fb="${fb}"`:''} alt="" ${lazy?'loading="lazy" ':''}decoding="async" draggable="false" onload="fitImg(this)" onerror="imgErr(this)">`}
+function pic(url,color,label,cls='',wm=true){return `<div class="ph ${cls}" style="--c:${color}"><span>${label||''}</span>${imgTag(url,true)}${wm?WM:''}</div>`}
+function imgErr(img){const fb=img.dataset.fb;if(fb){img.removeAttribute('data-fb');img.src=fb}else{const b=img.previousElementSibling;if(b&&b.classList.contains('bb'))b.remove();img.remove()}}
+function fitImg(img){const box=img.parentElement;if(!box||!img.naturalWidth)return;box.classList.add('ok');const bb=box.querySelector(':scope>.bb');
+  if(box.classList.contains('nat')){return}
+  const w=box.clientWidth,h=box.clientHeight;if(!w||!h)return;const ir=img.naturalWidth/img.naturalHeight,br=w/h,loss=1-Math.min(ir,br)/Math.max(ir,br);
+  const fit=loss>(+box.dataset.tol||.18);box.classList.toggle('fit',fit);if(fit&&bb)bb.style.backgroundImage=`url("${img.currentSrc||img.src}")`}
+function refit(){document.querySelectorAll('.ph>img').forEach(i=>{if(i.complete&&i.naturalWidth)fitImg(i)})}
+addEventListener('resize',()=>{clearTimeout(refit.t);refit.t=setTimeout(refit,200)});
+['contextmenu','dragstart','selectstart'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('.ph,#lb,img,.card,.cls-img'))e.preventDefault()}));
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s')e.preventDefault()});
+
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2200)}
+
+/* ---------- glyphs ---------- */
+const EMB={
+  r:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4 L54 16 V34 C54 48 44 56 32 60 C20 56 10 48 10 34 V16 Z"/><path d="M32 14 C26 24 22 30 22 38 a10 10 0 0 0 20 0 C42 30 38 24 32 14Z" fill="currentColor" fill-opacity=".3"/><path d="M32 30 V50 M26 42 L32 50 L38 42"/></svg>',
+  a:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4 L54 16 V34 C54 48 44 56 32 60 C20 56 10 48 10 34 V16 Z"/><path d="M32 16 L35.5 27 L47 27 L37.8 33.6 L41.3 44.6 L32 38 L22.7 44.6 L26.2 33.6 L17 27 L28.5 27 Z" fill="currentColor" fill-opacity=".3"/></svg>',
+  z:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 4 L54 16 V34 C54 48 44 56 32 60 C20 56 10 48 10 34 V16 Z"/><circle cx="32" cy="32" r="13"/><path d="M14 32 H50 M32 14 V50" stroke-opacity=".5"/><path d="M22 32 H42" stroke-width="3"/></svg>'
+};
+const MODS=[
+  {k:'eq',n:'장비',e:'EQUIPMENT',t:'클랜과 히어로에게 작전용 <b>장비</b>를 지원한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>'},
+  {k:'in',n:'정보',e:'INTEL',t:'빌런과 사건에 대한 <b>정보</b>를 공유받는다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>'},
+  {k:'tr',n:'훈련',e:'TRAINING',t:'능력 제어와 전투를 위한 <b>훈련</b>을 지원한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>'},
+  {k:'ms',n:'임무 지원',e:'MISSION',t:'현장 작전에 필요한 <b>임무 지원</b>을 받는다. 단, 본부의 공식 명령이 항상 우선한다.',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/><circle cx="15" cy="9" r="1.5"/></svg>'}
+];
+
+/* ---------- build: HQ ---------- */
+(function(){
+  const row=$('hqClans'),mods=$('hqMods'),info=$('hqInfo');
+  row.innerHTML=Object.values(CLANS).map(c=>`<button data-k="${c.k}" style="--c:${c.c}"><b>${c.name}</b><small>${c.side}</small></button>`).join('');
+  mods.innerHTML=MODS.map(m=>`<button class="mod" data-k="${m.k}">${m.svg}<b>${m.n}</b><small>${m.e}</small></button>`).join('');
+  const clear=()=>document.querySelectorAll('#hqClans button,#hqMods .mod').forEach(b=>b.classList.remove('on'));
+  row.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;clear();b.classList.add('on');const c=CLANS[b.dataset.k];
+    const mem=HEROES.filter(h=>h.clan===c.k).map(h=>`${h.name}(${h.grade})`).join(' · ');
+    info.innerHTML=`<b style="color:${c.c}">${c.emoji} ${c.name} · ${c.side}</b><br>${c.desc}<br><span style="color:var(--mute)">“${c.slogan}”</span><br><small style="color:var(--mute)">소속 : ${mem}</small>`});
+  mods.addEventListener('click',e=>{const b=e.target.closest('.mod');if(!b)return;clear();b.classList.add('on');const m=MODS.find(x=>x.k===b.dataset.k);info.innerHTML=`<b>${m.n} · ${m.e}</b><br>${m.t}`});
+})();
+
+/* ---------- build: clans ---------- */
+(function(){
+  $('clanCards').innerHTML=Object.values(CLANS).map(c=>`<div class="clan reveal" style="--c:${c.c}"><span class="bigl">${c.en.split(' ')[0]}</span>
+    <div class="emb">${EMB[c.k]}</div><div class="side">${c.emoji} ${c.side} · CLAN</div>
+    <h3>${c.name}<small>${c.en}</small></h3><div class="slogan">“${c.slogan}”</div><p>${c.desc}</p>
+    <div class="mem">${HEROES.filter(h=>h.clan===c.k).map(h=>`<button data-h="${h.id}">${pic(big(h.img[0]),c.c,h.heroK,'char',false)}<em>${h.grade} · ${h.name}</em></button>`).join('')}</div></div>`).join('');
+  $('clanCards').addEventListener('click',e=>{const b=e.target.closest('button[data-h]');if(b)openHero(b.dataset.h)});
+  const keys=Object.keys(CLANS.r.vals);
+  $('cmpKey').innerHTML=Object.values(CLANS).map(c=>`<span style="--c:${c.c}"><i></i>${c.name}</span>`).join('');
+  $('cmpRows').innerHTML=keys.map(k=>`<div class="cmp"><span class="lab">${k}</span><div style="display:grid;gap:3px">${Object.values(CLANS).map(c=>`<div class="bar" style="--c:${c.c}"><i data-w="${c.vals[k]}"></i></div>`).join('')}</div></div>`).join('<div style="height:6px"></div>');
+})();
+
+/* ---------- build: grades ---------- */
+(function(){
+  $('gradeList').innerHTML=GRADES.map((g,i)=>{const who=HEROES.filter(h=>h.grade===g.L);
+    return `<button class="gr${i===0?' on':''}" style="--g:${g.g}"><span class="L">${g.L}</span><b>${g.n}<small>${g.L}급</small></b>
+      <span class="who">${who.map(h=>`<i>${pic(q(h.img[0],128),CLANS[h.clan].c,'','char',false)}</i>`).join('')}</span>
+      <div class="d">${g.d}${who.length?`<br><span style="color:var(--mute);font-size:12.5px">명부 내 ${g.L}급 : ${who.map(h=>`<b style="color:${CLANS[h.clan].c};font-weight:600">${h.name}(${h.heroK})</b>`).join(' · ')}</span>`:'<br><span style="color:var(--mute);font-size:12.5px">명부 내 해당 히어로 없음 — 예외 각성자인 당신의 등급은?</span>'}</div></button>`}).join('');
+  $('gradeList').addEventListener('click',e=>{const b=e.target.closest('.gr');if(!b)return;const was=b.classList.contains('on');document.querySelectorAll('.gr').forEach(x=>x.classList.remove('on'));if(!was)b.classList.add('on')});
+  // hexagon
+  const cx=120,cy=108,R=82,pt=(i,r)=>{const a=-Math.PI/2+i*Math.PI/3;return[cx+Math.cos(a)*r,cy+Math.sin(a)*r]};
+  let s='';for(let k=1;k<=4;k++){s+=`<polygon points="${[0,1,2,3,4,5].map(i=>pt(i,R*k/4).join(',')).join(' ')}" fill="none" stroke="rgba(255,255,255,${k===4?.18:.07})"/>`}
+  for(let i=0;i<6;i++){const[x,y]=pt(i,R);s+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.07)"/>`;const[lx,ly]=pt(i,R+16);s+=`<text x="${lx}" y="${ly+3}" text-anchor="middle" font-family="Chakra Petch" font-size="9" letter-spacing="1" fill="#ffb347">${CRIT[i][0]}</text>`}
+  s+=`<polygon id="hexP" points="${[0,1,2,3,4,5].map(i=>pt(i,8).join(',')).join(' ')}" fill="rgba(255,140,50,.22)" stroke="#ffb347" stroke-width="1.5" style="transition:all 1s"/>`;
+  $('hex').innerHTML=s;
+  $('critList').innerHTML=CRIT.map(c=>`<li><small>${c[0]}</small>${c[1]}</li>`).join('');
+  let hexT=0;const hexAnim=()=>{const v=[.92,.78,.86,.7,.95,.66].map((b,i)=>b-.25+.25*Math.abs(Math.sin(hexT*.6+i)));$('hexP').setAttribute('points',v.map((r,i)=>pt(i,R*r).join(',')).join(' '));hexT++};
+  window._hexAnim=hexAnim;
+})();
+
+/* ---------- build: roster ---------- */
+(function(){
+  const F=[['all','전체'],['r','레드 베인'],['a','아스트라 가드'],['z','제로라인'],['S','S급'],['A','A급'],['B','B급']];
+  $('filters').innerHTML=F.map((f,i)=>`<button data-f="${f[0]}" class="${i?'':'on'}">${f[1]}</button>`).join('');
+  $('rosterGrid').innerHTML=HEROES.map(h=>{const c=CLANS[h.clan],g=gradeOf(h.grade);
+    return `<button class="card reveal" data-h="${h.id}" data-clan="${h.clan}" data-grade="${h.grade}" style="--c:${c.c};--g:${g.g}">${pic(big(h.img[0]),c.c,h.hero,'char')}
+      <span class="gb">${h.grade}</span><span class="cl"></span><div class="tx"><div class="hn">${h.hero}</div><div class="nm">${h.name}</div><div class="ab">${h.ab} · ${c.name}</div></div></button>`}).join('');
+  $('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
+    document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',!(f==='all'||c.dataset.clan===f||c.dataset.grade===f)));setTimeout(refit,30)});
+  $('rosterGrid').addEventListener('click',e=>{const b=e.target.closest('.card');if(b)openHero(b.dataset.h)});
+})();
+
+/* ---------- hero modal ---------- */
+const GSCORE={S:5,A:4,B:3,C:2,D:1};
+function openHero(id){const h=HEROES.find(x=>x.id===id);if(!h)return;const c=CLANS[h.clan],g=gradeOf(h.grade);
+  const base=GSCORE[h.grade];
+  $('md').innerHTML=`<button class="x" id="mdX" aria-label="닫기">✕</button>
+  <div class="mdgrid" style="--c:${c.c}">
+    <div><div class="mdimg" id="mdImg">${pic(big(h.img[0]),c.c,h.hero,'char')}</div>
+      <div class="thumbs">${h.img.map((u,i)=>`<button class="${i?'':'on'}" data-i="${i}">${pic(q(u,256),c.c,'','',false)}</button>`).join('')}</div></div>
+    <div><div class="hn">${h.hero} · ${h.heroK}</div><h3>${h.name}</h3>
+      <div class="chips"><span><b>${c.emoji} ${c.name}</b> ${c.side}</span><span><b style="color:${g.g}">${h.grade}급</b> ${g.n}</span><span>${h.sex} · ${h.age}세</span></div>
+      <div class="abil"><small>ABILITY</small><h4>${h.ab}</h4><p>${h.d}</p></div>
+      <div class="abil" style="margin-top:10px;border-color:var(--line2)"><small style="color:var(--sun)">CLAN CREED</small><p>“${c.slogan}”</p></div>
+      <div class="stat"><span class="lab">등급 레벨</span><div class="bar"><i data-w="${base*20}"></i></div><span class="v">${h.grade}</span>
+        ${Object.entries(c.vals).map(([k,v])=>`<span class="lab">${k}</span><div class="bar"><i data-w="${v}"></i></div><span class="v">${v}</span>`).join('')}</div>
+      <div class="stnote">* 클랜 성향 수치는 클랜 설명을 바탕으로 한 팬메이드 그래프예요.</div>
+      <a class="cta" style="margin-top:18px" href="${PLAY}" target="_blank" rel="noopener">▶ ${h.name}와(과) 만나러 가기</a>
+    </div></div>`;
+  $('modal').classList.add('on');document.body.classList.add('lock');$('modal').scrollTop=0;
+  requestAnimationFrame(()=>setTimeout(()=>$('md').querySelectorAll('.bar i').forEach(i=>i.style.width=i.dataset.w+'%'),60));
+  $('md').querySelector('.thumbs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$('md').querySelectorAll('.thumbs button').forEach(x=>x.classList.toggle('on',x===b));
+    $('mdImg').innerHTML=pic(big(h.img[+b.dataset.i]),c.c,h.hero,'char')});
+  $('mdX').onclick=closeModal;history.pushState({m:1},'')}
+function closeModal(){if(!$('modal').classList.contains('on'))return;$('modal').classList.remove('on');if(!$('lb').classList.contains('on'))document.body.classList.remove('lock')}
+$('modal').addEventListener('click',e=>{if(e.target.id==='modal'||e.target.id==='md')closeModal()});
+addEventListener('popstate',()=>{if($('lb').classList.contains('on'))closeLb();else closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeLb();closeModal()}});
+
+/* ---------- archive + lightbox ---------- */
+(function(){
+  const items=[[IMG.cover,'COVER'],...IMG.about.map((u,i)=>[u,'ABOUT '+String(i+1).padStart(2,'0')]),...IMG.intro.map((u,i)=>[u,'INTRO '+String(i+1).padStart(2,'0')])];
+  $('gal').innerHTML=items.map(([u,cap],i)=>`<button data-i="${i}"><div class="ph" style="--c:#ffb347" data-cap="${cap}"><span>${cap}</span>${imgTag(q(u,640),true)}${WM}</div></button>`).join('');
+  $('gal').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;openLb(items[+b.dataset.i][0])});
+  const f=$('figCover');f.insertAdjacentHTML('beforeend',imgTag(big(IMG.cover),false)+WM);
+})();
+function openLb(u){$('lb').innerHTML=`<div class="ph nat" style="--c:#ffb347"><span>LOADING</span>${imgTag(big(u),false)}${WM}</div>`;$('lb').classList.add('on');document.body.classList.add('lock');history.pushState({lb:1},'')}
+function closeLb(){if(!$('lb').classList.contains('on'))return;$('lb').classList.remove('on');$('lb').innerHTML='';if(!$('modal').classList.contains('on'))document.body.classList.remove('lock')}
+$('lb').addEventListener('click',()=>{closeLb()});
+
+/* ---------- classified : IGNIS CROW (zeroline unlock + easter egg) ---------- */
+const IGN=(()=>{
+  const box=$('clsBox'),inner=box.querySelector('.cls-in');
+  const SEALED=inner.innerHTML;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  let n=0,busy=false,energy=0,used={},released=false,sayTok=0;
+
+  function bindSealed(){
+    const img=$('clsImg');img.insertAdjacentHTML('afterbegin',pic(q(IGNIS[0],640),'#e2343f','','char',false));
+    $('accessBtn').onclick=request;
+  }
+  const MSG=['> 열람 요청 접수 … 신원 확인 중','> 권한 부족 — ACCESS LEVEL 미달\n> 본부 최상위 권한으로 봉인된 파일입니다.'];
+  async function request(){if(busy)return;
+    if(n<MSG.length){$('alog').textContent=MSG[n++];glitch(box);BGM.sfx('deny');return}
+    busy=true;$('accessBtn').disabled=true;await zeroline();busy=false;openFile()}
+  function glitch(el){el.classList.remove('glitch');void el.offsetWidth;el.classList.add('glitch')}
+
+  /* --- ZEROLINE · NOISE intercept --- */
+  async function zeroline(){
+    $('alog').textContent='> 경고: 봉인 파일 재접근 시도 감지 …';glitch(box);BGM.sfx('deny');await sleep(900);
+    box.classList.add('teal');
+    const zl=document.createElement('div');zl.className='zl on';
+    zl.innerHTML=`<div class="hd"><span>◆ ZEROLINE 보안 회선</span><span>NOISE · B급</span></div><div class="ln" id="zlLn"></div><div class="code" id="zlCode"></div><div class="hb"><i id="zlBar"></i></div>`;
+    box.querySelector('.cls-txt').appendChild(zl);BGM.sfx('zl');
+    const ln=$('zlLn'),code=$('zlCode'),bar=$('zlBar');
+    const type=async(t)=>{ln.textContent='';for(const ch of t){ln.textContent+=ch;await sleep(28)}};
+    await type('[노이즈] 잠깐. 그 파일, 본부 서버에서 강제로 잠겨 있어.');await sleep(700);
+    await type('[노이즈] 감정 말고 판단으로 보자. 알아야 할 건 알아야 하니까.');await sleep(500);
+    await type('[노이즈] 봉인 우회 시작할게. 접속 흔적은 내가 지운다.');
+    const hex=()=>Array.from({length:4},()=>(Math.random()*0xffffffff>>>0).toString(16).padStart(8,'0')).join(' ');
+    const steps=['bypass seal://nova-hq/classified','spoof clearance  : S-CLASS','restore deleted  : /record/awakening','decrypt subject  : I.CROW'];
+    for(let i=0;i<=100;i+=4){bar.style.width=i+'%';code.textContent=steps[Math.min(3,i/26|0)]+'\n'+hex()+'\n'+hex();if(i%8===0)BGM.sfx('hack');await sleep(55)}
+    await type('[노이즈] …열렸어. 이건 본부가 지운 기록이야. 조심해.');await sleep(900);
+  }
+
+  /* --- open the file : light gets drained --- */
+  async function openFile(){
+    BGM.sfx('open');BGM.prep('ignis');
+    box.classList.remove('teal');box.classList.add('dark');document.body.classList.add('drain-on');
+    EMBM.set('pull');
+    inner.innerHTML=DOSSIER();box.insertAdjacentHTML('afterbegin','<div class="drain"><i></i><i></i></div>');
+    $('ignImg').insertAdjacentHTML('beforeend',pic(big(IGNIS[0]),'#e2343f','IGNIS','char'));
+    bindDossier();setPower(0);
+    await sleep(400);say('…드디어 열었군. 늦게 깨어난 「예외」.');
+    BGM.setTrack('ignis');
+  }
+  const DOSSIER=()=>`<div class="ign">
+    <div class="ign-l">
+      <div class="ign-img" id="ignImg"><div class="bsun" id="bsun"><i class="rays"></i><i class="rays r2"></i><i class="corona"></i><i class="disc"></i></div></div>
+      <div class="ign-th">${IGNIS.map((u,i)=>`<button class="${i?'':'on'}" data-i="${i}">${pic(q(u,256),'#e2343f','','',false)}</button>`).join('')}</div>
+      <div class="energy"><div class="eh"><span>STORED ENERGY</span><b id="enP">0%</b></div><div class="eb"><i id="enB"></i></div></div>
+    </div>
+    <div class="ign-r">
+      <div class="lbl">FILE UNSEALED · 복구된 기록</div>
+      <h3 class="ign-name">IGNIS CROW</h3>
+      <div class="alias">이명 「검은 태양」</div>
+      <div class="threat">⚠ 위험 등급 · 특급 재난</div>
+      <dl class="ign-dl">
+        <dt>소 속</dt><dd>빌런</dd><dt>이 력</dt><dd>전직 히어로 후보생</dd><dt>성별 · 나이</dt><dd>남 · 미상</dd>
+        <dt>능 력</dt><dd><b>에너지 흡수 · 방출</b></dd>
+      </dl>
+      <div class="voice"><small>IGNIS CROW</small><p id="ignSay"></p></div>
+      <div class="atkh">▸ 히어로의 기술로 맞서 보세요</div>
+      <div class="atk" id="atk">
+        <button data-k="light" style="--k:#ffe08a">빛<small>루미나</small></button>
+        <button data-k="volt" style="--k:#7fe3ff">번개<small>볼트</small></button>
+        <button data-k="shock" style="--k:#d6b3ff">충격파<small>브리처</small></button>
+        <button data-k="fire" style="--k:#ff8a4a">불꽃<small>화염 능력자</small></button>
+      </div>
+      <div class="recs">
+        <div class="rec on"><small>OBSERVATION · 관찰 기록</small><p>큰 키에 마른 듯 단단한 체격. 길게 기른 검은 머리 사이로 붉은빛이 흐르고, 검은 눈동자에는 붉은 고리가 떠 있다. 얼굴 왼쪽에는 괴물 같은 얼굴이 있다. 긴 검은 코트 안에 검붉은 갑옷을 입었고, 등 뒤에는 검은 태양을 닮은 거대한 원형 에너지가 떠다닌다.</p>
+          <p>능력을 쓰면 주변의 빛이 그에게 빨려 들어가, <b>그가 선 자리만 밤처럼 어두워진다.</b></p></div>
+        <div class="rec on"><small>BEHAVIOR · 행동 분석</small><p>언제나 침착하고 위압적이다. 소리치거나 흥분하지 않고, 이미 이긴 사람처럼 여유롭다. 느리고 차분한 반말을 쓰며, 상대를 이름보다 능력이나 특징으로 부른다.</p>
+          <p>히어로 개인을 미워하지는 않는다. 오히려 본부의 명령대로 움직이는 히어로들을 불쌍히 여긴다. 다만 목적을 막는 자는 망설임 없이 제거한다. 약속을 어기거나 비겁한 짓을 싫어하고, 정면으로 맞서는 강자에게는 예의를 갖춘다.</p></div>
+        <div class="rec" data-at="25"><small>ABILITY · 에너지 흡수 · 방출</small><p>불꽃, 번개, 빛, 충격파처럼 에너지로 이루어진 공격을 흡수해 몸 안에 쌓아 둔다. 쌓인 힘은 검붉은 폭발이나 광선으로 되돌려 쏜다. 힘이 쌓일수록 등 뒤의 검은 태양 같은 에너지 고리가 커진다.</p>
+          <ul><li>흡수한 힘을 광선으로 방출</li><li>주변을 휩쓰는 광역 폭발</li><li>검은 에너지로 검과 창 생성</li><li>에너지를 몸에 둘러 신체 강화</li><li>축적한 힘으로 공중 부양</li></ul>
+          <p class="warn">⚠ 단순한 능력이지만, 히어로가 강한 기술을 쓸수록 오히려 그가 강해진다.</p></div>
+        <div class="rec" data-at="50"><small>RECORD · 인공 각성 실험 <em>[삭제된 기록 · 복구됨]</em></small><p>이그니스는 과거 노바 히어로 본부가 진행한 <b>인공 각성 실험</b>의 피험자였다.</p>
+          <p>명목은 <s>“능력이 약한 사람도 히어로로 만들 수 있다”</s>. 실제 목적은 <b>어떤 능력이든 흡수하고 다시 쓰는 전투 병기</b>였다. 그는 강한 힘을 얻었지만, 에너지를 다루지 못한 다른 피험자들은 폭주하거나 목숨을 잃었다.</p>
+          <p>본부는 시설을 폐쇄하고 모든 기록을 지웠다. 살아남은 그 역시 <s>사고로 사망</s> <b class="red">처리되었다.</b></p></div>
+        <div class="rec" data-at="75"><small>OBJECTIVE · 목적</small><p>함께 실험받은 이들을 버리고도 영웅을 자처하는 본부. 그는 그 본부를 증오한다.</p>
+          <p>목표는 <b>히어로 등급과 클랜 체제를 무너뜨리고</b>, 능력자가 누구의 통제도 받지 않는 새로운 세계를 만드는 것.</p>
+          <p>표적은 본부 지하에 보관된 <b class="red">노바 코어</b>. 수많은 능력자의 에너지가 저장된 그것을 흡수하면, 도시 하나를 지울 힘을 얻는다.</p></div>
+      </div>
+      <button class="seal" id="sealBtn">▣ 봉인 복구</button>
+    </div></div>`;
+
+  const LINES={
+    light:['빛이라. …따뜻하군. 고맙게 받지.','「빛」. 본부의 상징이었지. 이제 내 거다.'],
+    volt:['번개. 빠르지만… 결국 내 안으로 흘러든다.','「번개」. 마비시키기엔 조금 약했어.'],
+    shock:['충격파. 두드리는 소리가 크군.','「충격파」. 벽은 뚫어도, 나는 못 뚫는다.'],
+    fire:['불꽃. 좋은 연료다.','「불꽃」. …더 태워 봐.']
+  };
+  const AFTER={25:'…알겠나. 강하게 칠수록, 나는 커진다.',50:'본부는 우리를 버렸다. 그리고 지금도 영웅이라 불리지.',75:'명령대로 움직이는 너희가… 불쌍할 뿐이다.'};
+  function bindDossier(){
+    inner.querySelector('.ign-th').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;inner.querySelectorAll('.ign-th button').forEach(x=>x.classList.toggle('on',x===b));
+      const im=$('ignImg');im.querySelectorAll('.ph').forEach(x=>x.remove());im.insertAdjacentHTML('beforeend',pic(big(IGNIS[+b.dataset.i]),'#e2343f','IGNIS','char'))});
+    $('atk').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled||busy)return;attack(b)});
+    $('sealBtn').onclick=seal;
+  }
+  async function say(t){const tok=++sayTok,p=$('ignSay');if(!p)return;p.textContent='';p.classList.add('typing');
+    for(const ch of t){if(tok!==sayTok)return;p.textContent+=ch;await sleep(ch==='.'||ch==='…'?190:62)}p.classList.remove('typing')}
+  function setPower(v){energy=v;const k=1+v/100*.55;$('bsun').style.setProperty('--k',k);$('bsun').style.setProperty('--glow',.35+v/100*.65);
+    $('enP').textContent=v+'%';$('enB').style.width=v+'%';
+    inner.querySelectorAll('.rec[data-at]').forEach(r=>{if(v>=+r.dataset.at&&!r.classList.contains('on')){r.classList.add('on','new');setTimeout(()=>r.classList.remove('new'),1600)}});
+    box.style.setProperty('--dark',.55+v/100*.4)}
+  async function attack(b){busy=true;b.disabled=true;const k=b.dataset.k,col=getComputedStyle(b).getPropertyValue('--k').trim();used[k]=(used[k]||0)+1;
+    // projectile
+    const r1=b.getBoundingClientRect(),r2=$('ignImg').getBoundingClientRect();const pj=document.createElement('i');pj.className='proj';pj.style.setProperty('--k',col);document.body.appendChild(pj);
+    const x1=r1.left+r1.width/2,y1=r1.top+r1.height/2,x2=r2.left+r2.width/2,y2=r2.top+r2.height*.42;
+    const an=pj.animate([{transform:`translate(${x1}px,${y1}px) scale(1)`,opacity:1},{transform:`translate(${x2}px,${y2}px) scale(.3)`,opacity:.9}],{duration:420,easing:'cubic-bezier(.5,0,.9,.4)'});
+    await an.finished.catch(()=>{});pj.remove();
+    // absorb
+    const im=$('ignImg');im.style.setProperty('--k2',col);im.classList.remove('absorb');void im.offsetWidth;im.classList.add('absorb');BGM.sfx('absorb');
+    const nv=Math.min(100,energy+25);setPower(nv);
+    await say(LINES[k][0]);
+    if(AFTER[nv]){await sleep(500);await say(AFTER[nv])}
+    busy=false;if(nv>=100)release()}
+  async function release(){if(released)return;released=true;busy=true;
+    await sleep(500);await say('…충분하다.');await sleep(700);
+    // detonation
+    const bm=$('boom'),r=$('ignImg').getBoundingClientRect();bm.style.setProperty('--x',(r.left+r.width/2)+'px');bm.style.setProperty('--y',(r.top+r.height*.42)+'px');
+    bm.classList.remove('on');void bm.offsetWidth;bm.classList.add('on');BGM.sfx('boom');EMBM.set('burst');
+    document.documentElement.classList.add('quake');setTimeout(()=>document.documentElement.classList.remove('quake'),900);
+    await sleep(650);
+    document.body.classList.add('ignis');document.body.classList.remove('drain-on');$('logoT').textContent='NOVA HQ';
+    $('enP').textContent='RELEASED';box.classList.add('spent');
+    setTimeout(()=>EMBM.set('ash'),1400);
+    await sleep(900);await say('강한 기술일수록, 나를 키울 뿐이다.');await sleep(600);
+    await say('…그래도 정면으로 온 건 인정하지, 「예외」. 다음엔 본부 지하에서 보자.');
+    $('sealBtn').textContent='▣ 봉인 복구 · 질서 되돌리기';busy=false}
+  async function seal(){if(busy)return;busy=true;
+    if(!released){await say('등을 보이는 건가. …실망이군.');await sleep(900)}
+    else{await say('봉인해도 사라지진 않아. …기억해 둬.');await sleep(800)}
+    restore();busy=false}
+  function restore(){sayTok++;document.body.classList.remove('ignis','drain-on');EMBM.set('idle');BGM.setTrack('main');
+    box.classList.remove('dark','spent','teal');box.style.removeProperty('--dark');const d=box.querySelector('.drain');if(d)d.remove();
+    inner.innerHTML=SEALED;bindSealed();n=MSG.length;energy=0;used={};released=false;
+    $('alog').textContent='> 파일이 다시 봉인되었습니다.\n> (제로라인 회선은 아직 열려 있다…)';}
+  $('ignChip').onclick=()=>{if(busy)return;document.getElementById('classified').scrollIntoView({behavior:'smooth'});setTimeout(()=>{if(!busy)seal()},500)};
+  bindSealed();
+  return{restore,get energy(){return energy}};
+})();
+
+/* ---------- aptitude test ---------- */
+const QS=[
+  ['도심 한복판, 빌런이 시민을 인질로 잡았다. 당신의 첫 행동은?',[['인질이 다치기 전에, 빌런부터 즉시 무력화한다','r'],['인질의 안전부터 확보하고 시간을 번다','a'],['빌런의 능력과 주변 지형을 먼저 분석한다','z']]],
+  ['아직 범죄를 저지르지 않은 위험 능력자가 발견되었다.',[['위협은 자라기 전에 막아야 한다','r'],['그 사람도 지켜야 할 시민이다','a'],['감시를 붙이고, 데이터를 모은 뒤 판단한다','z']]],
+  ['작전 중, 본부의 명령과 당신의 판단이 다르다.',[['명령은 따르되, 가장 빠르게 적을 제압할 방법을 찾는다','r'],['명령은 따르되, 한 사람이라도 더 살릴 방법을 찾는다','a'],['명령은 따르되, 성공 확률이 가장 높은 방법을 계산한다','z']]],
+  ['히어로에게 가장 필요한 것은?',[['적을 압도하는 힘','r'],['끝까지 지키려는 마음','a'],['흔들리지 않는 판단력','z']]],
+  ['동료의 실수로 작전이 틀어졌다.',[['다음엔 없다고 단호하게 말한다','r'],['다친 데는 없는지 먼저 살핀다','a'],['원인을 분석해 같은 일이 없도록 정리한다','z']]],
+  ['당신이 되고 싶은 히어로는?',[['빌런이 이름만 들어도 떠는 히어로','r'],['시민이 이름만 들어도 안심하는 히어로','a'],['아무도 모르게 사건을 끝내는 히어로','z']]]
+];
+const TYPES=['신체 강화','원소 (불·물·번개 등)','빛 / 어둠','정신 · 감각','치유 · 보조','은신 · 기동','전자 · 기계','측정 불가 (예외)'];
+let ans=[],qi=0,result=null;
+$('fType').innerHTML=TYPES.map(t=>`<option>${t}</option>`).join('');
+function showQ(){const [t,o]=QS[qi];$('tNum').textContent=`Q.${String(qi+1).padStart(2,'0')} / ${String(QS.length).padStart(2,'0')}`;$('tBar').style.width=(qi/QS.length*100)+'%';$('tText').textContent=t;
+  const opts=o.map((x,i)=>({x,i})).sort(()=>Math.random()-.5);
+  $('tOpts').innerHTML=opts.map(({x},j)=>`<button data-k="${x[1]}"><i>${'ABC'[j]}</i><span>${x[0]}</span></button>`).join('')}
+$('tGo').onclick=()=>{ans=[];qi=0;$('tStart').style.display='none';$('tRes').classList.remove('on');$('tQ').style.display='block';showQ();BGM.sfx('ok')};
+$('tOpts').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.classList.contains('pick'))return;b.classList.add('pick');ans.push(b.dataset.k);BGM.sfx('tick');
+  setTimeout(()=>{qi++;if(qi<QS.length)showQ();else finishTest()},260)});
+function finishTest(){$('tBar').style.width='100%';const cnt={r:0,a:0,z:0};ans.forEach(k=>cnt[k]++);
+  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||(ans.lastIndexOf(b)-ans.lastIndexOf(a)));const k=top[0];result={k,cnt};const c=CLANS[k];
+  const mates=HEROES.filter(h=>h.clan===k);const mate=mates[Math.floor(Math.random()*mates.length)];
+  $('resClan').style.setProperty('--c',c.c);
+  $('resClan').innerHTML=`<small>판정 결과 · RECOMMENDED CLAN</small><h4>${c.emoji} ${c.name}</h4><p>“${c.slogan}”<br>${c.desc}</p>
+    <p style="color:var(--mute);font-size:13px;margin-top:8px">같은 클랜의 선배 : <b style="color:${c.c}">${mate.name} (${mate.heroK} · ${mate.grade}급)</b></p>
+    <div class="mix">${['r','a','z'].map(x=>`<i style="flex:${cnt[x]||.15};background:${CLANS[x].c}"></i>`).join('')}</div>
+    <p style="color:var(--mute);font-size:12px;margin-top:6px">${['r','a','z'].map(x=>`${CLANS[x].name} ${Math.round(cnt[x]/QS.length*100)}%`).join(' · ')}</p>`;
+  $('tQ').style.display='none';$('tRes').classList.add('on');BGM.sfx('result');drawLic();setTimeout(()=>$('tRes').scrollIntoView({behavior:'smooth',block:'start'}),80)}
+$('tAgain').onclick=()=>{$('tRes').classList.remove('on');$('tStart').style.display='block';$('testBox').scrollIntoView({behavior:'smooth'})};
+['fName','fHero','fType'].forEach(id=>$(id).addEventListener('input',()=>drawLic()));
+
+function drawLic(){if(!result)return;const cv=$('lic'),g=cv.getContext('2d'),W=1000,H=620,c=CLANS[result.k];
+  const name=($('fName').value.trim()||'Guest'),hero=($('fHero').value.trim()||'UNREGISTERED').toUpperCase(),type=$('fType').value;
+  g.clearRect(0,0,W,H);
+  // body
+  const rr=(x,y,w,h,r)=>{g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
+  rr(4,4,W-8,H-8,28);const bg=g.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#14131a');bg.addColorStop(1,'#07070a');g.fillStyle=bg;g.fill();
+  g.save();rr(4,4,W-8,H-8,28);g.clip();
+  const gl=g.createRadialGradient(W*.82,H*.28,10,W*.82,H*.28,420);gl.addColorStop(0,c.c+'55');gl.addColorStop(1,'transparent');g.fillStyle=gl;g.fillRect(0,0,W,H);
+  g.strokeStyle='rgba(255,255,255,.035)';g.lineWidth=1;for(let y=0;y<H;y+=6){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
+  // black sun
+  const sx=W-170,sy=170;for(let i=0;i<72;i++){const a=i/72*Math.PI*2;g.strokeStyle=`rgba(255,170,70,${i%3?.12:.28})`;g.beginPath();g.moveTo(sx+Math.cos(a)*92,sy+Math.sin(a)*92);g.lineTo(sx+Math.cos(a)*(i%3?130:160),sy+Math.sin(a)*(i%3?130:160));g.stroke()}
+  const co=g.createRadialGradient(sx,sy,70,sx,sy,104);co.addColorStop(0,'rgba(255,226,168,1)');co.addColorStop(.25,'rgba(255,170,70,.6)');co.addColorStop(1,'rgba(255,106,42,0)');g.fillStyle=co;g.beginPath();g.arc(sx,sy,104,0,7);g.fill();
+  g.fillStyle='#040405';g.beginPath();g.arc(sx,sy,76,0,7);g.fill();
+  // stripe
+  g.fillStyle=c.c;g.fillRect(0,0,W,10);g.fillRect(0,H-64,W,64);
+  g.restore();
+  g.strokeStyle='rgba(255,190,110,.35)';g.lineWidth=2;rr(4,4,W-8,H-8,28);g.stroke();
+  // text
+  g.fillStyle='#ffb347';g.font='600 22px "Chakra Petch", sans-serif';g.textBaseline='alphabetic';g.fillText('NOVA HERO HEADQUARTERS',50,70);
+  g.fillStyle='rgba(255,255,255,.45)';g.font='500 16px "Chakra Petch", sans-serif';g.fillText('HERO LICENSE · 히어로 등록증',50,98);
+  // photo box (silhouette)
+  const px=50,py=130,pw=200,ph=250;g.fillStyle='#0d0d12';g.fillRect(px,py,pw,ph);g.strokeStyle=c.c;g.lineWidth=2;g.strokeRect(px,py,pw,ph);
+  g.fillStyle=c.c+'33';g.beginPath();g.arc(px+pw/2,py+100,48,0,7);g.fill();g.beginPath();g.ellipse(px+pw/2,py+ph+10,90,95,0,Math.PI,0);g.fill();
+  g.fillStyle='rgba(255,255,255,.5)';g.font='600 13px "Chakra Petch", sans-serif';g.textAlign='center';g.fillText('PHOTO PENDING',px+pw/2,py+ph-14);g.textAlign='left';
+  // fields
+  const fx=290;const field=(lab,val,y,big)=>{g.fillStyle='rgba(255,255,255,.45)';g.font='500 15px "Chakra Petch", "Pretendard Variable", sans-serif';g.fillText(lab,fx,y);g.fillStyle='#f2f0f5';g.font=(big?'44px ':'26px ')+'"Black Han Sans", "Pretendard Variable", sans-serif';g.fillText(val,fx,y+(big?46:32))};
+  g.fillStyle=c.c;g.font='700 30px "Chakra Petch", sans-serif';g.fillText(hero,fx,160);
+  field('NAME · 이름',name,200,true);
+  field('CLAN · 소속',c.name+'  ('+c.side+')',290);
+  field('ABILITY · 능력 계열',type,366);
+  // grade box
+  g.strokeStyle='#ffb347';g.lineWidth=2;g.strokeRect(50,410,200,120);g.fillStyle='rgba(255,255,255,.45)';g.font='500 14px "Chakra Petch", sans-serif';g.fillText('GRADE · 등급',64,436);
+  g.fillStyle='#ffb347';g.font='700 46px "Chakra Petch", sans-serif';g.fillText('D?',64,492);g.font='500 13px "Pretendard Variable", sans-serif';g.fillStyle='rgba(255,255,255,.6)';g.fillText('정밀 검사 중 · 예외 각성자',64,516);
+  g.fillStyle='rgba(255,255,255,.55)';g.font='italic 20px "Pretendard Variable", sans-serif';wrap(g,'“'+c.slogan+'”',fx,452,600,28);
+  // bottom bar
+  g.fillStyle='#08080b';g.font='700 18px "Chakra Petch", sans-serif';const idn='NV-'+(name.split('').reduce((a,ch)=>a*31+ch.charCodeAt(0)>>>0,7)%900000+100000);
+  g.fillText('ID '+idn+'  ·  '+c.en+'  ·  ISSUED BY NOVA HQ',50,H-26);g.textAlign='right';g.fillText('© ⭐_MEI · NOVA',W-40,H-26);g.textAlign='left';
+  // stamp
+  g.save();g.translate(W-170,H-150);g.rotate(-.25);g.strokeStyle='rgba(226,52,63,.85)';g.lineWidth=4;g.beginPath();g.arc(0,0,62,0,7);g.stroke();g.lineWidth=1.5;g.beginPath();g.arc(0,0,54,0,7);g.stroke();
+  g.fillStyle='rgba(226,52,63,.9)';g.textAlign='center';g.font='700 14px "Chakra Petch", sans-serif';g.fillText('NOVA HQ',0,-20);g.font='30px "Black Han Sans", sans-serif';g.fillText('임시등록',0,14);g.font='700 11px "Chakra Petch", sans-serif';g.fillText('PROVISIONAL',0,34);g.restore();g.textAlign='left'}
+function wrap(g,t,x,y,w,lh){let line='';for(const ch of t){if(g.measureText(line+ch).width>w){g.fillText(line,x,y);line=ch;y+=lh}else line+=ch}g.fillText(line,x,y)}
+$('licSave').onclick=()=>{const cv=$('lic');try{cv.toBlob(b=>{if(!b){toast('저장에 실패했어요');return}const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='NOVA_히어로등록증.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);toast('등록증을 저장했어요 (안 되면 이미지를 길게 눌러 저장)')},'image/png')}catch(e){toast('이미지를 길게 눌러 저장해 주세요')}};
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{drawLic()});
+
+/* ---------- BGM (pre-rendered loop via <audio>: works on iPhone silent mode & Android) ---------- */
+const BGM=(()=>{
+  const SR=22050,NN={C:0,'C#':1,Db:1,D:2,'D#':3,Eb:3,E:4,F:5,'F#':6,Gb:6,G:7,'G#':8,Ab:8,A:9,'A#':10,Bb:10,B:11};
+  const mid=s=>{const m=s.match(/^([A-G][#b]?)(-?\d)$/);return 12*(+m[2]+1)+NN[m[1]]},hz=m=>440*Math.pow(2,(m-69)/12);
+  const chordT=c=>{const m=c.match(/^([A-G][#b]?)(m?)$/);const r=NN[m[1]];return[r,r+(m[2]?3:4),r+7]};
+  const mel=s=>s.trim().split(/\s+/).map(t=>{const[n,l]=t.split('/');return[n==='r'?null:mid(n),+l]});
+  const T={bpm:96,bar:8,ch:'Dm Bb F C Dm Bb C A Gm Bb F C Dm Bb A A',
+    mel:['D5/3 F5/1 A5/4','Bb5/2 A5/2 F5/4','C6/3 A5/1 F5/2 A5/2','G5/6 r/2','D5/3 F5/1 A5/2 D6/2','D6/2 C6/2 Bb5/4','C6/2 Bb5/1 A5/1 G5/2 E5/2','A5/6 r/2',
+         'Bb5/3 A5/1 G5/4','F5/2 G5/2 Bb5/4','A5/3 G5/1 F5/2 C5/2','E5/4 G5/4','F5/3 E5/1 D5/2 F5/2','Bb5/3 A5/1 Bb5/2 D6/2','C#6/3 B5/1 A5/2 E5/2','A5/6 r/2']};
+  const TD={bpm:64,bar:8,dark:1,ch:'Dm Dm Bb A Gm Gm Bb A',
+    mel:['D4/6 r/2','F4/3 E4/1 D4/4','D4/4 F4/2 Bb4/2','A4/6 r/2','Bb4/4 A4/2 G4/2','D4/6 r/2','F4/3 G4/1 Bb4/4','A4/6 C#5/2']};
+  const TRK={main:T,ignis:TD};
+  async function render(T){const E=60/T.bpm/2,chords=T.ch.split(' '),loopLen=chords.length*T.bar*E,TAIL=3;
+    const OAC=window.OfflineAudioContext||window.webkitOfflineAudioContext;const c=new OAC(1,Math.ceil(SR*(loopLen+TAIL)),SR);
+    const out=c.createGain();out.connect(c.destination);
+    const echoIn=c.createGain();{const dl=c.createDelay(1);dl.delayTime.value=E*3;const fb=c.createGain();fb.gain.value=.32;const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2600;echoIn.connect(dl);dl.connect(lp);lp.connect(fb);fb.connect(dl);const w=c.createGain();w.gain.value=.5;lp.connect(w);w.connect(out)}
+    const nb=c.createBuffer(1,SR*.4,SR),nd=nb.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+    const tone=(type,m,t,d,v,o={})=>{const os=c.createOscillator();os.type=type;os.frequency.setValueAtTime(hz(m),t);if(o.det)os.detune.value=o.det;
+      if(o.vib){const lf=c.createOscillator(),lg=c.createGain();lf.frequency.value=5.2;lg.gain.setValueAtTime(0,t);lg.gain.linearRampToValueAtTime(hz(m)*.01,t+Math.min(d,.4));lf.connect(lg);lg.connect(os.frequency);lf.start(t);lf.stop(t+d+.05)}
+      let node=os;if(o.lp){const f=c.createBiquadFilter();f.type='lowpass';f.frequency.setValueAtTime(o.lp,t);if(o.sweep)f.frequency.exponentialRampToValueAtTime(o.lp*o.sweep,t+d);f.Q.value=o.q||1;os.connect(f);node=f}
+      const gn=c.createGain(),a=o.a||.008,r=o.r||Math.min(.12,d*.3);gn.gain.setValueAtTime(0,t);gn.gain.linearRampToValueAtTime(v,t+a);gn.gain.setValueAtTime(v,Math.max(t+a,t+d-r));gn.gain.linearRampToValueAtTime(0,t+d);
+      node.connect(gn);gn.connect(out);if(o.echo)gn.connect(echoIn);os.start(t);os.stop(t+d+.05)};
+    const noise=(t,d,v,type,f)=>{const s=c.createBufferSource();s.buffer=nb;const fl=c.createBiquadFilter();fl.type=type;fl.frequency.value=f;const gn=c.createGain();gn.gain.setValueAtTime(v,t);gn.gain.exponentialRampToValueAtTime(.001,t+d);s.connect(fl);fl.connect(gn);gn.connect(out);s.start(t);s.stop(t+d+.02)};
+    const kick=(t,v)=>{const os=c.createOscillator();os.frequency.setValueAtTime(140,t);os.frequency.exponentialRampToValueAtTime(42,t+.14);const gn=c.createGain();gn.gain.setValueAtTime(v,t);gn.gain.exponentialRampToValueAtTime(.001,t+.22);os.connect(gn);gn.connect(out);os.start(t);os.stop(t+.25)};
+    chords.forEach((ch,bi)=>{const bt=bi*T.bar*E;const tn=chordT(ch);const root=48+tn[0]%12;const ct=tn.map(x=>57+((x-9+12)%12)).sort((a,b)=>a-b);
+      if(T.dark){const BL=T.bar*E;
+        let p=0;mel(T.mel[bi]).forEach(([m,l])=>{if(m!=null){const t=bt+p*E,d=l*E*.97;tone('sawtooth',m,t,d,.09,{lp:1100,q:3,vib:d>.6,echo:1,a:.12,r:.4});tone('square',m+12,t,d*.9,.018,{lp:1800,echo:1,a:.2})}p+=l});
+        ct.forEach(m=>{tone('sawtooth',m-12,bt,BL,.03,{lp:600,a:.8,r:.8});tone('sawtooth',m-12,bt,BL,.022,{lp:600,det:-14,a:.8,r:.8})});
+        tone('sawtooth',root-12,bt,BL*.98,.12,{lp:260,a:.3,r:.5});tone('triangle',root-12,bt,BL*.98,.16,{a:.2});
+        for(let k=0;k<T.bar;k++){const t=bt+k*E;if(k===0||k===1)kick(t,k?.38:.62);if(k===4)kick(t,.45)}
+        noise(bt,2.2,.06,'lowpass',400);if(bi%2===1)noise(bt+4*E,.6,.07,'bandpass',900);
+        for(let k=0;k<T.bar;k+=2)tone('sine',ct[(k/2)%3]+24,bt+k*E+E/2,E*.6,.02,{echo:1});
+        return}
+      // lead: brassy saw through filter + octave shimmer
+      let p=0;mel(T.mel[bi]).forEach(([m,l])=>{if(m!=null){const t=bt+p*E,d=l*E*.95;tone('sawtooth',m,t,d,.075,{lp:2600,q:2,vib:d>.5,echo:1,a:.03});tone('sawtooth',m,t,d,.05,{lp:2200,det:9,echo:1,a:.03});tone('square',m+12,t,d*.8,.012,{lp:4000,echo:1})}p+=l});
+      // pad (saw, soft)
+      ct.forEach(m=>{tone('sawtooth',m,bt,T.bar*E,.028,{lp:900,a:.35,r:.4});tone('sawtooth',m,bt,T.bar*E,.02,{lp:900,det:-12,a:.35,r:.4})});
+      // bass: driving 16ths
+      for(let k=0;k<T.bar*2;k++){const t=bt+k*E/2;tone('sawtooth',root+(k%4===2?12:0),t,E*.42,.11,{lp:520,sweep:.7,q:4})}
+      tone('triangle',root-12,bt,T.bar*E*.97,.14);
+      // arp
+      for(let k=0;k<T.bar*2;k++)tone('square',[ct[0],ct[1],ct[2],ct[1]][k%4]+12,bt+k*E/2,E*.3,.016,{lp:3200});
+      // drums: epic
+      for(let k=0;k<T.bar;k++){const t=bt+k*E;if(k===0||k===3||k===4||(bi%4===3&&k>=6))kick(t,.55);if(k===2||k===6)noise(t,.18,.2,'bandpass',1500);noise(t,.03,k%2?.03:.05,'highpass',7500)}
+      if(bi%4===3){for(let k=0;k<4;k++){const t=bt+(4+k)*E;const os=c.createOscillator();os.frequency.setValueAtTime(180-k*25,t);os.frequency.exponentialRampToValueAtTime(70,t+.2);const gn=c.createGain();gn.gain.setValueAtTime(.3,t);gn.gain.exponentialRampToValueAtTime(.001,t+.25);os.connect(gn);gn.connect(out);os.start(t);os.stop(t+.3)}}
+      if(bi===0||bi===8)noise(bt,1.6,.09,'highpass',5000);
+    });
+    const buf=await c.startRendering(),all=buf.getChannelData(0),len=Math.round(loopLen*SR);const seg=new Float32Array(len);seg.set(all.subarray(0,len));for(let i=0;i<all.length-len&&i<len;i++)seg[i]+=all[len+i];
+    let pk=0,sq=0;for(let i=0;i<len;i++){const a=Math.abs(seg[i]);if(a>pk)pk=a;sq+=a*a}const gain=Math.min(.89/pk,.2/Math.sqrt(sq/len));
+    const ab=new ArrayBuffer(44+len*2),dv=new DataView(ab),ws=(o,s)=>{for(let i=0;i<s.length;i++)dv.setUint8(o+i,s.charCodeAt(i))};
+    ws(0,'RIFF');dv.setUint32(4,36+len*2,true);ws(8,'WAVE');ws(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,SR,true);dv.setUint32(28,SR*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);ws(36,'data');dv.setUint32(40,len*2,true);
+    for(let i=0;i<len;i++){const v=Math.max(-1,Math.min(1,seg[i]*gain));dv.setInt16(44+i*2,v<0?v*32768:v*32767,true)}
+    return URL.createObjectURL(new Blob([ab],{type:'audio/wav'}))}
+  const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA=';
+  let urls={},rendering={},cur='main',el=null,on=false,ctx=null,sb=null;
+  try{on=localStorage.getItem('nova-bgm')==='1'}catch(e){}
+  const audio=()=>{if(el)return el;el=document.createElement('audio');el.loop=true;el.preload='auto';el.setAttribute('playsinline','');el.setAttribute('webkit-playsinline','');el.volume=.7;document.body.appendChild(el);return el};
+  const prep=k=>rendering[k]||(rendering[k]=render(TRK[k]).then(u=>{urls[k]=u;if(on&&cur===k){const a=audio();a.src=u;const p=a.play();if(p&&p.catch)p.catch(()=>{})}return u}).catch(()=>null));
+  function ui(){const b=$('bgm');b.classList.toggle('on',on);$('bgmT').textContent=on?'BGM ON':'BGM OFF'}
+  function fxCtx(){if(ctx)return true;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;try{ctx=new AC();try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}sb=ctx.createGain();sb.gain.value=.5;sb.connect(ctx.destination)}catch(e){return false}return true}
+  function start(){on=true;try{localStorage.setItem('nova-bgm','1')}catch(e){}const a=audio();fxCtx();if(ctx)ctx.resume().catch(()=>{});
+    const u=urls[cur];if(u){if(a.src!==u)a.src=u}else{a.src=SILENT;prep(cur)}const p=a.play();if(p&&p.catch)p.catch(()=>{});ui()}
+  function stop(){on=false;try{localStorage.setItem('nova-bgm','0')}catch(e){}if(el)el.pause();ui()}
+  function sfx(n){if(!on||!ctx)return;if(ctx.state!=='running')ctx.resume().catch(()=>{});const t=ctx.currentTime+.01;
+    const nt=(type,f,t0,d,v,slide)=>{const o=ctx.createOscillator();o.type=type;o.frequency.setValueAtTime(f,t0);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t0+d);const g=ctx.createGain();g.gain.setValueAtTime(v,t0);g.gain.exponentialRampToValueAtTime(.001,t0+d);o.connect(g);g.connect(sb);o.start(t0);o.stop(t0+d+.02)};
+    if(n==='tick')nt('square',1320,t,.05,.08);
+    if(n==='ok'){nt('square',880,t,.07,.08);nt('square',1320,t+.07,.1,.08)}
+    if(n==='result')[523,659,784,1047].forEach((f,i)=>nt('square',f,t+i*.09,.14,.07));
+    if(n==='deny'){nt('sawtooth',220,t,.25,.12,90);nt('square',180,t+.12,.2,.08,70)}
+    if(n==='stamp'){nt('sine',120,t,.25,.5,40)}
+    if(n==='hack'){nt('square',1800+Math.random()*900,t,.03,.04)}
+    if(n==='zl'){nt('sine',1200,t,.12,.12);nt('sine',1600,t+.12,.14,.1)}
+    if(n==='absorb'){nt('sawtooth',900,t,.55,.12,60);nt('sine',300,t+.1,.6,.25,40)}
+    if(n==='boom'){nt('sine',90,t,1.4,.9,25);nt('sawtooth',160,t,.8,.25,30);const b=ctx.createBuffer(1,ctx.sampleRate,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2.5);const s=ctx.createBufferSource();s.buffer=b;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=900;const g=ctx.createGain();g.gain.value=.8;s.connect(f);f.connect(g);g.connect(sb);s.start(t)}
+    if(n==='open'){[220,207,196,185].forEach((f,i)=>nt('sawtooth',f,t+i*.18,.5,.08,f*.98))}}
+  setTimeout(()=>prep('main'),1500);
+  function setTrack(k){if(!TRK[k]||k===cur)return;cur=k;if(!urls[k]){prep(k);return}if(on){const a=audio();a.src=urls[k];const p=a.play();if(p&&p.catch)p.catch(()=>{})}}
+  const first=e=>{if(e&&e.target&&e.target.closest&&e.target.closest('#bgm'))return;document.removeEventListener('pointerdown',first,true);if(on)start()};
+  document.addEventListener('pointerdown',first,true);
+  document.addEventListener('visibilitychange',()=>{if(!el)return;if(document.hidden)el.pause();else if(on){const p=el.play();if(p&&p.catch)p.catch(()=>{})}});
+  ui();
+  return{start,stop,toggle(){on?stop():start()},sfx,setTrack,prep,get on(){return on},_render:render,_T:TRK};
+})();
+$('bgm').onclick=()=>BGM.toggle();
+
+/* ---------- intro ---------- */
+let introDone=false;
+function finishIntro(fast){if(introDone)return;introDone=true;
+  if(fast){$('intro').classList.add('done');$('skip').remove();document.body.classList.remove('lock');setTimeout(()=>$('intro').remove(),900);return}
+  $('stamp').classList.add('hit');BGM.sfx('stamp');
+  setTimeout(()=>{$('eclipse').classList.add('on');$('intro').classList.add('done');$('skip').remove()},650);
+  setTimeout(()=>{$('eclipse').style.transition='opacity .8s';$('eclipse').style.opacity='0';document.body.classList.remove('lock')},2700);
+  setTimeout(()=>{$('eclipse').remove();$('intro').remove()},3600)}
+$('goBtn').onclick=()=>{if(!BGM.on)BGM.start();finishIntro(false)};
+$('skip').onclick=()=>finishIntro(true);
+try{if(sessionStorage.getItem('nova-intro')){finishIntro(true)}sessionStorage.setItem('nova-intro','1')}catch(e){}
+
+/* ---------- menu, progress, reveal ---------- */
+$('mOpen').onclick=()=>$('menu').classList.add('on');$('mClose').onclick=()=>$('menu').classList.remove('on');
+$('menu').addEventListener('click',e=>{if(e.target.closest('a'))$('menu').classList.remove('on')});
+addEventListener('scroll',()=>{const h=document.documentElement;$('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
+  if(e.target.id==='compare')e.target.querySelectorAll('.bar i').forEach(i=>i.style.width=i.dataset.w+'%')}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+setInterval(()=>window._hexAnim&&window._hexAnim(),1400);window._hexAnim();
+
+/* ---------- embers ---------- */
+const EMBM={mode:'idle',set(m){this.mode=m;(window._P||[]).forEach(p=>{p.vx=0;p.vy=0})}};
+(function(){const cv=$('embers'),g=cv.getContext('2d');let W,H,P=[];const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};rs();addEventListener('resize',rs);
+  window._P=P;const N=Math.min(60,Math.round(innerWidth/14));for(let i=0;i<N;i++)P.push({x:Math.random()*W,y:Math.random()*H,v:.2+Math.random()*.6,r:.6+Math.random()*1.6,a:Math.random()*6,s:Math.random()*.5+.2});
+  for(let i=0;i<60;i++)P.push({x:Math.random()*W,y:Math.random()*H,v:.2+Math.random()*.6,r:.6+Math.random()*1.6,a:Math.random()*6,s:Math.random()*.5+.2});
+  const tgt=()=>{const e=$('ignImg')||$('clsBox');if(!e)return[W/2,H/2];const r=e.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height*.4]};
+  (function f(){g.clearRect(0,0,W,H);const M=EMBM.mode,act=M==='idle'?N:P.length,[tx,ty]=M==='idle'?[0,0]:tgt();
+    for(let i=0;i<act;i++){const p=P[i];p.a+=.02;
+      if(M==='pull'){const dx=tx-p.x,dy=ty-p.y,d=Math.hypot(dx,dy)||1,sp=Math.min(9,1.2+260/d);p.x+=dx/d*sp;p.y+=dy/d*sp;if(d<14){const e=Math.random()*4|0;p.x=e<2?Math.random()*W:(e===2?-5:W+5);p.y=e<2?(e?H+5:-5):Math.random()*H}
+        g.fillStyle=`rgba(255,${180+Math.round(60*Math.sin(p.a))},140,${.35+.3*Math.sin(p.a*1.3)})`}
+      else if(M==='burst'){if(!p.vx&&!p.vy){const an=Math.random()*6.283,sp=4+Math.random()*12;p.vx=Math.cos(an)*sp;p.vy=Math.sin(an)*sp;p.x=tx;p.y=ty}p.x+=p.vx;p.y+=p.vy;p.vx*=.97;p.vy*=.97;
+        g.fillStyle=i%2?'rgba(255,40,50,.8)':'rgba(30,0,0,.9)'}
+      else if(M==='ash'){p.y+=p.v*.8;p.x+=Math.sin(p.a)*p.s;if(p.y>H+10){p.y=-10;p.x=Math.random()*W}g.fillStyle=`rgba(255,${40+Math.round(40*Math.sin(p.a))},50,${.25+.3*Math.sin(p.a*1.3)})`}
+      else{p.y-=p.v;p.x+=Math.sin(p.a)*p.s;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}g.fillStyle=`rgba(255,${140+Math.round(60*Math.sin(p.a))},60,${.25+.25*Math.sin(p.a*1.3)})`}
+      g.beginPath();g.arc(p.x,p.y,p.r*(M==='burst'?1.6:1),0,7);g.fill()}requestAnimationFrame(f)})()})();
+</script>
+</body>
+</html>
